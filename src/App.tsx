@@ -1,5 +1,6 @@
 import DefaultLayout from '@layouts/DefaultLayout'
 import EditorLayout from '@layouts/EditorLayout'
+import './App.css'
 
 function App() {
   return (
