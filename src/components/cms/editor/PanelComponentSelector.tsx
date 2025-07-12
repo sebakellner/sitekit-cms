@@ -7,7 +7,7 @@ const ComponentSelectorItem = () => {
     <Box gap="small" round="small" flex="grow" hoverIndicator={true}>
       <Box
         overflow="hidden"
-        height="xsmall"
+        height="130px"
         background="dark-3"
         round="small"
       ></Box>
