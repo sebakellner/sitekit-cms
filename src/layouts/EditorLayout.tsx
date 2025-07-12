@@ -1,5 +1,5 @@
 import { Grid, Box } from 'grommet'
-import PanelComponentSelector from '@components/cms/PanelComponentSelector'
+import PanelComponentSelector from '@components/cms/editor/PanelComponentSelector'
 
 interface EditorLayoutProps {
   children?: React.ReactNode
@@ -10,7 +10,7 @@ function EditorLayout({ children }: EditorLayoutProps) {
     <Grid
       fill
       rows={['auto', 'flex', 'auto']}
-      columns={['1fr', '3fr', '1fr']}
+      columns={['0.8fr', '3fr', '1fr']}
       areas={[
         { name: 'main-left', start: [0, 1], end: [0, 1] },
         { name: 'main-center', start: [1, 1], end: [1, 1] },
@@ -20,9 +20,8 @@ function EditorLayout({ children }: EditorLayoutProps) {
       <Box
         gridArea="main-left"
         background="dark-1"
-        pad="large"
         align="center"
-        justify="center"
+        justify="start"
         border={{ side: 'right', color: 'dark-2' }}
       >
         <PanelComponentSelector />
@@ -31,7 +30,6 @@ function EditorLayout({ children }: EditorLayoutProps) {
       <Box
         gridArea="main-center"
         background="light-2"
-        pad="large"
         align="center"
         justify="center"
       >
