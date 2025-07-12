@@ -1,4 +1,5 @@
 import { Grid, Box } from 'grommet'
+import PanelComponentSelector from '@components/cms/editor/PanelComponentSelector'
 
 interface EditorLayoutProps {
   children?: React.ReactNode
@@ -9,7 +10,7 @@ function EditorLayout({ children }: EditorLayoutProps) {
     <Grid
       fill
       rows={['auto', 'flex', 'auto']}
-      columns={['1fr', '3fr', '1fr']}
+      columns={['0.8fr', '3fr', '1fr']}
       areas={[
         { name: 'main-left', start: [0, 1], end: [0, 1] },
         { name: 'main-center', start: [1, 1], end: [1, 1] },
@@ -18,21 +19,17 @@ function EditorLayout({ children }: EditorLayoutProps) {
     >
       <Box
         gridArea="main-left"
-        background="light-1"
-        pad="large"
+        background="dark-1"
         align="center"
-        justify="center"
+        justify="start"
+        border={{ side: 'right', color: 'dark-2' }}
       >
-        <h3 style={{ margin: '0 0 16px 0' }}>Sección 1</h3>
-        <p style={{ margin: 0, textAlign: 'center' }}>
-          Primera parte de la fila dividida
-        </p>
+        <PanelComponentSelector />
       </Box>
 
       <Box
         gridArea="main-center"
         background="light-2"
-        pad="large"
         align="center"
         justify="center"
       >
@@ -48,10 +45,11 @@ function EditorLayout({ children }: EditorLayoutProps) {
 
       <Box
         gridArea="main-right"
-        background="light-3"
+        background="dark-1"
         pad="large"
         align="center"
         justify="center"
+        border={{ side: 'left', color: 'dark-2' }}
       >
         <h3 style={{ margin: '0 0 16px 0' }}>Sección 3</h3>
         <p style={{ margin: 0, textAlign: 'center' }}>
