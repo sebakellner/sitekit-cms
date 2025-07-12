@@ -1,5 +1,5 @@
-import DefaultLayout from './components/layouts/DefaultLayout'
-import EditorLayout from './components/layouts/EditorLayout'
+import DefaultLayout from '@layouts/DefaultLayout'
+import EditorLayout from '@layouts/EditorLayout'
 
 function App() {
   return (

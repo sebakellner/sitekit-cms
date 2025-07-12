@@ -1,6 +1,6 @@
 import { Grid, Box } from 'grommet'
-import Header from '../cms/Header'
-import Footer from '../cms/Footer'
+import Header from '@components/cms/Header'
+import Footer from '@components/cms/Footer'
 
 interface DefaultLayoutProps {
   children?: React.ReactNode
