@@ -8,6 +8,7 @@ const Header = () => {
       align="center"
       justify="start"
       width="full"
+      border={{ side: 'bottom', color: 'dark-2' }}
     >
       <Text size="large" color="white">
         SKBuilder
