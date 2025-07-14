@@ -19,16 +19,15 @@ const PanelBoxCollapsable = ({
   const [collapsed, setCollapsed] = useState(false)
 
   return (
-    <PanelBox
-      focusIndicator={false}
-      onClick={() => setCollapsed((c) => !c)}
-      {...restProps}
-    >
+    <PanelBox focusIndicator={false} pad="none" gap="none" {...restProps}>
       <Box
         direction="row"
         justify="between"
         align="center"
+        pad="medium"
         style={{ cursor: 'pointer' }}
+        focusIndicator={false}
+        onClick={() => setCollapsed((c) => !c)}
       >
         <Heading level={6} size="small" margin="none">
           {title}
@@ -46,7 +45,11 @@ const PanelBoxCollapsable = ({
           focusIndicator={false}
         />
       </Box>
-      {!collapsed && <Box pad={{ vertical: 'xsmall' }}>{children}</Box>}
+      {!collapsed && (
+        <Box pad={{ top: 'none', horizontal: 'medium', bottom: 'large' }}>
+          {children}
+        </Box>
+      )}
     </PanelBox>
   )
 }
