@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <GrommetHeader
       background={'dark-1'}
-      pad="medium"
+      pad={{ horizontal: 'medium', vertical: 'small' }}
       align="center"
       justify="start"
       width="full"
