@@ -1,11 +1,15 @@
 import { Box } from 'grommet'
 
-type Props = {
+export type PanelBoxProps = {
   children: React.ReactNode
   borderSide?: 'top' | 'bottom' | 'left' | 'right' | false
-}
+} & React.ComponentProps<typeof Box>
 
-const PanelBox = ({ children, borderSide = 'bottom', ...restProps }: Props) => {
+const PanelBox = ({
+  children,
+  borderSide = 'bottom',
+  ...restProps
+}: PanelBoxProps) => {
   const borderProp = borderSide
     ? { side: borderSide, color: 'dark-3' }
     : undefined
