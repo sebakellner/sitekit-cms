@@ -22,7 +22,7 @@ const PanelPageEditor = () => {
         </Text>
       </PanelBox>
 
-      <PanelTabs>
+      <PanelTabs defaultValue="content">
         <PanelTabList>
           <PanelTabTrigger
             value="content"
