@@ -6,16 +6,16 @@ import PanelBox, { type PanelBoxProps } from './PanelBox'
 import { Box, Button, Heading } from 'grommet'
 import { Down } from 'grommet-icons'
 
-type PanelBoxCollapsableProps = {
+type PanelCollapsibleProps = {
   title: ReactNode
   children: ReactNode
 } & PanelBoxProps
 
-const PanelBoxCollapsable = ({
+const PanelCollapsible = ({
   title,
   children,
   ...restProps
-}: PanelBoxCollapsableProps) => {
+}: PanelCollapsibleProps) => {
   const [collapsed, setCollapsed] = useState(false)
 
   return (
@@ -58,4 +58,4 @@ const PanelBoxCollapsable = ({
   )
 }
 
-export default PanelBoxCollapsable
+export default PanelCollapsible
