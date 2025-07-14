@@ -16,7 +16,7 @@ const PanelBoxScroll = ({
     <Box
       pad={pad}
       gap={gap}
-      overflow={{ vertical: 'scroll' }}
+      overflow={{ vertical: 'auto' }}
       className="custom-scrollbar"
       {...restProps}
     >
