@@ -50,10 +50,10 @@ export const PanelTabTrigger: FC<PanelTabTriggerProps> = ({
     <Box
       align="center"
       justify="center"
-      gap="small"
+      gap="xsmall"
       hoverIndicator={{ background: 'dark-2' }}
       fill
-      pad={{ horizontal: 'small', vertical: 'medium' }}
+      pad={{ horizontal: 'small', vertical: 'small' }}
       focusIndicator={false}
       className={active ? 'panel-tab-trigger--active' : 'panel-tab-trigger'}
       onClick={() => setActiveValue?.(value)}
