@@ -24,7 +24,11 @@ const PanelBoxCollapsable = ({
         direction="row"
         justify="between"
         align="center"
-        pad="medium"
+        pad={{
+          horizontal: 'medium',
+          top: 'medium',
+          bottom: collapsed ? 'medium' : 'small',
+        }}
         style={{ cursor: 'pointer' }}
         focusIndicator={false}
         onClick={() => setCollapsed((c) => !c)}
@@ -46,7 +50,7 @@ const PanelBoxCollapsable = ({
         />
       </Box>
       {!collapsed && (
-        <Box pad={{ top: 'none', horizontal: 'medium', bottom: 'large' }}>
+        <Box pad={{ top: 'none', horizontal: 'medium', bottom: 'medium' }}>
           {children}
         </Box>
       )}
