@@ -18,13 +18,7 @@ function EditorLayout({ children }: EditorLayoutProps) {
         { name: 'main-right', start: [2, 1], end: [2, 1] },
       ]}
     >
-      <Box
-        gridArea="main-left"
-        background="dark-1"
-        align="center"
-        justify="start"
-        border={{ side: 'right', color: 'dark-2' }}
-      >
+      <Box gridArea="main-left">
         <PanelComponentSelector />
       </Box>
 
@@ -44,13 +38,7 @@ function EditorLayout({ children }: EditorLayoutProps) {
         )}
       </Box>
 
-      <Box
-        gridArea="main-right"
-        background="dark-1"
-        align="center"
-        justify="start"
-        border={{ side: 'left', color: 'dark-2' }}
-      >
+      <Box gridArea="main-right">
         <PanelPageEditor />
       </Box>
     </Grid>
