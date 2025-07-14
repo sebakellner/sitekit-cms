@@ -1,6 +1,7 @@
 import { Box, Heading, Text, TextInput } from 'grommet'
 import { Search } from 'grommet-icons'
-import PanelBox from '../ui/PanelBox'
+import PanelBox from '@components/cms/ui/panel/PanelBox'
+import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
 
 const ComponentSelectorItem = () => {
   return (
@@ -25,7 +26,7 @@ const ComponentSelectorItem = () => {
 
 const PanelComponentSelector = () => {
   return (
-    <Box justify="start">
+    <Box>
       <PanelBox>
         <Heading level={5} margin="none">
           UI Section Components
@@ -44,12 +45,7 @@ const PanelComponentSelector = () => {
         />
       </PanelBox>
 
-      <Box
-        pad="medium"
-        gap="medium"
-        overflow={{ vertical: 'scroll' }}
-        className="custom-scrollbar"
-      >
+      <PanelBoxScroll>
         <ComponentSelectorItem />
         <ComponentSelectorItem />
         <ComponentSelectorItem />
@@ -57,7 +53,7 @@ const PanelComponentSelector = () => {
         <ComponentSelectorItem />
         <ComponentSelectorItem />
         <ComponentSelectorItem />
-      </Box>
+      </PanelBoxScroll>
     </Box>
   )
 }
