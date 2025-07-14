@@ -3,7 +3,7 @@ import PanelBox from '@components/cms/ui/PanelBox'
 import PanelBoxScroll from '@components/cms/ui/PanelBoxScroll'
 import PanelBoxCollapsable from '@components/cms/ui/PanelBoxCollapsable'
 
-const PanelComponentEditor = () => {
+const PanelPageEditor = () => {
   return (
     <Box width="full">
       <PanelBox>
@@ -56,4 +56,4 @@ const PanelComponentEditor = () => {
   )
 }
 
-export default PanelComponentEditor
+export default PanelPageEditor

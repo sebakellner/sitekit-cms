@@ -1,6 +1,6 @@
 import { Grid, Box } from 'grommet'
 import PanelComponentSelector from '@components/cms/page-editor/panels/selector/PanelComponentSelector'
-import PanelComponentEditor from '@components/cms/page-editor/panels/editor/PanelComponentEditor'
+import PanelPageEditor from '@components/cms/page-editor/panels/editor/PanelPageEditor'
 
 interface EditorLayoutProps {
   children?: React.ReactNode
@@ -51,7 +51,7 @@ function EditorLayout({ children }: EditorLayoutProps) {
         justify="start"
         border={{ side: 'left', color: 'dark-2' }}
       >
-        <PanelComponentEditor />
+        <PanelPageEditor />
       </Box>
     </Grid>
   )
