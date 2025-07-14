@@ -1,6 +1,6 @@
 import { Grid, Box } from 'grommet'
-import PanelComponentSelector from '@components/cms/editor/PanelComponentSelector'
-import PanelComponentEditor from '@components/cms/editor/PanelComponentEditor'
+import PanelComponentSelector from '@components/cms/page-editor/panels/selector/PanelComponentSelector'
+import PanelComponentEditor from '@components/cms/page-editor/panels/editor/PanelComponentEditor'
 
 interface EditorLayoutProps {
   children?: React.ReactNode

@@ -1,6 +1,6 @@
 import { Box, FormField, Heading, Text, TextInput } from 'grommet'
-import PanelBox from '../ui/PanelBox'
-import PanelBoxScroll from '../ui/PanelBoxScroll'
+import PanelBox from '../../../ui/PanelBox'
+import PanelBoxScroll from '../../../ui/PanelBoxScroll'
 
 const PanelComponentEditor = () => {
   return (
