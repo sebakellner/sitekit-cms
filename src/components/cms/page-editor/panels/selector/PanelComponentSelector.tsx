@@ -2,6 +2,7 @@ import { Box, Heading, Text, TextInput } from 'grommet'
 import { Search } from 'grommet-icons'
 import PanelBox from '@components/cms/ui/panel/PanelBox'
 import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
+import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
 
 const ComponentSelectorItem = () => {
   return (
@@ -26,7 +27,7 @@ const ComponentSelectorItem = () => {
 
 const PanelComponentSelector = () => {
   return (
-    <Box>
+    <PanelWrapper borderSide="left">
       <PanelBox>
         <Heading level={5} margin="none">
           UI Section Components
@@ -36,7 +37,7 @@ const PanelComponentSelector = () => {
         </Text>
       </PanelBox>
 
-      <PanelBox borderSide={false}>
+      <PanelBox>
         <TextInput
           icon={<Search />}
           size="small"
@@ -54,7 +55,7 @@ const PanelComponentSelector = () => {
         <ComponentSelectorItem />
         <ComponentSelectorItem />
       </PanelBoxScroll>
-    </Box>
+    </PanelWrapper>
   )
 }
 
