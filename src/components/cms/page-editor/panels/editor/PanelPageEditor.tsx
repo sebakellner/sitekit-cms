@@ -24,12 +24,7 @@ const PanelPageEditor = () => {
 
       <PanelTabs defaultValue="content">
         <PanelTabList>
-          <PanelTabTrigger
-            value="content"
-            label="Content"
-            icon={<Edit />}
-            active
-          />
+          <PanelTabTrigger value="content" label="Content" icon={<Edit />} />
           <PanelTabTrigger value="styles" label="Styles" icon={<Paint />} />
           <PanelTabTrigger
             value="settings"
