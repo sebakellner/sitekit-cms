@@ -96,11 +96,7 @@ export const PanelTabContent: FC<PanelTabContentProps> = ({
   activeValue,
 }) => {
   const isActive = value === activeValue
-  return (
-    <Box style={{ display: isActive ? 'block' : 'none' }} fill>
-      {children}
-    </Box>
-  )
+  return <Box style={{ display: isActive ? 'flex' : 'none' }}>{children}</Box>
 }
 
 export const PanelTabs: FC<PanelTabsProps> = ({ children, defaultValue }) => {
@@ -124,7 +120,7 @@ export const PanelTabs: FC<PanelTabsProps> = ({ children, defaultValue }) => {
   const [activeValue, setActiveValue] = useState(defaultValue ?? firstValue)
 
   return (
-    <>
+    <Box fill>
       {Children.map(children, (child) => {
         if (isValidElement(child)) {
           if (child.type === PanelTabList) {
@@ -142,6 +138,6 @@ export const PanelTabs: FC<PanelTabsProps> = ({ children, defaultValue }) => {
         }
         return child
       })}
-    </>
+    </Box>
   )
 }
