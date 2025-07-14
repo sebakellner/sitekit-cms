@@ -1,7 +1,14 @@
 import { Box, FormField, Heading, Text, TextInput } from 'grommet'
-import PanelBox from '@components/cms/ui/PanelBox'
-import PanelBoxScroll from '@components/cms/ui/PanelBoxScroll'
-import PanelBoxCollapsable from '@components/cms/ui/PanelBoxCollapsable'
+import PanelBox from '@components/cms/ui/panel/PanelBox'
+import PanelBoxCollapsable from '@components/cms/ui/panel/PanelBoxCollapsable'
+import { Edit, Paint, SettingsOption } from 'grommet-icons'
+import {
+  PanelTabs,
+  PanelTabList,
+  PanelTabContent,
+  PanelTabTrigger,
+} from '@components/cms/ui/panel/PanelTabs/index'
+import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
 
 const PanelPageEditor = () => {
   return (
@@ -15,43 +22,78 @@ const PanelPageEditor = () => {
         </Text>
       </PanelBox>
 
-      <PanelBoxScroll gap="none" pad="none">
-        <PanelBoxCollapsable title="General Settings">
-          <FormField label="Title">
-            <TextInput placeholder="Enter text here" />
-          </FormField>
-          <FormField label="Description">
-            <TextInput placeholder="Enter text here" />
-          </FormField>
-          <FormField label="Footnote">
-            <TextInput placeholder="Enter text here" />
-          </FormField>
-        </PanelBoxCollapsable>
+      <PanelBox pad="none">
+        <PanelTabs>
+          <PanelTabList>
+            <PanelTabTrigger
+              value="content"
+              label="Content"
+              icon={<Edit />}
+              active
+            />
+            <PanelTabTrigger value="styles" label="Styles" icon={<Paint />} />
+            <PanelTabTrigger
+              value="settings"
+              label="Settings"
+              icon={<SettingsOption />}
+            />
+          </PanelTabList>
+          <PanelTabContent value="content">
+            <PanelBoxScroll pad="none">
+              <PanelBoxCollapsable title="General Settings">
+                <FormField label="Title">
+                  <TextInput placeholder="Enter text here" />
+                </FormField>
+                <FormField label="Description">
+                  <TextInput placeholder="Enter text here" />
+                </FormField>
+                <FormField label="Footnote">
+                  <TextInput placeholder="Enter text here" />
+                </FormField>
+              </PanelBoxCollapsable>
 
-        <PanelBoxCollapsable title="Styling">
-          <FormField label="Background Color">
-            <TextInput placeholder="Enter color code" />
-          </FormField>
-          <FormField label="Text Color">
-            <TextInput placeholder="Enter color code" />
-          </FormField>
-          <FormField label="Padding">
-            <TextInput placeholder="Enter padding value" />
-          </FormField>
-        </PanelBoxCollapsable>
+              <PanelBoxCollapsable title="Styling">
+                <FormField label="Background Color">
+                  <TextInput placeholder="Enter color code" />
+                </FormField>
+                <FormField label="Text Color">
+                  <TextInput placeholder="Enter color code" />
+                </FormField>
+                <FormField label="Padding">
+                  <TextInput placeholder="Enter padding value" />
+                </FormField>
+              </PanelBoxCollapsable>
 
-        <PanelBoxCollapsable title="Advanced Settings" borderSide={false}>
-          <FormField label="Custom CSS">
-            <TextInput placeholder="Enter custom CSS" />
-          </FormField>
-          <FormField label="JavaScript">
-            <TextInput placeholder="Enter JavaScript code" />
-          </FormField>
-          <FormField label="Data Attributes">
-            <TextInput placeholder="Enter data attributes" />
-          </FormField>
-        </PanelBoxCollapsable>
-      </PanelBoxScroll>
+              <PanelBoxCollapsable title="Advanced Settings" borderSide={false}>
+                <FormField label="Custom CSS">
+                  <TextInput placeholder="Enter custom CSS" />
+                </FormField>
+                <FormField label="JavaScript">
+                  <TextInput placeholder="Enter JavaScript code" />
+                </FormField>
+                <FormField label="Data Attributes">
+                  <TextInput placeholder="Enter data attributes" />
+                </FormField>
+              </PanelBoxCollapsable>
+            </PanelBoxScroll>
+          </PanelTabContent>
+
+          <PanelTabContent value="styles">
+            <PanelBox borderSide={false}>
+              <Text size="small" color="dark-4">
+                Configure the properties of your component here.
+              </Text>
+            </PanelBox>
+          </PanelTabContent>
+          <PanelTabContent value="settings">
+            <PanelBox borderSide={false}>
+              <Text size="small" color="dark-4">
+                Configure the properties of your Settings here.
+              </Text>
+            </PanelBox>
+          </PanelTabContent>
+        </PanelTabs>
+      </PanelBox>
     </Box>
   )
 }

@@ -1,7 +1,7 @@
 import { Box, Heading, Text, TextInput } from 'grommet'
 import { Search } from 'grommet-icons'
-import PanelBox from '../../../ui/PanelBox'
-import PanelBoxScroll from '../../../ui/PanelBoxScroll'
+import PanelBox from '@components/cms/ui/panel/PanelBox'
+import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
 
 const ComponentSelectorItem = () => {
   return (
