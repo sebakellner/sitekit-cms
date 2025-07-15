@@ -9,6 +9,7 @@ export type PanelBoxProps = {
 const PanelBox = ({
   children,
   borderSide = 'bottom',
+  gap = 'xsmall',
   pad = 'medium',
   ...restProps
 }: PanelBoxProps) => {
@@ -18,7 +19,7 @@ const PanelBox = ({
   return (
     <Box
       pad={pad}
-      gap="xsmall"
+      gap={gap}
       flex="grow"
       border={borderProp}
       width="100%"
