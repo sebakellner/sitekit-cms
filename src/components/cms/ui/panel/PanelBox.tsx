@@ -16,7 +16,14 @@ const PanelBox = ({
     ? { side: borderSide, color: 'dark-3' }
     : undefined
   return (
-    <Box pad={pad} gap="xsmall" flex="grow" border={borderProp} {...restProps}>
+    <Box
+      pad={pad}
+      gap="xsmall"
+      flex="grow"
+      border={borderProp}
+      width="100%"
+      {...restProps}
+    >
       {children}
     </Box>
   )

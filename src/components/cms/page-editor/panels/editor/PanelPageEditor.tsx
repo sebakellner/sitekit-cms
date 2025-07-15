@@ -1,4 +1,4 @@
-import { Box, FormField, Heading, Text, TextArea, TextInput } from 'grommet'
+import { FormField, Heading, Text, TextArea, TextInput } from 'grommet'
 import PanelBox from '@components/cms/ui/panel/PanelBox'
 import PanelBoxCollapsable from '@components/cms/ui/panel/PanelBoxCollapsible'
 import { Edit, Paint, SettingsOption } from 'grommet-icons'
@@ -9,10 +9,11 @@ import {
   PanelTabTrigger,
 } from '@components/cms/ui/panel/PanelTabs/index'
 import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
+import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
 
 const PanelPageEditor = () => {
   return (
-    <Box width="full">
+    <PanelWrapper borderSide="left">
       <PanelBox>
         <Heading level={5} margin="none">
           Component Editor
@@ -87,7 +88,7 @@ const PanelPageEditor = () => {
           </PanelBox>
         </PanelTabContent>
       </PanelTabs>
-    </Box>
+    </PanelWrapper>
   )
 }
 

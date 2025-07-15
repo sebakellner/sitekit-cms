@@ -71,7 +71,7 @@ export const PanelTabList: FC<
   PanelTabListProps & PanelTabListInjectedProps
 > = ({ children, activeValue, setActiveValue }) => {
   return (
-    <PanelBox pad="none">
+    <PanelBox pad="none" flex={false}>
       <Box direction="row">
         {Children.map(children, (child) => {
           if (
