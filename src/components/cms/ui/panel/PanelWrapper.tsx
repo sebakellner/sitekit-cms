@@ -15,6 +15,7 @@ const PanelWrapper = ({
       background="dark-1"
       align="center"
       justify="start"
+      fill
       border={{ side: borderSide, color: 'dark-2' }}
       {...rest}
     >
