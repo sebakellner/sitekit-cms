@@ -13,7 +13,7 @@ import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
 
 const PanelPageEditor = () => {
   return (
-    <PanelWrapper>
+    <PanelWrapper borderSide="left">
       <PanelBox>
         <Heading level={5} margin="none">
           Component Editor

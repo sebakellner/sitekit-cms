@@ -27,7 +27,7 @@ const ComponentSelectorItem = () => {
 
 const PanelComponentSelector = () => {
   return (
-    <PanelWrapper borderSide="left">
+    <PanelWrapper borderSide="right">
       <PanelBox>
         <Heading level={5} margin="none">
           UI Section Components
