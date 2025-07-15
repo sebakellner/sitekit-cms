@@ -25,7 +25,7 @@ const ComponentSelectorItem = () => {
   )
 }
 
-const PanelComponentSelector = () => {
+const ComponentSelector = () => {
   return (
     <PanelWrapper borderSide="right">
       <PanelBox>
@@ -59,4 +59,4 @@ const PanelComponentSelector = () => {
   )
 }
 
-export default PanelComponentSelector
+export default ComponentSelector
