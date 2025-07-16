@@ -12,7 +12,12 @@ function EditorLayout({ children }: EditorLayoutProps) {
     <Grid
       fill
       rows={['auto', 'flex', 'auto']}
-      columns={['auto', '1fr', '3fr', '1fr']}
+      columns={[
+        'minmax(53px, 53px)',
+        'minmax(270px, 270px)',
+        '1fr',
+        'minmax(290px, 290px)',
+      ]}
       areas={[
         { name: 'left-sidebar', start: [0, 1], end: [0, 1] },
         { name: 'left-panels', start: [1, 1], end: [1, 1] },
