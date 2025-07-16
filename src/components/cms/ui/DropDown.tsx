@@ -87,7 +87,8 @@ const DropDown: React.FC<DropDownProps> = ({
         >
           {selected !== defaultValue
             ? options.find((opt) => opt.value === selected)?.label
-            : label}
+            : (label ??
+              options.find((opt) => opt.value === defaultValue)?.label)}
         </Text>
         {selected === defaultValue && <Down size="12px" />}
         {selected !== defaultValue && (

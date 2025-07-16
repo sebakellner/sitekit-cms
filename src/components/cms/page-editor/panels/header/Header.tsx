@@ -74,6 +74,7 @@ const Header = () => {
             icon={<Globe size="small" />}
             options={languageOptions}
             selected={selectedLang}
+            defaultValue="en-US"
             onSelect={(val) => {
               if (val !== 'settings') setSelectedLang(val)
             }}
@@ -93,7 +94,6 @@ const Header = () => {
             options={pageOptions}
             selected={selectedPage}
             onSelect={setSelectedPage}
-            label="Page"
             defaultValue="home"
           />
         </PanelBox>
@@ -113,7 +113,7 @@ const Header = () => {
             options={deviceOptions}
             selected={selectedDevice}
             onSelect={setSelectedDevice}
-            label="Device"
+            defaultValue="desktop"
           />
         </PanelBox>
       </Box>
