@@ -13,7 +13,7 @@ function EditorLayout({ children }: EditorLayoutProps) {
       fill
       rows={['auto', 'flex', 'auto']}
       columns={[
-        'minmax(53px, 53px)',
+        'minmax(52px, 52px)',
         'minmax(270px, 270px)',
         '1fr',
         'minmax(290px, 290px)',
