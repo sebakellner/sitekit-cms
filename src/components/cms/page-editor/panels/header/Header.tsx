@@ -1,6 +1,6 @@
 import React from 'react'
 import PanelBox from '@components/cms/ui/panel/PanelBox'
-import { Box, Text } from 'grommet'
+import { Box, Button } from 'grommet'
 import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
 import DropDown, { type DropDownOption } from '@components/cms/ui/DropDown'
 import { Desktop, Globe, PhoneHorizontal, PhoneVertical } from 'grommet-icons'
@@ -12,14 +12,22 @@ const languageOptions: DropDownOption[] = [
 ]
 
 const deviceOptions: DropDownOption[] = [
-  { label: 'Desktop', value: 'desktop', icon: <Desktop size="xsmall" /> },
-  { label: 'Tablet', value: 'tablet', icon: <Desktop size="xsmall" /> },
   {
-    label: 'Mobile (L)',
+    label: 'Desktop (1440px)',
+    value: 'desktop',
+    icon: <Desktop size="xsmall" />,
+  },
+  { label: 'Tablet (768px)', value: 'tablet', icon: <Desktop size="xsmall" /> },
+  {
+    label: 'Mobile (480px)',
+    value: 'mobile',
+    icon: <PhoneHorizontal size="xsmall" />,
+  },
+  {
+    label: 'Mobile (L) (1024px)',
     value: 'mobile-l',
     icon: <PhoneVertical size="xsmall" />,
   },
-  { label: 'Mobile', value: 'mobile', icon: <PhoneHorizontal size="xsmall" /> },
 ]
 
 const pageOptions: DropDownOption[] = [
@@ -49,6 +57,7 @@ const Header = () => {
         width="52px"
         height="100%"
         justify="center"
+        align="center"
         flex={false}
       >
         <Box
@@ -60,7 +69,7 @@ const Header = () => {
         />
       </PanelBox>
 
-      <Box direction="row">
+      <Box direction="row" height="100%">
         <PanelBox
           borderSide="horizontal"
           pad={{ horizontal: 'medium', vertical: 'small' }}
@@ -93,6 +102,7 @@ const Header = () => {
             icon={<Document size="xsmall" />}
             options={pageOptions}
             selected={selectedPage}
+            showCheckmark={false}
             onSelect={setSelectedPage}
             defaultValue="home"
           />
@@ -110,6 +120,7 @@ const Header = () => {
             icon={
               deviceOptions.find((opt) => opt.value === selectedDevice)?.icon
             }
+            showCheckmark={false}
             options={deviceOptions}
             selected={selectedDevice}
             onSelect={setSelectedDevice}
@@ -119,15 +130,19 @@ const Header = () => {
       </Box>
 
       <PanelBox
-        borderSide="right"
+        borderSide={false}
         pad="small"
         direction="row"
         width="auto"
         flex={false}
       >
-        <Text size="large" weight="bold">
-          Page Editor
-        </Text>
+        <Button
+          label="Preview"
+          size="small"
+          secondary
+          margin={{ left: 'small' }}
+        />
+        <Button size="small" label="Publish" primary />
       </PanelBox>
     </PanelWrapper>
   )
