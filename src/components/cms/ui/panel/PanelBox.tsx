@@ -14,7 +14,7 @@ const PanelBox = ({
   ...restProps
 }: PanelBoxProps) => {
   const borderProp = borderSide
-    ? { side: borderSide, color: 'dark-3' }
+    ? { side: borderSide, color: 'dark-2' }
     : undefined
   return (
     <Box

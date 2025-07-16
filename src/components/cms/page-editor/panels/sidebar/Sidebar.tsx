@@ -61,7 +61,7 @@ const Sidebar = ({ links = LINKS_DATA }: SidebarProps) => {
 
   return (
     <PanelWrapper borderSide="right" justify="between">
-      <PanelBox borderSide="bottom" pad="none" flex={false}>
+      <PanelBox borderSide={false} pad="none" flex={false}>
         <Nav gap="none">
           {links?.map(({ icon, label }, index) => (
             <SidebarLink
