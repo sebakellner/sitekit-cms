@@ -77,6 +77,7 @@ const Sidebar = ({ links = LINKS_DATA }: SidebarProps) => {
       <PanelBox borderSide="top" pad="none" flex={false}>
         <SidebarLink
           icon={<SettingsOption size="large" />}
+          label="Settings"
           active={activeIndex === settingsIndex}
           onClick={() => setActiveIndex(settingsIndex)}
         />
