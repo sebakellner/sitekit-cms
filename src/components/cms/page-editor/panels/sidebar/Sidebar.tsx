@@ -1,12 +1,13 @@
 import PanelBox from '@components/cms/ui/panel/PanelBox'
 import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
-import { Box, Button, Nav } from 'grommet'
+import TipContent from '@components/cms/ui/TipContent'
+import { Box, Button, Nav, Tip } from 'grommet'
 import { Add, Cube, Document, Iteration, SettingsOption } from 'grommet-icons'
 
 const LINKS_DATA = [
-  { icon: <Add />, label: 'New Component' },
-  { icon: <Document />, label: 'Content' },
-  { icon: <Cube />, label: 'Components', active: true },
+  { icon: <Add />, label: 'Add Elements' },
+  { icon: <Document />, label: 'Pages' },
+  { icon: <Cube />, label: 'Components' },
   { icon: <Iteration />, label: 'Templates' },
 ]
 
@@ -21,23 +22,31 @@ export type SidebarProps = {
 export type SidebarLinkProps = {
   icon: React.ReactNode
   active?: boolean
+  label?: string
 } & React.ComponentProps<typeof Button>
 
 const SidebarLink = ({
   icon,
   active,
+  label,
   onClick,
 }: SidebarLinkProps & { onClick?: () => void }) => (
-  <Button plain focusIndicator={false} onClick={onClick}>
-    <Box
-      align="center"
-      gap="small"
-      pad="small"
-      background={active ? 'dark-2' : undefined}
-    >
-      {icon}
-    </Box>
-  </Button>
+  <Tip
+    plain
+    dropProps={{ align: { left: 'right' } }}
+    content={<TipContent>{label}</TipContent>}
+  >
+    <Button plain hoverIndicator={true} onClick={onClick}>
+      <Box
+        align="center"
+        gap="small"
+        pad="small"
+        background={active ? 'dark-3' : undefined}
+      >
+        {icon}
+      </Box>
+    </Button>
+  </Tip>
 )
 
 import { useState } from 'react'
@@ -53,7 +62,7 @@ const Sidebar = ({ links = LINKS_DATA }: SidebarProps) => {
   return (
     <PanelWrapper borderSide="right" justify="between">
       <PanelBox borderSide="bottom" pad="none" flex={false}>
-        <Nav gap="small">
+        <Nav gap="none">
           {links?.map((link, index) => (
             <SidebarLink
               key={index}
