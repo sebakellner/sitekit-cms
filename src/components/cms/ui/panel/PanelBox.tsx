@@ -10,7 +10,7 @@ const PanelBox = ({
   children,
   borderSide = 'bottom',
   gap = 'xsmall',
-  pad = 'medium',
+  pad = '16px',
   ...restProps
 }: PanelBoxProps) => {
   const borderProp = borderSide
