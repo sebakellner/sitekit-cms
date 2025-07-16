@@ -17,6 +17,7 @@ interface DropDownProps {
   label?: string
   defaultValue?: string
   icon?: React.ReactNode
+  showCheckmark?: boolean
 }
 
 const DropDown: React.FC<DropDownProps> = ({
@@ -26,6 +27,7 @@ const DropDown: React.FC<DropDownProps> = ({
   label,
   defaultValue = '',
   icon,
+  showCheckmark = true,
 }) => {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -137,6 +139,7 @@ const DropDown: React.FC<DropDownProps> = ({
                 direction="row"
                 align="center"
                 pad={{ horizontal: 'small', vertical: 'xsmall' }}
+                gap={opt.icon ? 'small' : undefined}
                 background={selected === opt.value ? 'dark-3' : undefined}
                 focusIndicator={false}
                 hoverIndicator={selected !== opt.value}
@@ -147,11 +150,16 @@ const DropDown: React.FC<DropDownProps> = ({
                 }}
                 style={{ cursor: 'pointer' }}
               >
-                <Box width="16px" height="16px" align="center" justify="center">
-                  {selected === opt.value && (
+                {showCheckmark && selected === opt.value && (
+                  <Box
+                    width="16px"
+                    height="16px"
+                    align="center"
+                    justify="center"
+                  >
                     <Checkmark size="12px" style={{ marginRight: 8 }} />
-                  )}
-                </Box>
+                  </Box>
+                )}
                 {opt.icon && <Box>{opt.icon}</Box>}
                 <Text size="small">{opt.label}</Text>
               </Box>
