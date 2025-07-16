@@ -63,11 +63,11 @@ const Sidebar = ({ links = LINKS_DATA }: SidebarProps) => {
     <PanelWrapper borderSide="right" justify="between">
       <PanelBox borderSide="bottom" pad="none" flex={false}>
         <Nav gap="none">
-          {links?.map((link, index) => (
+          {links?.map(({ icon, label }, index) => (
             <SidebarLink
-              key={index}
-              icon={link.icon}
-              label={link.label}
+              key={label}
+              icon={icon}
+              label={label}
               active={activeIndex === index}
               onClick={() => setActiveIndex(index)}
             />
