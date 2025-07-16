@@ -51,7 +51,7 @@ export const PanelTabTrigger: FC<PanelTabTriggerProps> = ({
       align="center"
       justify="center"
       gap="xsmall"
-      hoverIndicator={{ background: 'dark-2' }}
+      hoverIndicator={true}
       fill
       pad={{ horizontal: 'small', vertical: 'small' }}
       focusIndicator={false}

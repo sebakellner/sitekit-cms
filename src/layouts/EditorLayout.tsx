@@ -1,6 +1,7 @@
 import { Grid, Box } from 'grommet'
-import PanelComponentSelector from '@components/cms/page-editor/panels/selector/PanelComponentSelector'
 import PanelPageEditor from '@components/cms/page-editor/panels/editor/PanelPageEditor'
+import ComponentSelector from '@components/cms/page-editor/panels/selector/ComponentSelector'
+import Sidebar from '@components/cms/page-editor/panels/sidebar/Sidebar'
 
 interface EditorLayoutProps {
   children?: React.ReactNode
@@ -11,19 +12,29 @@ function EditorLayout({ children }: EditorLayoutProps) {
     <Grid
       fill
       rows={['auto', 'flex', 'auto']}
-      columns={['0.8fr', '3fr', '1fr']}
+      columns={[
+        'minmax(53px, 53px)',
+        'minmax(270px, 270px)',
+        '1fr',
+        'minmax(290px, 290px)',
+      ]}
       areas={[
-        { name: 'main-left', start: [0, 1], end: [0, 1] },
-        { name: 'main-center', start: [1, 1], end: [1, 1] },
-        { name: 'main-right', start: [2, 1], end: [2, 1] },
+        { name: 'left-sidebar', start: [0, 1], end: [0, 1] },
+        { name: 'left-panels', start: [1, 1], end: [1, 1] },
+        { name: 'center-preview', start: [2, 1], end: [2, 1] },
+        { name: 'right-editor', start: [3, 1], end: [3, 1] },
       ]}
     >
-      <Box gridArea="main-left">
-        <PanelComponentSelector />
+      <Box gridArea="left-sidebar">
+        <Sidebar />
+      </Box>
+
+      <Box gridArea="left-panels">
+        <ComponentSelector />
       </Box>
 
       <Box
-        gridArea="main-center"
+        gridArea="center-preview"
         background="#212121"
         align="center"
         justify="center"
@@ -38,7 +49,7 @@ function EditorLayout({ children }: EditorLayoutProps) {
         )}
       </Box>
 
-      <Box gridArea="main-right">
+      <Box gridArea="right-editor">
         <PanelPageEditor />
       </Box>
     </Grid>
