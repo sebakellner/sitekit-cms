@@ -157,7 +157,7 @@ const DropDown: React.FC<DropDownProps> = ({
                     align="center"
                     justify="center"
                   >
-                    <Checkmark size="12px" style={{ marginRight: 8 }} />
+                    <Checkmark size="12px" margin={{ right: 'xsmall' }} />
                   </Box>
                 )}
                 {opt.icon && <Box>{opt.icon}</Box>}
