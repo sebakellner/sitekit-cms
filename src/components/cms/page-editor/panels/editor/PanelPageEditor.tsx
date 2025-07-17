@@ -1,7 +1,6 @@
 import { FormField, Heading, Text, TextArea, TextInput } from 'grommet'
 import PanelBox from '@components/cms/ui/panel/PanelBox'
 import PanelBoxCollapsable from '@components/cms/ui/panel/PanelBoxCollapsible'
-import { Edit, Paint, SettingsOption } from 'grommet-icons'
 import {
   PanelTabs,
   PanelTabList,
@@ -10,6 +9,7 @@ import {
 } from '@components/cms/ui/panel/PanelTabs/index'
 import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
 import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
+import { Eclipse, Pencil, Settings } from 'lucide-react'
 
 const PanelPageEditor = () => {
   return (
@@ -25,12 +25,20 @@ const PanelPageEditor = () => {
 
       <PanelTabs defaultValue="content">
         <PanelTabList>
-          <PanelTabTrigger value="content" label="Content" icon={<Edit />} />
-          <PanelTabTrigger value="styles" label="Styles" icon={<Paint />} />
+          <PanelTabTrigger
+            value="content"
+            label="Content"
+            icon={<Pencil size={20} />}
+          />
+          <PanelTabTrigger
+            value="styles"
+            label="Styles"
+            icon={<Eclipse size={20} />}
+          />
           <PanelTabTrigger
             value="settings"
             label="Settings"
-            icon={<SettingsOption />}
+            icon={<Settings size={20} />}
           />
         </PanelTabList>
         <PanelTabContent value="content">
