@@ -75,7 +75,7 @@ const DropDown: React.FC<DropDownProps> = ({
         hoverIndicator
         focusIndicator={false}
       >
-        {icon && icon}
+        {icon}
         <Text
           margin={{ left: 'xsmall', right: 'small' }}
           size="small"
