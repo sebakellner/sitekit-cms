@@ -23,13 +23,13 @@ const DropDownList: React.FC<DropDownListProps> = ({
     round="xsmall"
     border={{ color: 'dark-2', size: 'xsmall' }}
     elevation="medium"
+    width={{ min: '220px', max: '300px' }}
     pad={{ vertical: 'xsmall' }}
     style={{
       position: 'absolute',
       top: '120%',
       left: 0,
       zIndex: 10,
-      minWidth: 220,
     }}
   >
     {options.map((opt, idx) =>
@@ -54,7 +54,6 @@ const DropDownList: React.FC<DropDownListProps> = ({
             onSelect(opt.value)
             if (opt.onClick) opt.onClick()
           }}
-          style={{ cursor: 'pointer' }}
         >
           {showCheckmark && selected === opt.value && (
             <Box width="16px" height="16px" align="center" justify="center">

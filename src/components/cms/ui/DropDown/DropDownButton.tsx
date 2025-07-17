@@ -28,32 +28,18 @@ const DropDownButton: React.FC<DropDownButtonProps> = ({
     justify="center"
     pad={{ horizontal: 'small', vertical: 'xsmall' }}
     round="xsmall"
-    width="100%"
+    width={{ min: '100px', max: '200px' }}
     background={
       open || selected !== defaultValue
         ? 'rgba(255, 255, 255, 0.06)'
         : undefined
     }
-    style={{
-      cursor: 'pointer',
-      position: 'relative',
-    }}
     onClick={onToggle}
     hoverIndicator
     focusIndicator={false}
   >
     {icon}
-    <Text
-      margin={{ left: 'xsmall', right: 'small' }}
-      size="small"
-      style={{
-        maxWidth: 140,
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-        display: 'block',
-      }}
-    >
+    <Text margin={{ left: 'xsmall', right: 'small' }} size="small" truncate>
       {selectedLabel}
     </Text>
     {selected === defaultValue && <Down size="12px" />}
