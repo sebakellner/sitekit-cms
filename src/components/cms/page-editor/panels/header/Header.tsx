@@ -1,10 +1,17 @@
 import React from 'react'
+import { Box, Button, Text } from 'grommet'
+import {
+  Desktop,
+  Document,
+  Globe,
+  PhoneHorizontal,
+  PhoneVertical,
+  Save,
+} from 'grommet-icons'
+
 import PanelBox from '@components/cms/ui/panel/PanelBox'
-import { Box, Button } from 'grommet'
-import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
 import DropDown, { type DropDownOption } from '@components/cms/ui/DropDown'
-import { Desktop, Globe, PhoneHorizontal, PhoneVertical } from 'grommet-icons'
-import { Document } from 'grommet-icons'
+import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
 
 const languageOptions: DropDownOption[] = [
   { label: 'English (United States)', value: 'en-US' },
@@ -47,7 +54,9 @@ const Header = () => {
     <PanelWrapper
       borderSide="bottom"
       pad="none"
+      fill={false}
       direction="row"
+      height="52px"
       justify="between"
     >
       <PanelBox
@@ -85,7 +94,9 @@ const Header = () => {
             selected={selectedLang}
             defaultValue="en-US"
             onSelect={(val) => {
-              if (val !== 'settings') setSelectedLang(val)
+              if (languageOptions.some((option) => option.value === val)) {
+                setSelectedLang(val)
+              }
             }}
           />
         </PanelBox>
@@ -136,6 +147,12 @@ const Header = () => {
         width="auto"
         flex={false}
       >
+        <Box direction="row" align="center" gap="xsmall">
+          <Save size="16px" color="green" />
+          <Text size="xsmall" color="dark-4">
+            Changes saved
+          </Text>
+        </Box>
         <Button
           label="Preview"
           size="small"
