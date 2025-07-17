@@ -2,13 +2,19 @@ import PanelBox from '@components/cms/ui/panel/PanelBox'
 import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
 import TipContent from '@components/cms/ui/TipContent'
 import { Box, Button, Nav, Tip } from 'grommet'
-import { Add, Cube, Document, Iteration, SettingsOption } from 'grommet-icons'
+import {
+  LayoutTemplate,
+  Plus,
+  Puzzle,
+  Settings,
+  StickyNote,
+} from 'lucide-react'
 
 const LINKS_DATA = [
-  { icon: <Add />, label: 'Add Elements' },
-  { icon: <Document />, label: 'Pages' },
-  { icon: <Cube />, label: 'Components' },
-  { icon: <Iteration />, label: 'Templates' },
+  { icon: <Plus size={20} />, label: 'Add Elements' },
+  { icon: <StickyNote size={20} />, label: 'Pages' },
+  { icon: <Puzzle size={20} />, label: 'Components' },
+  { icon: <LayoutTemplate size={20} />, label: 'Templates' },
 ]
 
 export type SidebarProps = {
@@ -76,7 +82,7 @@ const Sidebar = ({ links = LINKS_DATA }: SidebarProps) => {
       </PanelBox>
       <PanelBox borderSide="top" pad="none" flex={false}>
         <SidebarLink
-          icon={<SettingsOption size="large" />}
+          icon={<Settings size={20} />}
           label="Settings"
           active={activeIndex === settingsIndex}
           onClick={() => setActiveIndex(settingsIndex)}
