@@ -47,7 +47,6 @@ const DropDownButton: React.FC<DropDownButtonProps> = ({
       <Box
         align="center"
         margin={{ left: 'xsmall' }}
-        border={{ side: 'left', color: 'dark-1' }}
         onClick={(e) => {
           e.stopPropagation()
           onClear()
