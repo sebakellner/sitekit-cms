@@ -1,17 +1,17 @@
 import React from 'react'
 import { Box, Button, Text } from 'grommet'
-import {
-  Desktop,
-  Document,
-  Globe,
-  PhoneHorizontal,
-  PhoneVertical,
-  Save,
-} from 'grommet-icons'
 
 import PanelBox from '@components/cms/ui/panel/PanelBox'
 import DropDown, { type DropDownOption } from '@components/cms/ui/DropDown'
 import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
+import {
+  Globe,
+  Monitor,
+  Save,
+  Smartphone,
+  StickyNote,
+  Tablet,
+} from 'lucide-react'
 
 const languageOptions: DropDownOption[] = [
   { label: 'English (United States)', value: 'en-US' },
@@ -22,27 +22,22 @@ const deviceOptions: DropDownOption[] = [
   {
     label: 'Desktop (1440px)',
     value: 'desktop',
-    icon: <Desktop size="xsmall" />,
+    icon: <Monitor size={16} />,
   },
-  { label: 'Tablet (768px)', value: 'tablet', icon: <Desktop size="xsmall" /> },
+  { label: 'Tablet (768px)', value: 'tablet', icon: <Tablet size={16} /> },
   {
     label: 'Mobile (480px)',
     value: 'mobile',
-    icon: <PhoneHorizontal size="xsmall" />,
-  },
-  {
-    label: 'Mobile (L) (1024px)',
-    value: 'mobile-l',
-    icon: <PhoneVertical size="xsmall" />,
+    icon: <Smartphone size={16} />,
   },
 ]
 
 const pageOptions: DropDownOption[] = [
-  { label: 'Home', value: 'home', icon: <Document size="xsmall" /> },
-  { label: 'About', value: 'about', icon: <Document size="xsmall" /> },
-  { label: 'Contact', value: 'contact', icon: <Document size="xsmall" /> },
-  { label: 'Blog', value: 'blog', icon: <Document size="xsmall" /> },
-  { label: 'Pricing', value: 'pricing', icon: <Document size="xsmall" /> },
+  { label: 'Home', value: 'home', icon: <StickyNote size={16} /> },
+  { label: 'About', value: 'about', icon: <StickyNote size={16} /> },
+  { label: 'Contact', value: 'contact', icon: <StickyNote size={16} /> },
+  { label: 'Blog', value: 'blog', icon: <StickyNote size={16} /> },
+  { label: 'Pricing', value: 'pricing', icon: <StickyNote size={16} /> },
 ]
 
 const Header = () => {
@@ -89,7 +84,7 @@ const Header = () => {
           flex={false}
         >
           <DropDown
-            icon={<Globe size="small" />}
+            icon={<Globe size={16} />}
             options={languageOptions}
             selected={selectedLang}
             defaultValue="en-US"
@@ -110,7 +105,7 @@ const Header = () => {
           flex={false}
         >
           <DropDown
-            icon={<Document size="xsmall" />}
+            icon={<StickyNote size={16} />}
             options={pageOptions}
             selected={selectedPage}
             showCheckmark={false}
@@ -148,7 +143,7 @@ const Header = () => {
         flex={false}
       >
         <Box direction="row" align="center" gap="xsmall">
-          <Save size="16px" color="green" />
+          <Save size={16} color="green" />
           <Text size="xsmall" color="dark-4">
             Changes saved
           </Text>
