@@ -1,3 +1,5 @@
+export const BEM_LABEL_ZINDEX = 3
+export const BEM_CHILD_ZINDEX = 1
 export const BEM_BORDER_SIZE_SELECTED = '2px'
 export const BEM_BORDER_SIZE_DEFAULT = '1px'
 export const BEM_BORDER_ZINDEX = 2
@@ -6,5 +8,4 @@ export const BEM_LABEL_TOP_BELOW = '100%'
 export const BEM_LABEL_PAD_HORIZONTAL = 'small'
 export const BEM_LABEL_PAD_VERTICAL = 'xsmall'
 export const BEM_LABEL_ROUND_SIZE = 'xsmall'
-export const BEM_LABEL_ZINDEX = 3
 export const BEM_BORDER_COLOR = '#007df0'

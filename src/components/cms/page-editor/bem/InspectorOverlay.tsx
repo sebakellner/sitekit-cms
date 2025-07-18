@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { Box } from 'grommet'
 import { OverlayBorder } from './OverlayBorder'
 import { OverlayLabel } from './OverlayLabel'
-import { BEM_LABEL_ZINDEX } from './constants'
+import { BEM_CHILD_ZINDEX } from './constants'
 
 interface InspectorOverlayProps {
   label: string
@@ -22,8 +22,6 @@ export const InspectorOverlay: React.FC<InspectorOverlayProps> = ({
   children,
   overlayLabelPosition = 'above',
 }) => {
-  const BEM_CHILD_ZINDEX = BEM_LABEL_ZINDEX - 2
-
   return (
     <Box style={{ position: 'relative' }}>
       {showOverlay && (
