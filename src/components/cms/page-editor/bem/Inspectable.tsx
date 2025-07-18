@@ -21,14 +21,14 @@ export const Inspectable: React.FC<InspectableProps> = ({
   const computedLabel: string = label ?? getComponentLabel(children)
   const [hovered, setHovered] = useState(false)
 
-  const inspectedComponentName = useInspectorStore(
-    (state: InspectorStore) => state.inspectedComponentName
+  const selectedComponentName = useInspectorStore(
+    (state: InspectorStore) => state.selectedComponentName
   )
-  const setInspectedComponentName = useInspectorStore(
-    (state: InspectorStore) => state.setInspectedComponentName
+  const setSelectedComponentName = useInspectorStore(
+    (state: InspectorStore) => state.setSelectedComponentName
   )
 
-  const isSelected = inspectedComponentName === computedLabel
+  const isSelected = selectedComponentName === computedLabel
   const showOverlay = hovered || isSelected
 
   const handleMouseEnter = () => setHovered(true)
@@ -40,7 +40,7 @@ export const Inspectable: React.FC<InspectableProps> = ({
     if (React.isValidElement(children)) {
       propsToStore = children.props as SelectedComponentProps
     }
-    setInspectedComponentName(computedLabel, propsToStore ?? undefined)
+    setSelectedComponentName(computedLabel, propsToStore ?? undefined)
   }
 
   return (

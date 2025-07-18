@@ -1,4 +1,4 @@
-import { FormField, Heading, Text, TextArea, TextInput } from 'grommet'
+import { Box, FormField, Heading, Text, TextArea, TextInput } from 'grommet'
 import PanelBox from '@components/cms/ui/panel/PanelBox'
 import PanelBoxCollapsable from '@components/cms/ui/panel/PanelBoxCollapsible'
 import {
@@ -9,17 +9,28 @@ import {
 } from '@components/cms/ui/panel/PanelTabs/index'
 import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
 import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
-import { Eclipse, Pencil, Settings } from 'lucide-react'
+import { Eclipse, Layers, Pencil, Settings } from 'lucide-react'
+import { useInspectorStore } from '@stores/useInspectorStore'
 
 const PanelPageEditor = () => {
+  const selectedComponentName = useInspectorStore(
+    (state) => state.selectedComponentName
+  )
+
   return (
     <PanelWrapper borderSide="left">
       <PanelBox>
-        <Heading level={5} margin="none">
-          Component Editor
-        </Heading>
+        <Box direction="row" gap="xsmall" align="center">
+          <Layers size={16} />
+          <Heading level={5} margin="none">
+            {selectedComponentName
+              ? selectedComponentName
+              : 'Select a component'}
+          </Heading>
+        </Box>
+
         <Text size="xsmall" color="dark-4">
-          Edit the properties of the selected component
+          Edit the properties of the {selectedComponentName} component
         </Text>
       </PanelBox>
 
