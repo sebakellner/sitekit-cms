@@ -40,7 +40,6 @@ export const OverlayLabel: React.FC<OverlayLabelProps> = ({
         position: 'absolute',
         left: 0,
         top: position === 'above' ? BEM_LABEL_TOP_ABOVE : BEM_LABEL_TOP_BELOW,
-        marginTop: position === 'below' ? 0 : undefined,
         zIndex: BEM_LABEL_ZINDEX,
         pointerEvents: 'none' as const,
         color: labelColor,

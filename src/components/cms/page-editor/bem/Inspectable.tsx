@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import type { ReactNode } from 'react'
 import { InspectorOverlay } from './InspectorOverlay'
 
@@ -15,7 +15,6 @@ export const Inspectable: React.FC<InspectableProps> = ({
 }) => {
   const [selected, setSelected] = useState(false)
   const [hovered, setHovered] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
 
   const showOverlay = hovered || selected
 
@@ -25,7 +24,6 @@ export const Inspectable: React.FC<InspectableProps> = ({
 
   return (
     <div
-      ref={ref}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ width: '100%' }}

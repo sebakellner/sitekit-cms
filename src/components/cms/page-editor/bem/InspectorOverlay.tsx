@@ -22,6 +22,8 @@ export const InspectorOverlay: React.FC<InspectorOverlayProps> = ({
   children,
   overlayLabelPosition = 'above',
 }) => {
+  const BEM_CHILD_ZINDEX = BEM_LABEL_ZINDEX - 2
+
   return (
     <Box style={{ position: 'relative' }}>
       {showOverlay && (
@@ -34,7 +36,7 @@ export const InspectorOverlay: React.FC<InspectorOverlayProps> = ({
           position={overlayLabelPosition}
         />
       )}
-      <Box style={{ position: 'relative', zIndex: BEM_LABEL_ZINDEX - 2 }}>
+      <Box style={{ position: 'relative', zIndex: BEM_CHILD_ZINDEX }}>
         {children}
       </Box>
     </Box>
