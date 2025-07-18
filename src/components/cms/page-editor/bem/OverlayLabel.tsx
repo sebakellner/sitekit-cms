@@ -41,7 +41,7 @@ export const OverlayLabel: React.FC<OverlayLabelProps> = ({
         left: 0,
         top: position === 'above' ? BEM_LABEL_TOP_ABOVE : BEM_LABEL_TOP_BELOW,
         zIndex: BEM_LABEL_ZINDEX,
-        pointerEvents: 'none' as const,
+        pointerEvents: 'none',
         color: labelColor,
       }}
       round={{
