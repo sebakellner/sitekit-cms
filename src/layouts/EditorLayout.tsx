@@ -2,6 +2,7 @@ import { Grid, Box } from 'grommet'
 import PanelPageEditor from '@components/cms/page-editor/panels/editor/PanelPageEditor'
 import ComponentSelector from '@components/cms/page-editor/panels/selector/ComponentSelector'
 import Sidebar from '@components/cms/page-editor/panels/sidebar/Sidebar'
+import PageCanvas from '@components/cms/page-editor/canvas/PageCanvas'
 
 interface EditorLayoutProps {
   children?: React.ReactNode
@@ -39,14 +40,7 @@ function EditorLayout({ children }: EditorLayoutProps) {
         align="center"
         justify="center"
       >
-        {children || (
-          <>
-            <h3 style={{ margin: '0 0 16px 0' }}>Sección 2</h3>
-            <p style={{ margin: 0, textAlign: 'center' }}>
-              Segunda parte de la fila dividida
-            </p>
-          </>
-        )}
+        {children || <PageCanvas />}
       </Box>
 
       <Box gridArea="right-editor">
