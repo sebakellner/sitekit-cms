@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Heading, Text, Image, Anchor } from 'grommet'
+import { Box, Heading, Text, Image } from 'grommet'
 
 const formats = [
   {
@@ -29,8 +29,8 @@ const InfoText: React.FC = () => (
     as="section"
     direction="row-responsive"
     gap="large"
-    align="start"
-    justify="between"
+    align="center"
+    justify="center"
     pad={{ vertical: 'xlarge', horizontal: 'large' }}
   >
     <Box width="60%">
@@ -62,11 +62,6 @@ const InfoText: React.FC = () => (
           </Box>
         ))}
       </Box>
-      <Text size="xsmall" margin={{ top: 'medium' }}>
-        Lorem ipsum <Anchor href="#" label="dolor sit amet" weight="bold" />,
-        consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur,
-        facilisis.
-      </Text>
     </Box>
     <Box width="340px" height="340px" round overflow="hidden" flex={false}>
       <Image
