@@ -5,11 +5,13 @@ import { InspectorOverlay } from './InspectorOverlay'
 interface InspectableProps {
   label: string
   children: ReactNode
+  overlayLabelPosition?: 'above' | 'below'
 }
 
 export const Inspectable: React.FC<InspectableProps> = ({
   label,
   children,
+  overlayLabelPosition = 'above',
 }) => {
   const [selected, setSelected] = useState(false)
   const [hovered, setHovered] = useState(false)
@@ -33,6 +35,7 @@ export const Inspectable: React.FC<InspectableProps> = ({
         showOverlay={showOverlay}
         isSelected={selected}
         onSelect={handleSelect}
+        overlayLabelPosition={overlayLabelPosition}
       >
         {children}
       </InspectorOverlay>
