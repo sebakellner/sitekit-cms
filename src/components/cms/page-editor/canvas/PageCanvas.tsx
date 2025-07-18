@@ -22,8 +22,12 @@ const PageCanvas = () => {
       background="white"
       overflow={{ vertical: 'auto', horizontal: 'hidden' }}
     >
-      {sections.map(({ label, component }) => (
-        <Inspectable key={label} label={label}>
+      {sections.map(({ label, component }, idx) => (
+        <Inspectable
+          key={label}
+          label={label}
+          overlayLabelPosition={idx === 0 ? 'below' : 'above'}
+        >
           {component}
         </Inspectable>
       ))}
