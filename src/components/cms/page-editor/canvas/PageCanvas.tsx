@@ -8,11 +8,11 @@ import { Inspectable } from '../bem/Inspectable'
 
 const PageCanvas = () => {
   const sections = [
-    { label: 'nav__section', component: <Nav /> },
-    { label: 'hero__section', component: <Hero /> },
-    { label: 'card-grid__section', component: <CardGrid /> },
-    { label: 'info-text__section', component: <InfoText /> },
-    { label: 'footer__section', component: <Footer /> },
+    { component: <Nav /> },
+    { component: <Hero /> },
+    { component: <CardGrid /> },
+    { component: <InfoText /> },
+    { component: <Footer /> },
   ]
 
   return (
@@ -22,10 +22,9 @@ const PageCanvas = () => {
       background="white"
       overflow={{ vertical: 'auto', horizontal: 'hidden' }}
     >
-      {sections.map(({ label, component }, idx) => (
+      {sections.map(({ component }, idx) => (
         <Inspectable
-          key={label}
-          label={label}
+          key={idx}
           overlayLabelPosition={idx === 0 ? 'below' : 'above'}
         >
           {component}
