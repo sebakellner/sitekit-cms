@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box, Text } from 'grommet'
 import { Layers } from 'lucide-react'
-import { BEM_BORDER_COLOR } from './constants'
 import {
   BEM_LABEL_TOP_ABOVE,
   BEM_LABEL_TOP_BELOW,
@@ -9,6 +8,7 @@ import {
   BEM_LABEL_PAD_VERTICAL,
   BEM_LABEL_ROUND_SIZE,
   BEM_LABEL_ZINDEX,
+  BEM_BORDER_COLOR,
 } from './constants'
 
 interface OverlayLabelProps {
