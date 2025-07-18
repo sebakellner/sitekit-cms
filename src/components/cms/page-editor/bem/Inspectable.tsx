@@ -4,6 +4,7 @@ import { InspectorOverlay } from './InspectorOverlay'
 import { Box } from 'grommet'
 import { useInspectorStore } from '@stores/useInspectorStore'
 import type { InspectorStore } from '@stores/useInspectorStore'
+import type { SelectedComponentProps } from '@stores/useInspectorStore'
 import { getComponentLabel } from '@utils/getComponentLabel'
 
 interface InspectableProps {
@@ -20,18 +21,27 @@ export const Inspectable: React.FC<InspectableProps> = ({
   const computedLabel: string = label ?? getComponentLabel(children)
   const [hovered, setHovered] = useState(false)
 
-  const selectedLabel = useInspectorStore(
-    (state: InspectorStore) => state.selectedLabel
+  const inspectedComponentName = useInspectorStore(
+    (state: InspectorStore) => state.inspectedComponentName
   )
-  const setSelectedLabel = useInspectorStore(
-    (state: InspectorStore) => state.setSelectedLabel
+  const setInspectedComponentName = useInspectorStore(
+    (state: InspectorStore) => state.setInspectedComponentName
   )
-  const isSelected = selectedLabel === computedLabel
+
+  const isSelected = inspectedComponentName === computedLabel
   const showOverlay = hovered || isSelected
 
   const handleMouseEnter = () => setHovered(true)
+
   const handleMouseLeave = () => setHovered(false)
-  const handleSelect = () => setSelectedLabel(computedLabel)
+
+  const handleSelect = () => {
+    let propsToStore: SelectedComponentProps = null
+    if (React.isValidElement(children)) {
+      propsToStore = children.props as SelectedComponentProps
+    }
+    setInspectedComponentName(computedLabel, propsToStore ?? undefined)
+  }
 
   return (
     <Box

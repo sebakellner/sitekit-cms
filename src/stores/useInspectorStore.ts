@@ -1,11 +1,19 @@
 import { create } from 'zustand'
 
+export type SelectedComponentProps = { [key: string]: unknown } | null
+
 export interface InspectorStore {
-  selectedLabel: string | null
-  setSelectedLabel: (label: string | null) => void
+  inspectedComponentName: string | null
+  selectedProps: SelectedComponentProps
+  setInspectedComponentName: (
+    label: string | null,
+    props?: SelectedComponentProps
+  ) => void
 }
 
 export const useInspectorStore = create<InspectorStore>((set) => ({
-  selectedLabel: null,
-  setSelectedLabel: (label) => set({ selectedLabel: label }),
+  inspectedComponentName: null,
+  selectedProps: null,
+  setInspectedComponentName: (label, props) =>
+    set({ inspectedComponentName: label, selectedProps: props ?? null }),
 }))
