@@ -4,8 +4,17 @@ import Hero from '@components/site/Hero'
 import InfoText from '@components/site/InfoText'
 import Nav from '@components/site/Nav'
 import { Box } from 'grommet'
+import { Inspectable } from '../bem/Inspectable'
 
 const PageCanvas = () => {
+  const sections = [
+    { label: 'nav__section', component: <Nav /> },
+    { label: 'hero__section', component: <Hero /> },
+    { label: 'card-grid__section', component: <CardGrid /> },
+    { label: 'info-text__section', component: <InfoText /> },
+    { label: 'footer__section', component: <Footer /> },
+  ]
+
   return (
     <Box
       style={{ display: 'block' }}
@@ -13,11 +22,15 @@ const PageCanvas = () => {
       background="white"
       overflow={{ vertical: 'auto', horizontal: 'hidden' }}
     >
-      <Nav />
-      <Hero />
-      <CardGrid />
-      <InfoText />
-      <Footer />
+      {sections.map(({ label, component }, idx) => (
+        <Inspectable
+          key={label}
+          label={label}
+          overlayLabelPosition={idx === 0 ? 'below' : 'above'}
+        >
+          {component}
+        </Inspectable>
+      ))}
     </Box>
   )
 }
