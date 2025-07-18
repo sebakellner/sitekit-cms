@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import type { ReactNode } from 'react'
 import { InspectorOverlay } from './InspectorOverlay'
+import { Box } from 'grommet'
 
 interface InspectableProps {
   label: string
@@ -23,10 +24,10 @@ export const Inspectable: React.FC<InspectableProps> = ({
   const handleSelect = () => setSelected((prev) => !prev)
 
   return (
-    <div
+    <Box
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{ width: '100%' }}
+      width="100%"
     >
       <InspectorOverlay
         label={label}
@@ -37,6 +38,6 @@ export const Inspectable: React.FC<InspectableProps> = ({
       >
         {children}
       </InspectorOverlay>
-    </div>
+    </Box>
   )
 }
