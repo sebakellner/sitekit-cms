@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import type { ReactNode } from 'react'
 import { InspectorOverlay } from './InspectorOverlay'
 import { Box } from 'grommet'
+import { useInspectorStore } from '@stores/useInspectorStore'
+import type { InspectorStore } from '@stores/useInspectorStore'
+import { getComponentLabel } from '@utils/getComponentLabel'
 
 interface InspectableProps {
-  label: string
+  label?: string
   children: ReactNode
   overlayLabelPosition?: 'above' | 'below'
 }
@@ -14,14 +17,21 @@ export const Inspectable: React.FC<InspectableProps> = ({
   children,
   overlayLabelPosition = 'above',
 }) => {
-  const [selected, setSelected] = useState(false)
+  const computedLabel: string = label ?? getComponentLabel(children)
   const [hovered, setHovered] = useState(false)
 
-  const showOverlay = hovered || selected
+  const selectedLabel = useInspectorStore(
+    (state: InspectorStore) => state.selectedLabel
+  )
+  const setSelectedLabel = useInspectorStore(
+    (state: InspectorStore) => state.setSelectedLabel
+  )
+  const isSelected = selectedLabel === computedLabel
+  const showOverlay = hovered || isSelected
 
   const handleMouseEnter = () => setHovered(true)
   const handleMouseLeave = () => setHovered(false)
-  const handleSelect = () => setSelected((prev) => !prev)
+  const handleSelect = () => setSelectedLabel(computedLabel)
 
   return (
     <Box
@@ -30,9 +40,9 @@ export const Inspectable: React.FC<InspectableProps> = ({
       width="100%"
     >
       <InspectorOverlay
-        label={label}
+        label={computedLabel || ''}
         showOverlay={showOverlay}
-        isSelected={selected}
+        isSelected={isSelected}
         onSelect={handleSelect}
         overlayLabelPosition={overlayLabelPosition}
       >
