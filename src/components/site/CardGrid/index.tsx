@@ -2,7 +2,18 @@ import React from 'react'
 import { Box, Heading } from 'grommet'
 import Card from '../ui/Card'
 
-const cards = [
+export interface CardGridItem {
+  title: string
+  description: string
+}
+
+export interface CardGridProps {
+  title?: string
+  background?: string
+  cards?: CardGridItem[]
+}
+
+const defaultCards: CardGridItem[] = [
   {
     title: 'Card 1',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -17,11 +28,15 @@ const cards = [
   },
 ]
 
-const CardGrid: React.FC = () => {
+const CardGrid: React.FC<CardGridProps> = ({
+  title = 'Featured Cards',
+  background = 'light-2',
+  cards = defaultCards,
+}) => {
   return (
     <Box
       as="section"
-      background="light-2"
+      background={background}
       align="center"
       pad={{ top: 'large', bottom: 'xlarge', horizontal: 'medium' }}
     >
@@ -31,7 +46,7 @@ const CardGrid: React.FC = () => {
         size="xlarge"
         margin={{ top: 'none', bottom: 'medium' }}
       >
-        Featured Cards
+        {title}
       </Heading>
       <Box
         direction="row-responsive"

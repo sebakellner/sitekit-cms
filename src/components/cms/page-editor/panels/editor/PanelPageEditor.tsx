@@ -1,4 +1,4 @@
-import { Box, FormField, Heading, Text, TextArea, TextInput } from 'grommet'
+import { Box, FormField, Heading, Text, TextInput } from 'grommet'
 import PanelBox from '@components/cms/ui/panel/PanelBox'
 import PanelBoxCollapsable from '@components/cms/ui/panel/PanelBoxCollapsible'
 import {
@@ -10,12 +10,26 @@ import {
 import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
 import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
 import { Eclipse, Layers, Pencil, Settings } from 'lucide-react'
-import { useInspectorStore } from '@stores/useInspectorStore'
+import { usePageStore } from '@stores/usePageStore'
 
 const PanelPageEditor = () => {
-  const selectedComponentName = useInspectorStore(
-    (state) => state.selectedComponentName
+  const selectedId = usePageStore((s) => s.selectedId)
+  const section = usePageStore((s) =>
+    s.sections.find((sec) => sec.id === selectedId)
   )
+  const updateProps = usePageStore((s) => s.updateSectionProps)
+
+  if (!section)
+    return (
+      <PanelWrapper borderSide="left">
+        <PanelBox gap="small" align="center" justify="center">
+          <Heading level={3} margin="none">
+            Editor
+          </Heading>
+          <Text color="dark-4">Select component to start!</Text>
+        </PanelBox>
+      </PanelWrapper>
+    )
 
   return (
     <PanelWrapper borderSide="left">
@@ -23,14 +37,12 @@ const PanelPageEditor = () => {
         <Box direction="row" gap="xsmall" align="center">
           <Layers size={16} />
           <Heading level={5} margin="none">
-            {selectedComponentName
-              ? selectedComponentName
-              : 'Select a component'}
+            {section.name ? section.name : 'Select a component'}
           </Heading>
         </Box>
 
         <Text size="xsmall" color="dark-4">
-          Edit the properties of the {selectedComponentName} component
+          Edit the properties of the {section.name} component
         </Text>
       </PanelBox>
 
@@ -55,39 +67,60 @@ const PanelPageEditor = () => {
         <PanelTabContent value="content">
           <PanelBoxScroll pad="none" gap="none">
             <PanelBoxCollapsable title="General Settings">
-              <FormField label="Title">
-                <TextInput placeholder="Enter text here" plain />
-              </FormField>
-              <FormField label="Description">
-                <TextInput placeholder="Enter text here" />
-              </FormField>
-              <FormField label="Footnote">
-                <TextArea placeholder="Enter text here" />
-              </FormField>
-            </PanelBoxCollapsable>
-
-            <PanelBoxCollapsable title="Styling">
-              <FormField label="Background Color">
-                <TextInput placeholder="Enter color code" />
-              </FormField>
-              <FormField label="Text Color">
-                <TextInput placeholder="Enter color code" />
-              </FormField>
-              <FormField label="Padding">
-                <TextInput placeholder="Enter padding value" />
-              </FormField>
-            </PanelBoxCollapsable>
-
-            <PanelBoxCollapsable title="Advanced Settings" borderSide={false}>
-              <FormField label="Custom CSS">
-                <TextInput placeholder="Enter custom CSS" />
-              </FormField>
-              <FormField label="JavaScript">
-                <TextInput placeholder="Enter JavaScript code" />
-              </FormField>
-              <FormField label="Data Attributes">
-                <TextInput placeholder="Enter data attributes" />
-              </FormField>
+              {Object.entries(section.props).map(([key, value]) => (
+                <FormField label={key} key={key}>
+                  {typeof value === 'string' && (
+                    <TextInput
+                      placeholder="Enter text here"
+                      value={value || ''}
+                      onChange={(e) =>
+                        updateProps(section.id, { [key]: e.target.value })
+                      }
+                      plain
+                    />
+                  )}
+                  {typeof value === 'number' && (
+                    <TextInput
+                      type="number"
+                      value={value || ''}
+                      onChange={(e) =>
+                        updateProps(section.id, {
+                          [key]: parseFloat(e.target.value) || 0,
+                        })
+                      }
+                      plain
+                    />
+                  )}
+                  {typeof value === 'boolean' && (
+                    <Box direction="row" align="center" gap="small">
+                      <Text>{key}</Text>
+                      <input
+                        type="checkbox"
+                        checked={value}
+                        onChange={(e) =>
+                          updateProps(section.id, { [key]: e.target.checked })
+                        }
+                      />
+                    </Box>
+                  )}
+                  {typeof value === 'object' && value !== null && (
+                    <TextInput
+                      placeholder="Enter JSON here"
+                      value={JSON.stringify(value, null, 2)}
+                      onChange={(e) => {
+                        try {
+                          updateProps(section.id, {
+                            [key]: JSON.parse(e.target.value),
+                          })
+                        } catch (error) {
+                          console.error('Failed to parse JSON:', error)
+                        }
+                      }}
+                      plain
+                    />
+                  )}
+                </FormField>
+              ))}
             </PanelBoxCollapsable>
           </PanelBoxScroll>
         </PanelTabContent>

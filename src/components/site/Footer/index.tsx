@@ -2,7 +2,19 @@ import React from 'react'
 import { Box, Grid, Text, Anchor, Heading } from 'grommet'
 import { Rocket } from 'lucide-react'
 
-const footerLinks = [
+export interface FooterLinkColumn {
+  title: string
+  links: string[]
+}
+
+export interface FooterProps {
+  siteName?: string
+  year?: number
+  footerLinks?: FooterLinkColumn[]
+  background?: string
+}
+
+const defaultFooterLinks: FooterLinkColumn[] = [
   {
     title: 'Company',
     links: ['About', 'Careers', 'Contact'],
@@ -17,9 +29,14 @@ const footerLinks = [
   },
 ]
 
-const Footer: React.FC = () => (
+const Footer: React.FC<FooterProps> = ({
+  siteName = 'Site Kit Builder',
+  year = 2025,
+  footerLinks = defaultFooterLinks,
+  background = '#23242a',
+}) => (
   <Box
-    background="#23242a"
+    background={background}
     pad={{ top: 'large', bottom: 'medium', horizontal: 'large' }}
   >
     <Grid
@@ -32,7 +49,7 @@ const Footer: React.FC = () => (
       <Box gap="medium">
         <Rocket size={32} />
         <Text weight="bold" size="large" color="white">
-          Site Kit Builder
+          {siteName}
         </Text>
       </Box>
 
@@ -63,7 +80,7 @@ const Footer: React.FC = () => (
       margin={{ top: 'large' }}
     >
       <Text color="white" size="small">
-        © 2025 Site Kit Builder. All rights reserved.
+        © {year} {siteName}. All rights reserved.
       </Text>
     </Box>
   </Box>

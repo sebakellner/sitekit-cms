@@ -1,13 +1,17 @@
 import React from 'react'
-import { Box, Nav as GrommetNav } from 'grommet'
+import { Box, Nav as GrommetNav, Button } from 'grommet'
+import { Rocket } from 'lucide-react'
 
-interface NavItem {
+export interface NavItem {
   label: string
   href: string
 }
 
-interface NavProps {
+export interface NavProps {
   items?: NavItem[]
+  background?: string
+  buttonLabel?: string
+  Icon?: React.ElementType
 }
 
 const defaultItems: NavItem[] = [
@@ -17,23 +21,25 @@ const defaultItems: NavItem[] = [
   { label: 'Contact', href: '/contact' },
 ]
 
-import { Button } from 'grommet'
-import { Rocket } from 'lucide-react'
-
-const Nav: React.FC<NavProps> = ({ items = defaultItems }) => (
+const Nav: React.FC<NavProps> = ({
+  items = defaultItems,
+  background = 'white',
+  buttonLabel = 'Contact US',
+  Icon = Rocket,
+}) => (
   <Box
     direction="row"
     align="center"
     justify="between"
     pad={{ vertical: 'small', horizontal: 'large' }}
     fill="horizontal"
-    background="white"
+    background={background}
     elevation="small"
     height={{ min: '64px' }}
     border={{ side: 'bottom', color: 'light-1', size: 'xsmall' }}
   >
     <Box width="32px" height="32px" justify="center" align="center">
-      <Rocket />
+      <Icon />
     </Box>
     <Box flex align="center" justify="center">
       <GrommetNav direction="row" gap="medium">
@@ -48,7 +54,7 @@ const Nav: React.FC<NavProps> = ({ items = defaultItems }) => (
       </GrommetNav>
     </Box>
     <Box>
-      <Button label="Contact US" primary />
+      <Button label={buttonLabel} primary />
     </Box>
   </Box>
 )
