@@ -2,46 +2,38 @@ import React, { useState } from 'react'
 import type { ReactNode } from 'react'
 import { InspectorOverlay } from './InspectorOverlay'
 import { Box } from 'grommet'
-import { useInspectorStore } from '@stores/useInspectorStore'
-import type { InspectorStore } from '@stores/useInspectorStore'
-import type { SelectedComponentProps } from '@stores/useInspectorStore'
 import { getComponentLabel } from '@utils/getComponentLabel'
-import { v4 as uuidv4 } from 'uuid'
+import { usePageStore } from '@stores/usePageStore'
 
 interface InspectableProps {
-  label?: string
+  id: string
+  name?: string
   children: ReactNode
   overlayLabelPosition?: 'above' | 'below'
 }
 
 export const Inspectable: React.FC<InspectableProps> = ({
-  label,
+  id,
+  name,
   children,
   overlayLabelPosition = 'above',
 }) => {
-  const instanceId = React.useMemo(() => uuidv4(), [])
-  const computedLabel: string = label ?? getComponentLabel(children)
+  const selectedId = usePageStore((s) => s.selectedId)
+  const selectSection = usePageStore((s) => s.selectSection)
+
   const [hovered, setHovered] = useState(false)
 
-  const selectedComponentId = useInspectorStore(
-    (state: InspectorStore) => state.selectedComponentId
-  )
-  const setSelectedComponent = useInspectorStore(
-    (state: InspectorStore) => state.setSelectedComponent
-  )
+  const computedLabel: string = name ?? getComponentLabel(children)
 
-  const isSelected = selectedComponentId === instanceId
+  const isSelected = selectedId === id
+
   const showOverlay = hovered || isSelected
 
   const handleMouseEnter = () => setHovered(true)
   const handleMouseLeave = () => setHovered(false)
 
   const handleSelect = () => {
-    let propsToStore: SelectedComponentProps = null
-    if (React.isValidElement(children)) {
-      propsToStore = children.props as SelectedComponentProps
-    }
-    setSelectedComponent(instanceId, computedLabel, propsToStore)
+    selectSection(id)
   }
 
   return (
