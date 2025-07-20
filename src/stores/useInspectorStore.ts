@@ -3,20 +3,24 @@ import { create } from 'zustand'
 export type SelectedComponentProps = { [key: string]: unknown } | null
 
 export interface InspectorStore {
+  selectedComponentId: string | null
   selectedComponentName: string | null
   selectedComponentProps: SelectedComponentProps
-  setSelectedComponentName: (
-    label: string | null,
+  setSelectedComponent: (
+    id: string | null,
+    name: string | null,
     props?: SelectedComponentProps
   ) => void
 }
 
 export const useInspectorStore = create<InspectorStore>((set) => ({
+  selectedComponentId: null,
   selectedComponentName: null,
   selectedComponentProps: null,
-  setSelectedComponentName: (label, props) =>
+  setSelectedComponent: (id, name, props) =>
     set({
-      selectedComponentName: label,
+      selectedComponentId: id,
+      selectedComponentName: name,
       selectedComponentProps: props ?? null,
     }),
 }))

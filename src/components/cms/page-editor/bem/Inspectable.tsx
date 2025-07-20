@@ -6,6 +6,7 @@ import { useInspectorStore } from '@stores/useInspectorStore'
 import type { InspectorStore } from '@stores/useInspectorStore'
 import type { SelectedComponentProps } from '@stores/useInspectorStore'
 import { getComponentLabel } from '@utils/getComponentLabel'
+import { v4 as uuidv4 } from 'uuid'
 
 interface InspectableProps {
   label?: string
@@ -18,21 +19,21 @@ export const Inspectable: React.FC<InspectableProps> = ({
   children,
   overlayLabelPosition = 'above',
 }) => {
+  const instanceId = React.useMemo(() => uuidv4(), [])
   const computedLabel: string = label ?? getComponentLabel(children)
   const [hovered, setHovered] = useState(false)
 
-  const selectedComponentName = useInspectorStore(
-    (state: InspectorStore) => state.selectedComponentName
+  const selectedComponentId = useInspectorStore(
+    (state: InspectorStore) => state.selectedComponentId
   )
-  const setSelectedComponentName = useInspectorStore(
-    (state: InspectorStore) => state.setSelectedComponentName
+  const setSelectedComponent = useInspectorStore(
+    (state: InspectorStore) => state.setSelectedComponent
   )
 
-  const isSelected = selectedComponentName === computedLabel
+  const isSelected = selectedComponentId === instanceId
   const showOverlay = hovered || isSelected
 
   const handleMouseEnter = () => setHovered(true)
-
   const handleMouseLeave = () => setHovered(false)
 
   const handleSelect = () => {
@@ -40,7 +41,17 @@ export const Inspectable: React.FC<InspectableProps> = ({
     if (React.isValidElement(children)) {
       propsToStore = children.props as SelectedComponentProps
     }
-    setSelectedComponentName(computedLabel, propsToStore)
+    setSelectedComponent(instanceId, computedLabel, propsToStore)
+
+    console.log(`Selected component: ${computedLabel} (ID: ${instanceId})`)
+    console.log('Props:')
+    if (propsToStore && Object.keys(propsToStore).length > 0) {
+      Object.entries(propsToStore).forEach(([key, value]) => {
+        console.log(`  ${key}:`, value)
+      })
+    } else {
+      console.log('  No props found')
+    }
   }
 
   return (
