@@ -28,7 +28,7 @@ export const usePageStore = create<PageStore>((set) => ({
         headingColor: 'black',
         textColor: 'dark-2',
         buttonLabel: 'Get Started',
-        buttonColor: undefined,
+        buttonColor: 'brand',
         buttonSize: 'large',
       },
     },
