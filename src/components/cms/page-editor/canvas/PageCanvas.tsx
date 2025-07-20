@@ -1,19 +1,10 @@
-import CardGrid from '@components/site/CardGrid'
-import Footer from '@components/site/Footer'
-import Hero from '@components/site/Hero'
-import InfoText from '@components/site/InfoText'
-import Nav from '@components/site/Nav'
 import { Box } from 'grommet'
 import { Inspectable } from '../bem/Inspectable'
+import { usePageStore } from '@stores/usePageStore'
+import { sectionMap } from '@lib/sectionMap'
 
 const PageCanvas = () => {
-  const sections = [
-    { component: <Nav /> },
-    { component: <Hero /> },
-    { component: <CardGrid /> },
-    { component: <InfoText /> },
-    { component: <Footer /> },
-  ]
+  const sections = usePageStore((state) => state.sections)
 
   return (
     <Box
@@ -22,14 +13,22 @@ const PageCanvas = () => {
       background="white"
       overflow={{ vertical: 'auto', horizontal: 'hidden' }}
     >
-      {sections.map(({ component }, idx) => (
-        <Inspectable
-          key={idx}
-          overlayLabelPosition={idx === 0 ? 'below' : 'above'}
-        >
-          {component}
-        </Inspectable>
-      ))}
+      {sections.map(({ id, name, props }, idx) => {
+        const section = sectionMap[name]
+        if (!section || !section.component) return null
+        const Component = section.component
+
+        return (
+          <Inspectable
+            id={id}
+            key={idx}
+            name={name}
+            overlayLabelPosition={idx === 0 ? 'below' : 'above'}
+          >
+            <Component {...props} />
+          </Inspectable>
+        )
+      })}
     </Box>
   )
 }
