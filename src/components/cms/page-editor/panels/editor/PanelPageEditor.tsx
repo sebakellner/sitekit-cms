@@ -112,8 +112,8 @@ const PanelPageEditor = () => {
                           updateProps(section.id, {
                             [key]: JSON.parse(e.target.value),
                           })
-                        } catch {
-                          // Opcional: manejar error de parseo
+                        } catch (error) {
+                          console.error('Failed to parse JSON:', error)
                         }
                       }}
                       plain
