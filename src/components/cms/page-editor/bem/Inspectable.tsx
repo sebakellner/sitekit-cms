@@ -40,7 +40,7 @@ export const Inspectable: React.FC<InspectableProps> = ({
     if (React.isValidElement(children)) {
       propsToStore = children.props as SelectedComponentProps
     }
-    setSelectedComponentName(computedLabel, propsToStore ?? undefined)
+    setSelectedComponentName(computedLabel, propsToStore)
   }
 
   return (
@@ -50,7 +50,7 @@ export const Inspectable: React.FC<InspectableProps> = ({
       width="100%"
     >
       <InspectorOverlay
-        label={computedLabel || ''}
+        label={computedLabel}
         showOverlay={showOverlay}
         isSelected={isSelected}
         onSelect={handleSelect}
