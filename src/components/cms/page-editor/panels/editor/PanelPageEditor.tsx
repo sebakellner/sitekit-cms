@@ -69,14 +69,56 @@ const PanelPageEditor = () => {
             <PanelBoxCollapsable title="General Settings">
               {Object.entries(section.props).map(([key, value]) => (
                 <FormField label={key} key={key}>
-                  <TextInput
-                    placeholder="Enter text here"
-                    value={value?.toString() || ''}
-                    onChange={(e) =>
-                      updateProps(section.id, { [key]: e.target.value })
-                    }
-                    plain
-                  />
+                  {typeof value === 'string' && (
+                    <TextInput
+                      placeholder="Enter text here"
+                      value={value || ''}
+                      onChange={(e) =>
+                        updateProps(section.id, { [key]: e.target.value })
+                      }
+                      plain
+                    />
+                  )}
+                  {typeof value === 'number' && (
+                    <TextInput
+                      type="number"
+                      value={value || ''}
+                      onChange={(e) =>
+                        updateProps(section.id, {
+                          [key]: parseFloat(e.target.value) || 0,
+                        })
+                      }
+                      plain
+                    />
+                  )}
+                  {typeof value === 'boolean' && (
+                    <Box direction="row" align="center" gap="small">
+                      <Text>{key}</Text>
+                      <input
+                        type="checkbox"
+                        checked={value}
+                        onChange={(e) =>
+                          updateProps(section.id, { [key]: e.target.checked })
+                        }
+                      />
+                    </Box>
+                  )}
+                  {typeof value === 'object' && value !== null && (
+                    <TextInput
+                      placeholder="Enter JSON here"
+                      value={JSON.stringify(value, null, 2)}
+                      onChange={(e) => {
+                        try {
+                          updateProps(section.id, {
+                            [key]: JSON.parse(e.target.value),
+                          })
+                        } catch {
+                          // Opcional: manejar error de parseo
+                        }
+                      }}
+                      plain
+                    />
+                  )}
                 </FormField>
               ))}
             </PanelBoxCollapsable>
