@@ -1,7 +1,20 @@
 import React from 'react'
 import { Box, Heading, Text, Image } from 'grommet'
 
-const formats = [
+export type FormatItem = {
+  label: string
+  description: string
+}
+
+export type InfoTextProps = {
+  title?: string
+  text?: string
+  formats?: FormatItem[]
+  imageSrc?: string
+  imageAlt?: string
+}
+
+const defaultFormats: FormatItem[] = [
   {
     label: 'Lorem ipsum dolor',
     description: 'Sit amet, consectetur adipiscing elit.',
@@ -24,7 +37,13 @@ const formats = [
   },
 ]
 
-const InfoText: React.FC = () => (
+const InfoText: React.FC<InfoTextProps> = ({
+  title = 'Lorem ipsum dolor sit amet',
+  text = 'Consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.',
+  formats = defaultFormats,
+  imageSrc = 'https://picsum.photos/id/42/340/340',
+  imageAlt = 'Learning formats preview',
+}) => (
   <Box
     as="section"
     direction="row-responsive"
@@ -39,10 +58,10 @@ const InfoText: React.FC = () => (
         weight="bold"
         margin={{ bottom: 'small', top: 'none' }}
       >
-        Lorem ipsum dolor sit amet
+        {title}
       </Heading>
       <Text size="large" margin={{ bottom: 'medium' }}>
-        Consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.
+        {text}
       </Text>
       <Box as="ul" pad={{ left: 'small' }}>
         {formats.map((f) => (
@@ -65,10 +84,10 @@ const InfoText: React.FC = () => (
     </Box>
     <Box width="340px" height="340px" round overflow="hidden" flex={false}>
       <Image
-        src="https://picsum.photos/id/42/340/340"
+        src={imageSrc}
         fit="cover"
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        alt="Learning formats preview"
+        alt={imageAlt}
       />
     </Box>
   </Box>
