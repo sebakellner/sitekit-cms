@@ -14,6 +14,8 @@ export default defineConfig({
       '@contexts': '/src/contexts',
       '@layouts': '/src/layouts',
       '@src': '/src',
+      '@types': '/src/types',
+      '@lib': '/src/lib',
     },
   },
 })
