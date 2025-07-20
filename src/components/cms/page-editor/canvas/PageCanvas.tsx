@@ -14,7 +14,10 @@ const PageCanvas = () => {
       overflow={{ vertical: 'auto', horizontal: 'hidden' }}
     >
       {sections.map(({ id, name, props }, idx) => {
-        const section = sectionMap[name]
+        if (!(name in sectionMap)) return null
+
+        const section = sectionMap[name as keyof typeof sectionMap]
+
         if (!section || !section.component) return null
         const Component = section.component
 
