@@ -1,18 +1,18 @@
-import Hero from '@components/site/Hero'
-import CardGrid from '@components/site/CardGrid'
-import InfoText from '@components/site/InfoText'
-import Nav from '@components/site/Nav'
-import Footer from '@components/site/Footer'
+import Hero, { type HeroProps } from '@components/site/Hero'
+import CardGrid, { type CardGridProps } from '@components/site/CardGrid'
+import InfoText, { type InfoTextProps } from '@components/site/InfoText'
+import Nav, { type NavProps } from '@components/site/Nav'
+import Footer, { type FooterProps } from '@components/site/Footer'
 
-type SectionMap<P> = {
-  [key: string]: {
-    component: React.ComponentType<P>
-    name: string
-  }
+type SectionMap = {
+  Nav: { component: React.ComponentType<NavProps>; name: string }
+  Hero: { component: React.ComponentType<HeroProps>; name: string }
+  CardGrid: { component: React.ComponentType<CardGridProps>; name: string }
+  InfoText: { component: React.ComponentType<InfoTextProps>; name: string }
+  Footer: { component: React.ComponentType<FooterProps>; name: string }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const sectionMap: SectionMap<any> = {
+export const sectionMap: SectionMap = {
   Nav: {
     name: 'Nav',
     component: Nav,
