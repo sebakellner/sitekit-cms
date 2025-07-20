@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Heading, Text, Button } from 'grommet'
 
-interface HeroProps {
+export interface HeroProps {
   title?: string
   description?: string
   buttonLabel?: string

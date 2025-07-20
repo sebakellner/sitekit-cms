@@ -2,12 +2,12 @@ import React from 'react'
 import { Box, Heading } from 'grommet'
 import Card from '../ui/Card'
 
-export type CardGridItem = {
+export interface CardGridItem {
   title: string
   description: string
 }
 
-export type CardGridProps = {
+export interface CardGridProps {
   title?: string
   background?: string
   cards?: CardGridItem[]

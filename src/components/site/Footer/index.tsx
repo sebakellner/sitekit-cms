@@ -2,12 +2,12 @@ import React from 'react'
 import { Box, Grid, Text, Anchor, Heading } from 'grommet'
 import { Rocket } from 'lucide-react'
 
-export type FooterLinkColumn = {
+export interface FooterLinkColumn {
   title: string
   links: string[]
 }
 
-export type FooterProps = {
+export interface FooterProps {
   siteName?: string
   year?: number
   footerLinks?: FooterLinkColumn[]
