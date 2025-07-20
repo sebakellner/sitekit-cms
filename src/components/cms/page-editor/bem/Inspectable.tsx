@@ -42,16 +42,6 @@ export const Inspectable: React.FC<InspectableProps> = ({
       propsToStore = children.props as SelectedComponentProps
     }
     setSelectedComponent(instanceId, computedLabel, propsToStore)
-
-    console.log(`Selected component: ${computedLabel} (ID: ${instanceId})`)
-    console.log('Props:')
-    if (propsToStore && Object.keys(propsToStore).length > 0) {
-      Object.entries(propsToStore).forEach(([key, value]) => {
-        console.log(`  ${key}:`, value)
-      })
-    } else {
-      console.log('  No props found')
-    }
   }
 
   return (
