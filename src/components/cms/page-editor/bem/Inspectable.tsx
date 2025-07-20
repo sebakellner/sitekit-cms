@@ -2,9 +2,14 @@ import React, { useState } from 'react'
 import type { ReactNode } from 'react'
 import { InspectorOverlay } from './InspectorOverlay'
 import { Box } from 'grommet'
+import { useInspectorStore } from '@stores/useInspectorStore'
+import type { InspectorStore } from '@stores/useInspectorStore'
+import type { SelectedComponentProps } from '@stores/useInspectorStore'
+import { getComponentLabel } from '@utils/getComponentLabel'
+import { v4 as uuidv4 } from 'uuid'
 
 interface InspectableProps {
-  label: string
+  label?: string
   children: ReactNode
   overlayLabelPosition?: 'above' | 'below'
 }
@@ -14,14 +19,30 @@ export const Inspectable: React.FC<InspectableProps> = ({
   children,
   overlayLabelPosition = 'above',
 }) => {
-  const [selected, setSelected] = useState(false)
+  const instanceId = React.useMemo(() => uuidv4(), [])
+  const computedLabel: string = label ?? getComponentLabel(children)
   const [hovered, setHovered] = useState(false)
 
-  const showOverlay = hovered || selected
+  const selectedComponentId = useInspectorStore(
+    (state: InspectorStore) => state.selectedComponentId
+  )
+  const setSelectedComponent = useInspectorStore(
+    (state: InspectorStore) => state.setSelectedComponent
+  )
+
+  const isSelected = selectedComponentId === instanceId
+  const showOverlay = hovered || isSelected
 
   const handleMouseEnter = () => setHovered(true)
   const handleMouseLeave = () => setHovered(false)
-  const handleSelect = () => setSelected((prev) => !prev)
+
+  const handleSelect = () => {
+    let propsToStore: SelectedComponentProps = null
+    if (React.isValidElement(children)) {
+      propsToStore = children.props as SelectedComponentProps
+    }
+    setSelectedComponent(instanceId, computedLabel, propsToStore)
+  }
 
   return (
     <Box
@@ -30,9 +51,9 @@ export const Inspectable: React.FC<InspectableProps> = ({
       width="100%"
     >
       <InspectorOverlay
-        label={label}
+        label={computedLabel}
         showOverlay={showOverlay}
-        isSelected={selected}
+        isSelected={isSelected}
         onSelect={handleSelect}
         overlayLabelPosition={overlayLabelPosition}
       >
