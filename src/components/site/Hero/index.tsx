@@ -6,6 +6,11 @@ interface HeroProps {
   description?: string
   buttonLabel?: string
   onButtonClick?: () => void
+  background?: string | { color: string }
+  headingColor?: string
+  textColor?: string
+  buttonColor?: string
+  buttonSize?: 'small' | 'medium' | 'large'
 }
 
 const Hero: React.FC<HeroProps> = ({
@@ -13,23 +18,34 @@ const Hero: React.FC<HeroProps> = ({
   description = 'Create and customize your website easily with our intuitive tools.',
   buttonLabel = 'Get Started',
   onButtonClick,
+  background = { color: 'white' },
+  headingColor = 'black',
+  textColor = 'dark-2',
+  buttonColor,
+  buttonSize = 'large',
 }) => (
   <Box
     as="section"
     align="center"
     justify="center"
     height="50vh"
-    background={{ color: 'white' }}
+    background={background}
     pad={{ vertical: 'xlarge', horizontal: 'medium' }}
     gap="medium"
   >
-    <Heading level={1} color="black" weight="bold" margin="none">
+    <Heading level={1} color={headingColor} weight="bold" margin="none">
       {title}
     </Heading>
-    <Text size="large" color="dark-2" textAlign="center">
+    <Text size="large" color={textColor} textAlign="center">
       {description}
     </Text>
-    <Button primary label={buttonLabel} size="large" onClick={onButtonClick} />
+    <Button
+      primary
+      label={buttonLabel}
+      size={buttonSize}
+      color={buttonColor}
+      onClick={onButtonClick}
+    />
   </Box>
 )
 

@@ -7,7 +7,16 @@ export const usePageStore = create<PageStore>((set) => ({
     {
       id: uuidv4(),
       name: 'Nav',
-      props: { logo: 'Site Logo', links: ['Home', 'About', 'Contact'] },
+      props: {
+        items: [
+          { label: 'Home', href: '/' },
+          { label: 'About', href: '/about' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Contact', href: '/contact' },
+        ],
+        background: 'white',
+        buttonLabel: 'Contact US',
+      },
     },
     {
       id: uuidv4(),
@@ -15,18 +24,93 @@ export const usePageStore = create<PageStore>((set) => ({
       props: {
         title: 'Welcome to Site Kit Builder',
         description: 'This description reads from Store',
+        background: { color: 'white' },
+        headingColor: 'black',
+        textColor: 'dark-2',
+        buttonLabel: 'Get Started',
+        buttonColor: undefined,
+        buttonSize: 'large',
       },
     },
-    { id: uuidv4(), name: 'CardGrid', props: { background: 'light' } },
+    {
+      id: uuidv4(),
+      name: 'CardGrid',
+      props: {
+        title: 'Featured Cards',
+        background: 'light-2',
+        cards: [
+          {
+            title: 'Card 1',
+            description:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          },
+          {
+            title: 'Card 2',
+            description:
+              'Sed do eiusmod tempor incididunt ut labore et dolore.',
+          },
+          {
+            title: 'Card 3',
+            description: 'Ut enim ad minim veniam, quis nostrud exercitation.',
+          },
+        ],
+      },
+    },
     {
       id: uuidv4(),
       name: 'InfoText',
-      props: { buttonText: 'Send Message' },
+      props: {
+        title: 'Lorem ipsum dolor sit amet',
+        text: 'Consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.',
+        formats: [
+          {
+            label: 'Lorem ipsum dolor',
+            description: 'Sit amet, consectetur adipiscing elit.',
+          },
+          {
+            label: 'Sed do eiusmod',
+            description: 'Tempor incididunt ut labore et dolore magna aliqua.',
+          },
+          {
+            label: 'Ut enim ad minim',
+            description:
+              'Veniam, quis nostrud exercitation ullamco laboris nisi.',
+          },
+          {
+            label: 'Duis aute irure',
+            description: 'Dolor in reprehenderit in voluptate velit esse.',
+          },
+          {
+            label: 'Excepteur sint occaecat',
+            description: 'Cupidatat non proident, sunt in culpa qui officia.',
+          },
+        ],
+        imageSrc: 'https://picsum.photos/id/42/340/340',
+        imageAlt: 'Learning formats preview',
+      },
     },
     {
       id: uuidv4(),
       name: 'Footer',
-      props: { buttonText: 'Send Message' },
+      props: {
+        siteName: 'Site Kit Builder',
+        year: 2025,
+        background: '#23242a',
+        footerLinks: [
+          {
+            title: 'Company',
+            links: ['About', 'Careers', 'Contact'],
+          },
+          {
+            title: 'Support',
+            links: ['Help Center', 'FAQ'],
+          },
+          {
+            title: 'Legal',
+            links: ['Privacy Policy', 'Terms'],
+          },
+        ],
+      },
     },
   ],
   selectedId: null,
