@@ -19,7 +19,17 @@ const PanelPageEditor = () => {
   )
   const updateProps = usePageStore((s) => s.updateSectionProps)
 
-  if (!section) return <div>Seleccioná una sección</div>
+  if (!section)
+    return (
+      <PanelWrapper borderSide="left">
+        <PanelBox gap="small" align="center" justify="center">
+          <Heading level={3} margin="none">
+            Editor
+          </Heading>
+          <Text color="dark-4">Select component to start!</Text>
+        </PanelBox>
+      </PanelWrapper>
+    )
 
   return (
     <PanelWrapper borderSide="left">
