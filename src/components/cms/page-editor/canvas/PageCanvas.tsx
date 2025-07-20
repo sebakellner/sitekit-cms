@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid'
+
 import CardGrid from '@components/site/CardGrid'
 import Footer from '@components/site/Footer'
 import Hero from '@components/site/Hero'
@@ -24,7 +26,7 @@ const PageCanvas = () => {
     >
       {sections.map(({ component }, idx) => (
         <Inspectable
-          key={idx}
+          key={uuidv4()}
           overlayLabelPosition={idx === 0 ? 'below' : 'above'}
         >
           {component}
