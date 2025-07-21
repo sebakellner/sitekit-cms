@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from 'react'
+import React, { useEffect, useRef, useMemo, useCallback } from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import { usePageStore } from '@stores/usePageStore'
 import {
@@ -8,6 +8,7 @@ import {
   DRAGGING_BG,
   OVER_BG,
 } from './constants'
+import type { PageStore } from '@src/types'
 
 type Props = {
   id: string
@@ -25,7 +26,11 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
     isOver,
   } = useSortable({ id })
 
-  const selectSection = usePageStore((state) => state.selectSection)
+  const selectSectionSelector = useCallback(
+    (state: PageStore) => state.selectSection,
+    []
+  )
+  const selectSection = usePageStore(selectSectionSelector)
   const wasDragging = useRef(false)
 
   useEffect(() => {
