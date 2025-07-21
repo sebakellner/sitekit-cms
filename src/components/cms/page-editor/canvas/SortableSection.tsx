@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo, useCallback } from 'react'
+import React, { useEffect, useMemo, useCallback } from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import { usePageStore } from '@stores/usePageStore'
 import {
@@ -31,13 +31,11 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
     []
   )
   const selectSection = usePageStore(selectSectionSelector)
-  const wasDragging = useRef(false)
 
   useEffect(() => {
-    if (!wasDragging.current && isDragging) {
+    if (isDragging) {
       selectSection(id)
     }
-    wasDragging.current = isDragging
   }, [isDragging, id, selectSection])
 
   const style = useMemo<React.CSSProperties>(
