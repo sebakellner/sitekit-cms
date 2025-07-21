@@ -1,7 +1,5 @@
 import { Box } from 'grommet'
-import { Inspectable } from '../bem/Inspectable'
 import { usePageStore } from '@stores/usePageStore'
-import { sectionMap } from '@lib/sectionMap'
 import {
   DndContext,
   closestCenter,
@@ -14,31 +12,8 @@ import {
   arrayMove,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
-import SortableSection from './SortableSection'
-
-function renderSection(
-  id: string,
-  name: string,
-  props: Record<string, unknown>,
-  idx: number
-) {
-  if (!(name in sectionMap)) return null
-  const section = sectionMap[name as keyof typeof sectionMap]
-  if (!section || !section.component) return null
-  const Component = section.component
-
-  return (
-    <SortableSection id={id} key={id}>
-      <Inspectable
-        id={id}
-        name={name}
-        overlayLabelPosition={idx === 0 ? 'below' : 'above'}
-      >
-        <Component {...props} />
-      </Inspectable>
-    </SortableSection>
-  )
-}
+import { restrictToParentElement } from '@dnd-kit/modifiers'
+import PageSectionRenderer from './PageSectionRenderer'
 
 const PageCanvas = () => {
   const sections = usePageStore((state) => state.sections)
@@ -58,6 +33,7 @@ const PageCanvas = () => {
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
+        modifiers={[restrictToParentElement]}
         onDragStart={() => {}}
         onDragEnd={({ active, over }) => {
           if (active.id !== over?.id) {
@@ -72,9 +48,15 @@ const PageCanvas = () => {
           items={sectionIds}
           strategy={verticalListSortingStrategy}
         >
-          {sections.map((section, idx) =>
-            renderSection(section.id, section.name, section.props, idx)
-          )}
+          {sections.map((section, idx) => (
+            <PageSectionRenderer
+              key={section.id}
+              id={section.id}
+              name={section.name}
+              props={section.props}
+              idx={idx}
+            />
+          ))}
         </SortableContext>
       </DndContext>
     </Box>
