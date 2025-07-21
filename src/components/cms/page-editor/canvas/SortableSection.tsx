@@ -46,7 +46,6 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
     position: isDragging ? 'relative' : undefined,
     minHeight: DRAGGING_MIN_HEIGHT,
     background: isDragging ? DRAGGING_BG : isOver ? OVER_BG : undefined,
-    pointerEvents: isDragging ? 'none' : undefined,
   }
 
   return (
