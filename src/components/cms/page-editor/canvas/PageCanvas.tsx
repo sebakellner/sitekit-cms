@@ -32,7 +32,6 @@ const PageCanvas = () => {
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
-        onDragStart={() => {}}
         onDragEnd={({ active, over }) => {
           if (active.id !== over?.id) {
             const oldIndex = sections.findIndex((s) => s.id === active.id)
@@ -40,7 +39,6 @@ const PageCanvas = () => {
             setSections(arrayMove(sections, oldIndex, newIndex))
           }
         }}
-        onDragCancel={() => {}}
       >
         <SortableContext
           items={sectionIds}
