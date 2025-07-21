@@ -12,7 +12,6 @@ import {
   arrayMove,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
-import { restrictToParentElement } from '@dnd-kit/modifiers'
 import PageSectionRenderer from './PageSectionRenderer'
 
 const PageCanvas = () => {
@@ -33,7 +32,6 @@ const PageCanvas = () => {
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
-        modifiers={[restrictToParentElement]}
         onDragStart={() => {}}
         onDragEnd={({ active, over }) => {
           if (active.id !== over?.id) {
