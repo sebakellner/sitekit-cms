@@ -1,10 +1,48 @@
 import { Box } from 'grommet'
-import { Inspectable } from '../bem/Inspectable'
 import { usePageStore } from '@stores/usePageStore'
-import { sectionMap } from '@lib/sectionMap'
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from '@dnd-kit/core'
+import {
+  SortableContext,
+  arrayMove,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable'
+import PageSectionRenderer from './PageSectionRenderer'
+import { useCallback } from 'react'
 
 const PageCanvas = () => {
   const sections = usePageStore((state) => state.sections)
+  const setSections = usePageStore((state) => state.setSections)
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
+  )
+  const sectionIds = sections.map((s) => s.id)
+
+  const handleDragEndCb = useCallback(
+    (event: DragEndEvent) => {
+      const { active, over } = event
+      if (over && active.id !== over.id) {
+        const oldIndex = sections.findIndex((s) => s.id === String(active.id))
+        const newIndex = sections.findIndex((s) => s.id === String(over.id))
+
+        if (oldIndex === -1 || newIndex === -1) {
+          console.error(
+            `Invalid section ID detected during drag-and-drop operation. Active: ${active.id}, Over: ${over.id}`
+          )
+          return
+        }
+
+        setSections(arrayMove(sections, oldIndex, newIndex))
+      }
+    },
+    [sections, setSections]
+  )
 
   return (
     <Box
@@ -13,25 +51,26 @@ const PageCanvas = () => {
       background="white"
       overflow={{ vertical: 'auto', horizontal: 'hidden' }}
     >
-      {sections.map(({ id, name, props }, idx) => {
-        if (!(name in sectionMap)) return null
-
-        const section = sectionMap[name as keyof typeof sectionMap]
-
-        if (!section || !section.component) return null
-        const Component = section.component
-
-        return (
-          <Inspectable
-            id={id}
-            key={idx}
-            name={name}
-            overlayLabelPosition={idx === 0 ? 'below' : 'above'}
-          >
-            <Component {...props} />
-          </Inspectable>
-        )
-      })}
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEndCb}
+      >
+        <SortableContext
+          items={sectionIds}
+          strategy={verticalListSortingStrategy}
+        >
+          {sections.map((section, idx) => (
+            <PageSectionRenderer
+              key={section.id}
+              id={section.id}
+              name={section.name}
+              props={section.props}
+              idx={idx}
+            />
+          ))}
+        </SortableContext>
+      </DndContext>
     </Box>
   )
 }
