@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useMemo } from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import { usePageStore } from '@stores/usePageStore'
 import {
@@ -26,27 +26,32 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
   } = useSortable({ id })
 
   const selectSection = usePageStore((state) => state.selectSection)
+  const wasDragging = useRef(false)
 
   useEffect(() => {
-    if (isDragging) {
+    if (!wasDragging.current && isDragging) {
       selectSection(id)
     }
+    wasDragging.current = isDragging
   }, [isDragging, id, selectSection])
 
-  const style: React.CSSProperties = {
-    transform: transform
-      ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
-      : undefined,
-    transition: transition,
-    touchAction: 'none',
-    width: '100%',
-    boxSizing: 'border-box',
-    cursor: isDragging ? 'grabbing' : 'grab',
-    zIndex: isDragging ? DRAGGING_Z_INDEX : NORMAL_Z_INDEX,
-    position: 'relative',
-    minHeight: isDragging ? DRAGGING_MIN_HEIGHT : undefined,
-    background: isDragging ? DRAGGING_BG : isOver ? OVER_BG : undefined,
-  }
+  const style = useMemo<React.CSSProperties>(
+    () => ({
+      transform: transform
+        ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
+        : undefined,
+      transition: transition,
+      touchAction: 'none',
+      width: '100%',
+      boxSizing: 'border-box',
+      cursor: isDragging ? 'grabbing' : 'grab',
+      zIndex: isDragging ? DRAGGING_Z_INDEX : NORMAL_Z_INDEX,
+      position: 'relative',
+      minHeight: isDragging ? DRAGGING_MIN_HEIGHT : undefined,
+      background: isDragging ? DRAGGING_BG : isOver ? OVER_BG : undefined,
+    }),
+    [transform, transition, isDragging, isOver]
+  )
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
