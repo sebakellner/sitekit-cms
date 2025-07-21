@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSortable } from '@dnd-kit/sortable'
-import { CSS } from '@dnd-kit/utilities'
 
 type Props = {
   id: string
@@ -18,15 +17,16 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
   } = useSortable({ id })
 
   const style: React.CSSProperties = {
-    transform: CSS.Transform.toString(transform),
+    transform: transform
+      ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
+      : undefined,
     transition,
     touchAction: 'none',
     width: '100%',
     boxSizing: 'border-box',
     cursor: isDragging ? 'grabbing' : 'grab',
-    zIndex: isDragging ? 2 : 1,
+    zIndex: isDragging ? 1000 : 1,
     minHeight: 40,
-    background: isDragging ? '#f0f0f0' : undefined,
   }
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
