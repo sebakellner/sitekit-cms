@@ -6,6 +6,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  type DragEndEvent,
 } from '@dnd-kit/core'
 import {
   SortableContext,
@@ -13,6 +14,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
 import PageSectionRenderer from './PageSectionRenderer'
+import { useCallback } from 'react'
 
 const PageCanvas = () => {
   const sections = usePageStore((state) => state.sections)
@@ -21,6 +23,31 @@ const PageCanvas = () => {
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
   )
   const sectionIds = sections.map((s) => s.id)
+
+  const handleDragEndCb = useCallback(
+    (event: DragEndEvent) => {
+      const { active, over } = event
+      if (over && active.id !== over.id) {
+        const currentSections = usePageStore.getState().sections
+        const oldIndex = currentSections.findIndex(
+          (s) => s.id === String(active.id)
+        )
+        const newIndex = currentSections.findIndex(
+          (s) => s.id === String(over.id)
+        )
+
+        if (oldIndex === -1 || newIndex === -1) {
+          console.error(
+            `Invalid section ID detected during drag-and-drop operation. Active: ${active.id}, Over: ${over.id}`
+          )
+          return
+        }
+
+        setSections(arrayMove(currentSections, oldIndex, newIndex))
+      }
+    },
+    [setSections]
+  )
 
   return (
     <Box
@@ -32,21 +59,7 @@ const PageCanvas = () => {
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
-        onDragEnd={({ active, over }) => {
-          if (over && active.id !== over.id) {
-            const oldIndex = sections.findIndex((s) => s.id === active.id)
-            const newIndex = sections.findIndex((s) => s.id === over.id)
-
-            if (oldIndex === -1 || newIndex === -1) {
-              console.error(
-                `Invalid section ID detected during drag-and-drop operation. Active: ${active.id}, Over: ${over.id}`
-              )
-              return
-            }
-
-            setSections(arrayMove(sections, oldIndex, newIndex))
-          }
-        }}
+        onDragEnd={handleDragEndCb}
       >
         <SortableContext
           items={sectionIds}
