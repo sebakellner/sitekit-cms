@@ -1,6 +1,13 @@
 import React, { useEffect } from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import { usePageStore } from '@stores/usePageStore'
+import {
+  DRAGGING_Z_INDEX,
+  NORMAL_Z_INDEX,
+  DRAGGING_MIN_HEIGHT,
+  DRAGGING_BG,
+  OVER_BG,
+} from './constants'
 
 type Props = {
   id: string
@@ -35,10 +42,10 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
     width: '100%',
     boxSizing: 'border-box',
     cursor: isDragging ? 'grabbing' : 'grab',
-    zIndex: isDragging ? 9999 : 1,
+    zIndex: isDragging ? DRAGGING_Z_INDEX : NORMAL_Z_INDEX,
     position: isDragging ? 'relative' : undefined,
-    minHeight: 40,
-    background: isDragging ? '#f0f0f0' : isOver ? '#e0e7ff' : undefined,
+    minHeight: DRAGGING_MIN_HEIGHT,
+    background: isDragging ? DRAGGING_BG : isOver ? OVER_BG : undefined,
     pointerEvents: isDragging ? 'none' : undefined,
   }
 
