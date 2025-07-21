@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useCallback } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import { usePageStore } from '@stores/usePageStore'
 import {
@@ -15,6 +15,8 @@ type Props = {
   children: React.ReactNode
 }
 
+const selectSectionSelector = (state: PageStore) => state.selectSection
+
 const SortableSection: React.FC<Props> = ({ id, children }) => {
   const {
     attributes,
@@ -26,10 +28,6 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
     isOver,
   } = useSortable({ id })
 
-  const selectSectionSelector = useCallback(
-    (state: PageStore) => state.selectSection,
-    []
-  )
   const selectSection = usePageStore(selectSectionSelector)
 
   useEffect(() => {

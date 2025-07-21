@@ -28,13 +28,8 @@ const PageCanvas = () => {
     (event: DragEndEvent) => {
       const { active, over } = event
       if (over && active.id !== over.id) {
-        const currentSections = usePageStore.getState().sections
-        const oldIndex = currentSections.findIndex(
-          (s) => s.id === String(active.id)
-        )
-        const newIndex = currentSections.findIndex(
-          (s) => s.id === String(over.id)
-        )
+        const oldIndex = sections.findIndex((s) => s.id === String(active.id))
+        const newIndex = sections.findIndex((s) => s.id === String(over.id))
 
         if (oldIndex === -1 || newIndex === -1) {
           console.error(
@@ -43,10 +38,10 @@ const PageCanvas = () => {
           return
         }
 
-        setSections(arrayMove(currentSections, oldIndex, newIndex))
+        setSections(arrayMove(sections, oldIndex, newIndex))
       }
     },
-    [setSections]
+    [sections, setSections]
   )
 
   return (
