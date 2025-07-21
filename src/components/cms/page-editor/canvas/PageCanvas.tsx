@@ -39,7 +39,7 @@ const PageCanvas = () => {
 
             if (oldIndex === -1 || newIndex === -1) {
               console.error(
-                'Invalid section ID detected during drag-and-drop operation.'
+                `Invalid section ID detected during drag-and-drop operation. Active: ${active.id}, Over: ${over.id}`
               )
               return
             }
