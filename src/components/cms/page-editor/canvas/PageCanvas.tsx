@@ -36,7 +36,6 @@ const PageCanvas = () => {
           if (over && active.id !== over.id) {
             const oldIndex = sections.findIndex((s) => s.id === active.id)
             const newIndex = sections.findIndex((s) => s.id === over.id)
-            setSections(arrayMove(sections, oldIndex, newIndex))
 
             if (oldIndex === -1 || newIndex === -1) {
               console.error(
@@ -44,6 +43,8 @@ const PageCanvas = () => {
               )
               return
             }
+
+            setSections(arrayMove(sections, oldIndex, newIndex))
           }
         }}
       >

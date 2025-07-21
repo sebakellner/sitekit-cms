@@ -43,8 +43,8 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
     boxSizing: 'border-box',
     cursor: isDragging ? 'grabbing' : 'grab',
     zIndex: isDragging ? DRAGGING_Z_INDEX : NORMAL_Z_INDEX,
-    position: isDragging ? 'relative' : undefined,
-    minHeight: DRAGGING_MIN_HEIGHT,
+    position: 'relative',
+    minHeight: isDragging ? DRAGGING_MIN_HEIGHT : undefined,
     background: isDragging ? DRAGGING_BG : isOver ? OVER_BG : undefined,
   }
 
