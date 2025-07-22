@@ -12,13 +12,7 @@ const ElementSelectorItem: React.FC<ElementSelectorItemProps> = ({
   preview = 'dark-3',
 }) => {
   return (
-    <Box
-      gap="xsmall"
-      round="small"
-      margin={{ top: 'small', bottom: 'medium' }}
-      flex="grow"
-      hoverIndicator={true}
-    >
+    <Box gap="xsmall" round="small" flex="grow">
       <Box
         overflow="hidden"
         height="130px"
