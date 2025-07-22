@@ -39,7 +39,11 @@ const ElementSelector = () => {
       <Box fill>
         <PanelBoxScroll pad="none" gap="none">
           {Object.entries(categorized).map(([category, items]) => (
-            <PanelBoxCollapsible key={category} title={category}>
+            <PanelBoxCollapsible
+              key={category}
+              title={category}
+              collapsedGap="small"
+            >
               {items.map((item, idx) => (
                 <ElementSelectorItem key={item.title + idx} {...item} />
               ))}
