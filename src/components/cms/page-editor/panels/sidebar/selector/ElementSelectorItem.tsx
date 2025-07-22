@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from 'grommet'
+import { Box, Text } from 'grommet'
 
 export type ElementSelectorItemProps = {
   title: string
@@ -8,11 +8,10 @@ export type ElementSelectorItemProps = {
 
 const ElementSelectorItem: React.FC<ElementSelectorItemProps> = ({
   title,
-  description,
   preview = 'dark-3',
 }) => {
   return (
-    <Box gap="xsmall" round="small" flex="grow">
+    <Box gap="xsmall" round="small" flex="grow" margin={{ top: 'xsmall' }}>
       <Box
         overflow="hidden"
         height="130px"
@@ -20,11 +19,8 @@ const ElementSelectorItem: React.FC<ElementSelectorItemProps> = ({
         round="small"
       ></Box>
       <Box gap="xsmall" pad="xsmall">
-        <Heading level={6} size="small" margin="none">
+        <Text size="small" color="light-4">
           {title}
-        </Heading>
-        <Text size="xsmall" color="light-4">
-          {description}
         </Text>
       </Box>
     </Box>
