@@ -1,28 +1,13 @@
-import Hero from '@components/site/Hero'
-import CardGrid from '@components/site/CardGrid'
-import InfoText from '@components/site/InfoText'
-import Nav from '@components/site/Nav'
-import Footer from '@components/site/Footer'
+import NavMeta from '@components/site/Nav/Nav.meta'
+import HeroMeta from '@components/site/Hero/Hero.meta'
+import CardGridMeta from '@components/site/CardGrid/CardGrid.meta'
+import InfoTextMeta from '@components/site/InfoText/InfoText.meta'
+import FooterMeta from '@components/site/Footer/Footer.meta'
 
-export const sectionMap = {
-  Nav: {
-    name: 'Nav',
-    component: Nav,
-  },
-  Hero: {
-    name: 'Hero',
-    component: Hero,
-  },
-  CardGrid: {
-    name: 'CardGrid',
-    component: CardGrid,
-  },
-  InfoText: {
-    name: 'InfoText',
-    component: InfoText,
-  },
-  Footer: {
-    name: 'Footer',
-    component: Footer,
-  },
-}
+export const sectionList = [
+  NavMeta,
+  HeroMeta,
+  CardGridMeta,
+  InfoTextMeta,
+  FooterMeta,
+]
