@@ -1,5 +1,4 @@
 import { Box, Heading, Text } from 'grommet'
-import { v4 as uuid } from 'uuid'
 import PanelBox from '@components/cms/ui/panel/PanelBox'
 import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
 import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
@@ -46,7 +45,7 @@ const ElementSelector = () => {
               collapsedGap="small"
             >
               {items.map((item) => (
-                <ElementSelectorItem key={uuid()} {...item} />
+                <ElementSelectorItem key={item.title} {...item} />
               ))}
             </PanelBoxCollapsible>
           ))}
