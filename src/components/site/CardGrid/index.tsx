@@ -15,15 +15,15 @@ export interface CardGridProps {
 
 const defaultCards: CardGridItem[] = [
   {
-    title: 'Card 1',
+    title: 'Card title 1',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
-    title: 'Card 2',
+    title: 'Card title 2',
     description: 'Sed do eiusmod tempor incididunt ut labore et dolore.',
   },
   {
-    title: 'Card 3',
+    title: 'Card title 3',
     description: 'Ut enim ad minim veniam, quis nostrud exercitation.',
   },
 ]
@@ -38,7 +38,7 @@ const CardGrid: React.FC<CardGridProps> = ({
       as="section"
       background={background}
       align="center"
-      pad={{ top: 'large', bottom: 'xlarge', horizontal: 'medium' }}
+      pad={{ top: 'large', bottom: 'xlarge', horizontal: 'large' }}
     >
       <Heading
         level={3}
