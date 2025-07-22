@@ -6,15 +6,21 @@ export type ElementSelectorItemProps = {
   preview?: string
 }
 
+const SUPPORTED_IMAGE_EXTENSIONS = ['.png', '.jpg']
+
+const isImageUrl = (url: string): boolean => {
+  return (
+    url.startsWith('data:') ||
+    SUPPORTED_IMAGE_EXTENSIONS.some((ext) => url.toLowerCase().endsWith(ext))
+  )
+}
+
 const ElementSelectorItem: React.FC<ElementSelectorItemProps> = ({
   title,
   preview = '',
 }) => {
-  const hasImage =
-    preview &&
-    (preview.endsWith('.png') ||
-      preview.endsWith('.jpg') ||
-      preview.startsWith('data:'))
+  const hasImage = preview && isImageUrl(preview)
+
   const previewBackground = hasImage
     ? { image: `url(${preview})` }
     : { color: 'dark-3' }
