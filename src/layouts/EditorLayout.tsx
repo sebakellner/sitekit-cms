@@ -1,6 +1,6 @@
 import { Grid, Box } from 'grommet'
 import PanelPageEditor from '@components/cms/page-editor/panels/editor/PanelPageEditor'
-import ComponentSelector from '@components/cms/page-editor/panels/selector/ComponentSelector'
+import ElementSelector from '@components/cms/page-editor/panels/sidebar/selector/ElementSelector'
 import Sidebar from '@components/cms/page-editor/panels/sidebar/Sidebar'
 import PageCanvas from '@components/cms/page-editor/canvas/PageCanvas'
 
@@ -31,7 +31,7 @@ function EditorLayout({ children }: EditorLayoutProps) {
       </Box>
 
       <Box gridArea="left-panels">
-        <ComponentSelector />
+        <ElementSelector />
       </Box>
 
       <Box

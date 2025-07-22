@@ -40,17 +40,17 @@ export const usePageStore = create<PageStore>((set) => ({
         background: 'light-2',
         cards: [
           {
-            title: 'Card 1',
+            title: 'Card title 1',
             description:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
           },
           {
-            title: 'Card 2',
+            title: 'Card title 2',
             description:
               'Sed do eiusmod tempor incididunt ut labore et dolore.',
           },
           {
-            title: 'Card 3',
+            title: 'Card title 3',
             description: 'Ut enim ad minim veniam, quis nostrud exercitation.',
           },
         ],
