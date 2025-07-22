@@ -9,11 +9,13 @@ import { Down } from 'grommet-icons'
 type PanelCollapsibleProps = {
   title: ReactNode
   children: ReactNode
+  collapsedGap?: string
 } & PanelBoxProps
 
 const PanelCollapsible = ({
   title,
   children,
+  collapsedGap = 'none',
   ...restProps
 }: PanelCollapsibleProps) => {
   const [collapsed, setCollapsed] = useState(false)
@@ -50,7 +52,10 @@ const PanelCollapsible = ({
         />
       </Box>
       {!collapsed && (
-        <Box pad={{ top: 'none', horizontal: '16px', bottom: 'medium' }}>
+        <Box
+          pad={{ top: 'none', horizontal: '16px', bottom: 'medium' }}
+          gap={collapsedGap}
+        >
           {children}
         </Box>
       )}
