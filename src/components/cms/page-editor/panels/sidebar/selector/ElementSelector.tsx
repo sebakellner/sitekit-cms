@@ -1,12 +1,13 @@
 import { Box, Heading, Text } from 'grommet'
+import { v4 as uuid } from 'uuid'
 import PanelBox from '@components/cms/ui/panel/PanelBox'
 import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
 import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
 import ElementSelectorItem from './ElementSelectorItem'
 import type { ElementSelectorItemProps } from './ElementSelectorItem'
-import { sectionList } from '@lib/sectionMap'
 import ElementSelectorSearchInput from './ElementSelectorSearchInput'
 import PanelBoxCollapsible from '@components/cms/ui/panel/PanelBoxCollapsible'
+import { sectionList } from '@lib/sectionMap'
 
 const ElementSelector = () => {
   const categorized: Record<string, ElementSelectorItemProps[]> = {}
@@ -17,7 +18,7 @@ const ElementSelector = () => {
     categorized[category].push({
       title: meta.name,
       description: meta.description || 'No description available',
-      preview: meta.preview || 'dark-3',
+      preview: meta.preview,
     })
   })
 
@@ -44,8 +45,8 @@ const ElementSelector = () => {
               title={category}
               collapsedGap="small"
             >
-              {items.map((item, idx) => (
-                <ElementSelectorItem key={item.title + idx} {...item} />
+              {items.map((item) => (
+                <ElementSelectorItem key={uuid()} {...item} />
               ))}
             </PanelBoxCollapsible>
           ))}
