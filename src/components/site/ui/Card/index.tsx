@@ -15,20 +15,29 @@ import { LinkNext } from 'grommet-icons'
 interface CardProps {
   title: string
   description: string
+  imageSrc?: string
+  imageAlt?: string
+  label?: string
+  buttonLabel?: string
+  buttonHref?: string
 }
 
-const Card: React.FC<CardProps> = ({ title, description }) => {
+const Card: React.FC<CardProps> = ({
+  title,
+  description,
+  imageSrc = 'https://d3hq6blov2iije.cloudfront.net/images/textures/HPE_data_slice_01_800_0_72_RGB+20107.jpg',
+  imageAlt = 'bridge',
+  label = 'Feature',
+  buttonLabel = 'Learn More',
+  buttonHref = 'https://www.collinsdictionary.com/us/dictionary/english/bridge',
+}) => {
   return (
     <GrommetCard background="white" elevation="small" width="medium" pad="none">
       <CardBody height="small" pad="none">
-        <Image
-          fit="cover"
-          src="https://d3hq6blov2iije.cloudfront.net/images/textures/HPE_data_slice_01_800_0_72_RGB+20107.jpg"
-          a11yTitle="bridge"
-        />
+        <Image fit="cover" src={imageSrc} a11yTitle={imageAlt} />
       </CardBody>
       <Box pad={{ horizontal: 'medium', top: 'small' }} responsive={false}>
-        <Text size="small">Feature</Text>
+        <Text size="small">{label}</Text>
         <Heading
           level={3}
           size="medium"
@@ -41,8 +50,8 @@ const Card: React.FC<CardProps> = ({ title, description }) => {
       <CardFooter pad={{ horizontal: 'medium', bottom: 'medium' }}>
         <Box direction="row" align="center" gap="small">
           <Button
-            href="https://www.collinsdictionary.com/us/dictionary/english/bridge"
-            label="Learn More"
+            href={buttonHref}
+            label={buttonLabel}
             icon={<LinkNext />}
             reverse
             color="brand"
