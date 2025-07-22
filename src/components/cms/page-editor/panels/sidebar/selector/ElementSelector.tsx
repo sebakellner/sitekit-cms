@@ -1,20 +1,25 @@
-import { Heading, Text } from 'grommet'
+import { Box, Heading, Text } from 'grommet'
 import PanelBox from '@components/cms/ui/panel/PanelBox'
 import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
 import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
 import ElementSelectorItem from './ElementSelectorItem'
 import type { ElementSelectorItemProps } from './ElementSelectorItem'
-import { sectionMap } from '@lib/sectionMap'
+import { sectionList } from '@lib/sectionMap'
 import ElementSelectorSearchInput from './ElementSelectorSearchInput'
+import PanelBoxCollapsible from '@components/cms/ui/panel/PanelBoxCollapsible'
 
 const ElementSelector = () => {
-  const items: ElementSelectorItemProps[] = Object.entries(sectionMap).map(
-    ([key, value]) => ({
-      title: value.name || key,
-      description: 'No description available',
-      previewBg: 'dark-3',
+  const categorized: Record<string, ElementSelectorItemProps[]> = {}
+
+  sectionList.forEach((meta) => {
+    const category = meta.category || 'Other'
+    if (!categorized[category]) categorized[category] = []
+    categorized[category].push({
+      title: meta.name,
+      description: meta.description || 'No description available',
+      preview: meta.preview || 'dark-3',
     })
-  )
+  })
 
   return (
     <PanelWrapper borderSide="right">
@@ -31,11 +36,17 @@ const ElementSelector = () => {
         <ElementSelectorSearchInput />
       </PanelBox>
 
-      <PanelBoxScroll>
-        {items.map((item, idx) => (
-          <ElementSelectorItem key={item.title + idx} {...item} />
-        ))}
-      </PanelBoxScroll>
+      <Box fill>
+        <PanelBoxScroll pad="none" gap="none">
+          {Object.entries(categorized).map(([category, items]) => (
+            <PanelBoxCollapsible key={category} title={category}>
+              {items.map((item, idx) => (
+                <ElementSelectorItem key={item.title + idx} {...item} />
+              ))}
+            </PanelBoxCollapsible>
+          ))}
+        </PanelBoxScroll>
+      </Box>
     </PanelWrapper>
   )
 }

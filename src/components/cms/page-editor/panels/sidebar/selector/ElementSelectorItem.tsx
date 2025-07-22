@@ -3,23 +3,29 @@ import { Box, Heading, Text } from 'grommet'
 export type ElementSelectorItemProps = {
   title: string
   description: string
-  previewBg?: string
+  preview?: string
 }
 
 const ElementSelectorItem: React.FC<ElementSelectorItemProps> = ({
   title,
   description,
-  previewBg = 'dark-3',
+  preview = 'dark-3',
 }) => {
   return (
-    <Box gap="small" round="small" flex="grow" hoverIndicator={true}>
+    <Box
+      gap="xsmall"
+      round="small"
+      margin={{ top: 'small', bottom: 'medium' }}
+      flex="grow"
+      hoverIndicator={true}
+    >
       <Box
         overflow="hidden"
         height="130px"
-        background={previewBg}
+        background={{ image: `url(${preview})` }}
         round="small"
       ></Box>
-      <Box gap="xsmall">
+      <Box gap="xsmall" pad="xsmall">
         <Heading level={6} size="small" margin="none">
           {title}
         </Heading>
