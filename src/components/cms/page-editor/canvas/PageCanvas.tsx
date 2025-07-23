@@ -26,12 +26,12 @@ const PageCanvas = () => {
         strategy={verticalListSortingStrategy}
       >
         <div ref={setNodeRef}>
-          {sections.map((section, idx) => (
+          {sections.map(({ id, name, props }, idx) => (
             <PageSectionRenderer
-              key={section.id}
-              id={section.id}
-              name={section.name}
-              props={section.props}
+              key={id}
+              id={id}
+              name={name}
+              props={props}
               idx={idx}
             />
           ))}
