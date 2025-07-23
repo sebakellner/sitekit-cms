@@ -48,7 +48,7 @@ const ElementSelector = () => {
               {items.map((item) => (
                 <DraggableSelectorItem
                   key={`selector-${item.title}`}
-                  id={item.title}
+                  id={`selector-${item.title}`}
                 >
                   <ElementSelectorItem {...item} />
                 </DraggableSelectorItem>
