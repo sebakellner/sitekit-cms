@@ -1,14 +1,19 @@
 import { Box } from 'grommet'
 import { usePageStore } from '@stores/usePageStore'
-
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import PageSectionRenderer from './PageSectionRenderer'
 import DroppableCanvas from './DroppableCanvas'
 
-const PageCanvas = () => {
-  const sections = usePageStore((state) => state.sections)
+interface PageCanvasProps {
+  overSectionId?: string | null
+  activeId?: string | null
+}
 
+const PageCanvas = ({ overSectionId, activeId }: PageCanvasProps) => {
+  const sections = usePageStore((state) => state.sections)
   const sectionIds = sections.map((s) => s.id)
+  const isDraggingFromSelector =
+    activeId && String(activeId).startsWith('selector-')
 
   return (
     <Box
@@ -29,6 +34,7 @@ const PageCanvas = () => {
               name={name}
               props={props}
               idx={idx}
+              showDivider={!!(isDraggingFromSelector && overSectionId === id)}
             />
           ))}
         </DroppableCanvas>
