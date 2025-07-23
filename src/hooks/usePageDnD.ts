@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 import { usePageStore } from '@stores/usePageStore'
 import { arrayMove } from '@dnd-kit/sortable'
+import { insertSectionAtUtil } from '@utils/insertSectionAt'
 import {
   PointerSensor,
   useSensor,
@@ -19,18 +20,7 @@ export function usePageDnD() {
 
   const insertSectionAt = useCallback(
     (id: string, index: number) => {
-      const sectionId = String(id).startsWith('selector-')
-        ? String(id).replace('selector-', '')
-        : id
-      const uniqueId = `${sectionId}-${Date.now()}`
-      const newSection = {
-        id: uniqueId,
-        name: sectionId,
-        props: {},
-      }
-      const newSections = [...sections]
-      newSections.splice(index, 0, newSection)
-      setSections(newSections)
+      insertSectionAtUtil(sections, setSections, id, index)
     },
     [sections, setSections]
   )
