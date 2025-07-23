@@ -1,4 +1,5 @@
-import { DndContext, closestCorners } from '@dnd-kit/core'
+import { DndContext, closestCorners, type DragStartEvent } from '@dnd-kit/core'
+import { useState } from 'react'
 import { usePageDnD } from '@hooks/usePageDnD'
 import { Grid, Box } from 'grommet'
 import PanelPageEditor from '@components/cms/page-editor/panels/editor/PanelPageEditor'
@@ -6,17 +7,21 @@ import ElementSelector from '@components/cms/page-editor/panels/sidebar/selector
 import Sidebar from '@components/cms/page-editor/panels/sidebar/Sidebar'
 import PageCanvas from '@components/cms/page-editor/canvas/PageCanvas'
 
-interface EditorLayoutProps {
-  children?: React.ReactNode
-}
+function EditorLayout() {
+  const { sensors, overSectionId, handleDragEnd, handleDragOver } = usePageDnD()
+  const [activeId, setActiveId] = useState<string | null>(null)
 
-function EditorLayout({ children }: EditorLayoutProps) {
-  const { sensors, handleDragEnd } = usePageDnD()
+  const handleDragStart = (event: DragStartEvent) => {
+    setActiveId(event.active?.id ? String(event.active.id) : null)
+  }
+
   return (
     <DndContext
       sensors={sensors}
       collisionDetection={closestCorners}
+      onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
+      onDragOver={handleDragOver}
     >
       <Grid
         fill
@@ -46,7 +51,7 @@ function EditorLayout({ children }: EditorLayoutProps) {
           align="center"
           justify="center"
         >
-          {children || <PageCanvas />}
+          <PageCanvas overSectionId={overSectionId} activeId={activeId} />
         </Box>
         <Box gridArea="right-editor">
           <PanelPageEditor />
