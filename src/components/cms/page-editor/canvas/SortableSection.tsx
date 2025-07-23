@@ -5,8 +5,6 @@ import {
   DRAGGING_Z_INDEX,
   NORMAL_Z_INDEX,
   DRAGGING_MIN_HEIGHT,
-  DRAGGING_BG,
-  OVER_BG,
 } from './constants'
 import type { PageStore } from '@src/types'
 
@@ -49,7 +47,6 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
       zIndex: isDragging ? DRAGGING_Z_INDEX : NORMAL_Z_INDEX,
       position: 'relative',
       minHeight: isDragging ? DRAGGING_MIN_HEIGHT : undefined,
-      background: isDragging ? DRAGGING_BG : isOver ? OVER_BG : undefined,
     }),
     [transform, transition, isDragging, isOver]
   )
