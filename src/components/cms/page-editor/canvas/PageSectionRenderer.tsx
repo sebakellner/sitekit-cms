@@ -2,12 +2,14 @@ import React from 'react'
 import { Inspectable } from '../bem/Inspectable'
 import { sectionList } from '@lib/sectionMap'
 import SortableSection from './SortableSection'
+import Divider from '@components/cms/ui/Divider'
 
 type PageSectionRendererProps = {
   id: string
   name: string
   props: Record<string, unknown>
   idx: number
+  showDivider?: boolean
 }
 
 const PageSectionRenderer: React.FC<PageSectionRendererProps> = ({
@@ -15,6 +17,7 @@ const PageSectionRenderer: React.FC<PageSectionRendererProps> = ({
   name,
   props,
   idx,
+  showDivider,
 }) => {
   const meta = sectionList.find(
     (item) => item.id === name || item.name === name
@@ -25,9 +28,11 @@ const PageSectionRenderer: React.FC<PageSectionRendererProps> = ({
 
   return (
     <SortableSection id={id} key={id}>
+      {showDivider && <Divider />}
       <Inspectable
         id={id}
         name={name}
+        showInspectorOverlay={showDivider ? false : true}
         overlayLabelPosition={idx === 0 ? 'below' : 'above'}
       >
         <Component {...props} />
