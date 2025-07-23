@@ -5,7 +5,7 @@ import type { PageStore } from '@src/types'
 export const usePageStore = create<PageStore>((set) => ({
   sections: [
     {
-      id: uuidv4(),
+      id: 'canvas-nav',
       name: 'Nav',
       props: {
         items: [
@@ -19,7 +19,7 @@ export const usePageStore = create<PageStore>((set) => ({
       },
     },
     {
-      id: uuidv4(),
+      id: 'canvas-hero',
       name: 'Hero',
       props: {
         title: 'Welcome to Site Kit Builder',
@@ -33,7 +33,7 @@ export const usePageStore = create<PageStore>((set) => ({
       },
     },
     {
-      id: uuidv4(),
+      id: 'canvas-card-grid',
       name: 'CardGrid',
       props: {
         title: 'Featured Cards',
@@ -57,7 +57,7 @@ export const usePageStore = create<PageStore>((set) => ({
       },
     },
     {
-      id: uuidv4(),
+      id: 'canvas-info-text',
       name: 'InfoText',
       props: {
         title: 'Lorem ipsum dolor sit amet',
@@ -90,7 +90,7 @@ export const usePageStore = create<PageStore>((set) => ({
       },
     },
     {
-      id: uuidv4(),
+      id: 'canvas-footer',
       name: 'Footer',
       props: {
         siteName: 'Site Kit Builder',
