@@ -12,6 +12,7 @@ export type InfoTextProps = {
   formats?: FormatItem[]
   imageSrc?: string
   imageAlt?: string
+  background?: string
 }
 
 const defaultFormats: FormatItem[] = [
@@ -43,6 +44,7 @@ const InfoText: React.FC<InfoTextProps> = ({
   formats = defaultFormats,
   imageSrc = 'https://picsum.photos/id/42/340/340',
   imageAlt = 'Learning formats preview',
+  background = 'white',
 }) => (
   <Box
     as="section"
@@ -51,6 +53,7 @@ const InfoText: React.FC<InfoTextProps> = ({
     align="center"
     justify="center"
     pad={{ vertical: 'xlarge', horizontal: 'large' }}
+    background={background}
   >
     <Box width="60%">
       <Heading
