@@ -3,14 +3,10 @@ import { usePageStore } from '@stores/usePageStore'
 
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import PageSectionRenderer from './PageSectionRenderer'
-import { useDroppable } from '@dnd-kit/core'
+import DroppableCanvas from './DroppableCanvas'
 
 const PageCanvas = () => {
   const sections = usePageStore((state) => state.sections)
-
-  const { setNodeRef } = useDroppable({
-    id: 'page-canvas',
-  })
 
   const sectionIds = sections.map((s) => s.id)
 
@@ -25,7 +21,7 @@ const PageCanvas = () => {
         items={sectionIds}
         strategy={verticalListSortingStrategy}
       >
-        <div ref={setNodeRef}>
+        <DroppableCanvas>
           {sections.map(({ id, name, props }, idx) => (
             <PageSectionRenderer
               key={id}
@@ -35,7 +31,7 @@ const PageCanvas = () => {
               idx={idx}
             />
           ))}
-        </div>
+        </DroppableCanvas>
       </SortableContext>
     </Box>
   )
