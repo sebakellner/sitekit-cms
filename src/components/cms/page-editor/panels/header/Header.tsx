@@ -1,17 +1,10 @@
 import React from 'react'
-import { Box, Button, Text } from 'grommet'
+import { Box, Button } from 'grommet'
 
 import PanelBox from '@components/cms/ui/panel/PanelBox'
 import DropDown, { type DropDownOption } from '@components/cms/ui/DropDown'
 import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
-import {
-  Globe,
-  Monitor,
-  Save,
-  Smartphone,
-  StickyNote,
-  Tablet,
-} from 'lucide-react'
+import { Globe, Monitor, Smartphone, StickyNote, Tablet } from 'lucide-react'
 
 const languageOptions: DropDownOption[] = [
   { label: 'English (United States)', value: 'en-US' },
@@ -142,12 +135,6 @@ const Header = () => {
         width="auto"
         flex={false}
       >
-        <Box direction="row" align="center" gap="xsmall">
-          <Save size={16} color="green" />
-          <Text size="xsmall" color="dark-4">
-            Changes saved
-          </Text>
-        </Box>
         <Button
           label="Preview"
           size="small"
