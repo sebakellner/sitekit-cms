@@ -7,6 +7,7 @@ import type { ElementSelectorItemProps } from './ElementSelectorItem'
 import ElementSelectorSearchInput from './ElementSelectorSearchInput'
 import PanelBoxCollapsible from '@components/cms/ui/panel/PanelBoxCollapsible'
 import { sectionList } from '@lib/sectionMap'
+import DraggableSelectorItem from './DraggableSelectorItem'
 
 const ElementSelector = () => {
   const categorized: Record<string, ElementSelectorItemProps[]> = {}
@@ -45,7 +46,12 @@ const ElementSelector = () => {
               collapsedGap="small"
             >
               {items.map((item) => (
-                <ElementSelectorItem key={item.title} {...item} />
+                <DraggableSelectorItem
+                  key={`selector-${item.title}`}
+                  id={item.title}
+                >
+                  <ElementSelectorItem {...item} />
+                </DraggableSelectorItem>
               ))}
             </PanelBoxCollapsible>
           ))}
