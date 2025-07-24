@@ -5,7 +5,7 @@ import {
   BEM_BORDER_SIZE_SELECTED,
   BEM_BORDER_SIZE_DEFAULT,
   BEM_BORDER_ZINDEX,
-} from '@constants/inspector.ts'
+} from '@constants/inspector'
 
 interface OverlayBorderProps {
   isSelected: boolean

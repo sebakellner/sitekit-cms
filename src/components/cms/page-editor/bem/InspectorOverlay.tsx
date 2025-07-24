@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { Box } from 'grommet'
 import { OverlayBorder } from './OverlayBorder'
 import { OverlayLabel } from './OverlayLabel'
-import { BEM_CHILD_ZINDEX } from '@constants/inspector.ts'
+import { BEM_CHILD_ZINDEX } from '@constants/inspector'
 
 interface InspectorOverlayProps {
   label: string

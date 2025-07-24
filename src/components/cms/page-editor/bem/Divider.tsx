@@ -1,5 +1,5 @@
 import { Box } from 'grommet'
-import { BEM_BORDER_COLOR } from '@constants/inspector.ts'
+import { BEM_BORDER_COLOR } from '@constants/inspector'
 
 const Divider: React.FC = () => (
   <Box
