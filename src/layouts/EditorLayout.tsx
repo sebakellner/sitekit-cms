@@ -1,19 +1,23 @@
-import { DndContext, closestCorners, type DragStartEvent } from '@dnd-kit/core'
-import { useState } from 'react'
+import { DndContext, DragOverlay, closestCorners } from '@dnd-kit/core'
 import { usePageDnD } from '@hooks/usePageDnD'
 import { Grid, Box } from 'grommet'
+
 import PanelPageEditor from '@components/cms/page-editor/panels/editor/PanelPageEditor'
 import ElementSelector from '@components/cms/page-editor/panels/sidebar/selector/ElementSelector'
 import Sidebar from '@components/cms/page-editor/panels/sidebar/Sidebar'
 import PageCanvas from '@components/cms/page-editor/canvas/PageCanvas'
 
 function EditorLayout() {
-  const { sensors, overSectionId, handleDragEnd, handleDragOver } = usePageDnD()
-  const [activeId, setActiveId] = useState<string | null>(null)
-
-  const handleDragStart = (event: DragStartEvent) => {
-    setActiveId(event.active?.id ? String(event.active.id) : null)
-  }
+  const {
+    sensors,
+    overSectionId,
+    handleDragEnd,
+    handleDragOver,
+    handleDragStart,
+    activeId,
+    active,
+    isDragging,
+  } = usePageDnD()
 
   return (
     <DndContext
@@ -57,6 +61,12 @@ function EditorLayout() {
           <PanelPageEditor />
         </Box>
       </Grid>
+
+      <DragOverlay>
+        {isDragging && active?.data?.current?.renderDragOverlay
+          ? active.data.current.renderDragOverlay()
+          : null}
+      </DragOverlay>
     </DndContext>
   )
 }
