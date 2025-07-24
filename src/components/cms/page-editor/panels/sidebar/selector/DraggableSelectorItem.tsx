@@ -1,12 +1,12 @@
 import { useDraggable } from '@dnd-kit/core'
 import { Box } from 'grommet'
 
+import { DRAG_OVERLAY_OPACITY } from '@constants/DnD'
+
 interface DraggableSelectorItemProps {
   id: string
   children: React.ReactNode
 }
-
-const DRAG_OVERLAY_OPACITY = 0.5
 
 const DraggableSelectorItem = ({
   id,

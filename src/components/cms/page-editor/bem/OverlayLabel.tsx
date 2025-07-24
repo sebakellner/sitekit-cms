@@ -9,8 +9,7 @@ import {
   BEM_LABEL_ROUND_SIZE,
   BEM_LABEL_ZINDEX,
   BEM_BORDER_COLOR,
-} from './constants'
-
+} from '@constants/inspector'
 interface OverlayLabelProps {
   label: string
   isSelected: boolean

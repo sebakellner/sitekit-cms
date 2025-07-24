@@ -2,7 +2,7 @@ import React from 'react'
 import { Inspectable } from '../bem/Inspectable'
 import { sectionList } from '@lib/sectionMap'
 import SortableSection from './SortableSection'
-import Divider from '@components/cms/ui/Divider'
+import Divider from '@components/cms/page-editor/bem/Divider'
 
 type PageSectionRendererProps = {
   id: string
