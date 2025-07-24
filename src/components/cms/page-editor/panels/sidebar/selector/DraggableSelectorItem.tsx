@@ -6,6 +6,8 @@ interface DraggableSelectorItemProps {
   children: React.ReactNode
 }
 
+const DRAG_OVERLAY_OPACITY = 0.5
+
 const DraggableSelectorItem = ({
   id,
   children,
@@ -17,7 +19,7 @@ const DraggableSelectorItem = ({
         <Box
           pad="xsmall"
           round="small"
-          background={{ color: 'dark-1', opacity: 0.5 }}
+          background={{ color: 'dark-1', opacity: DRAG_OVERLAY_OPACITY }}
         >
           {children}
         </Box>
