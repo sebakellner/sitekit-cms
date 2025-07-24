@@ -32,7 +32,7 @@ const PageSectionRenderer: React.FC<PageSectionRendererProps> = ({
       <Inspectable
         id={id}
         name={name}
-        showInspectorOverlay={showDivider ? false : true}
+        showInspectorOverlay={!showDivider}
         overlayLabelPosition={idx === 0 ? 'below' : 'above'}
       >
         <Component {...props} />
