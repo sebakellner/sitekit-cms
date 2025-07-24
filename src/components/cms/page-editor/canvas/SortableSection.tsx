@@ -5,6 +5,8 @@ import {
   DRAGGING_Z_INDEX,
   NORMAL_Z_INDEX,
   DRAGGING_MIN_HEIGHT,
+  DRAGGING_OPACITY,
+  NORMAL_DRAGGING_OPACITY,
 } from './constants'
 import type { PageStore } from '@src/types'
 
@@ -23,8 +25,12 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
     transform,
     transition,
     isDragging,
-    isOver,
-  } = useSortable({ id })
+  } = useSortable({
+    id,
+    data: {
+      renderDragOverlay: () => children,
+    },
+  })
 
   const selectSection = usePageStore(selectSectionSelector)
 
@@ -39,7 +45,7 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
       transform: transform
         ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
         : undefined,
-      transition: transition,
+      transition: transition ?? undefined,
       touchAction: 'none',
       width: '100%',
       boxSizing: 'border-box',
@@ -47,8 +53,9 @@ const SortableSection: React.FC<Props> = ({ id, children }) => {
       zIndex: isDragging ? DRAGGING_Z_INDEX : NORMAL_Z_INDEX,
       position: 'relative',
       minHeight: isDragging ? DRAGGING_MIN_HEIGHT : undefined,
+      opacity: isDragging ? DRAGGING_OPACITY : NORMAL_DRAGGING_OPACITY,
     }),
-    [transform, transition, isDragging, isOver]
+    [transform, isDragging, transition]
   )
 
   return (
