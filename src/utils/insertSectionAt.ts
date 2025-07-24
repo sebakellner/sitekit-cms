@@ -1,23 +1,45 @@
-import type { Section } from '@src/types'
+import { componentsRegistry } from '@src/lib/componentRegistry'
 import { v4 as uuidv4 } from 'uuid'
-import { SELECTOR_PREFIX } from '@constants/DnD'
+import type { Section } from '@src/types'
+import type { ComponentMeta } from '@components/site/types'
 
-export function insertSectionAtUtil(
+export async function insertSectionAtUtil(
   sections: Section[],
   setSections: (sections: Section[]) => void,
-  id: string,
+  name: string,
   index: number
 ) {
-  const sectionId = String(id).startsWith(SELECTOR_PREFIX)
-    ? String(id).replace(SELECTOR_PREFIX, '')
-    : id
-  const uniqueId = `${sectionId}-${uuidv4()}`
-  const newSection = {
-    id: uniqueId,
-    name: sectionId,
-    props: {},
+  const loader = componentsRegistry[name as keyof typeof componentsRegistry]
+  if (!loader) {
+    console.warn(`Component "${name}" not found in registry.`)
+    return
   }
-  const newSections = [...sections]
-  newSections.splice(index, 0, newSection)
-  setSections(newSections)
+
+  const metaModule = await loader()
+
+  const meta = metaModule.default as ComponentMeta
+
+  let defaultProps: Record<string, unknown> = {}
+  if (meta && meta.props) {
+    defaultProps = Object.fromEntries(
+      Object.entries(meta.props).map(([key, val]) => [
+        key,
+        (val as { default: unknown }).default,
+      ])
+    )
+  }
+
+  const newSection: Section = {
+    id: uuidv4(),
+    name,
+    props: defaultProps,
+  }
+
+  const updatedSections = [
+    ...sections.slice(0, index),
+    newSection,
+    ...sections.slice(index),
+  ]
+
+  setSections(updatedSections)
 }
