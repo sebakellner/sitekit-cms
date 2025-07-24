@@ -1,5 +1,9 @@
 import type { ComponentMeta } from '@components/site/types'
 
+function isDefaultProp(val: unknown): val is { default: unknown } {
+  return typeof val === 'object' && val !== null && 'default' in val
+}
+
 export function extractDefaultProps(
   props: ComponentMeta['props'] | undefined
 ): Record<string, unknown> {
@@ -7,7 +11,7 @@ export function extractDefaultProps(
   return Object.fromEntries(
     Object.entries(props).map(([key, val]) => [
       key,
-      (val as { default: unknown }).default,
+      isDefaultProp(val) ? val.default : undefined,
     ])
   )
 }
