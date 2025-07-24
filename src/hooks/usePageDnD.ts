@@ -13,7 +13,6 @@ import {
 export function usePageDnD() {
   const sections = usePageStore((state) => state.sections)
   const setSections = usePageStore((state) => state.setSections)
-  const addSection = usePageStore((state) => state.addSection)
 
   const [overSectionId, setOverSectionId] = useState<string | null>(null)
   const [activeId, setActiveId] = useState<string | null>(null)
@@ -54,18 +53,14 @@ export function usePageDnD() {
         !sections.some((s) => s.id === activeIdStr)
 
       if (isNewSection) {
-        if (sections.length === 0) {
-          const sectionId = activeIdStr.startsWith('selector-')
-            ? activeIdStr.replace('selector-', '')
-            : activeIdStr
-          addSection(sectionId, {})
-        } else {
-          const overIndex = sections.findIndex((s) => s.id === overIdStr)
-          insertSectionAt(
-            activeIdStr,
-            overIndex !== -1 ? overIndex : sections.length
-          )
-        }
+        const sectionId = activeIdStr.startsWith('selector-')
+          ? activeIdStr.replace('selector-', '')
+          : activeIdStr
+        const overIndex = sections.findIndex((s) => s.id === overIdStr)
+        insertSectionAt(
+          sectionId,
+          overIndex !== -1 ? overIndex : sections.length
+        )
       } else {
         const oldIndex = sections.findIndex((s) => s.id === activeIdStr)
         const newIndex = sections.findIndex((s) => s.id === overIdStr)
@@ -77,7 +72,7 @@ export function usePageDnD() {
       setActive(null)
       setIsDragging(false)
     },
-    [sections, setSections, addSection, insertSectionAt]
+    [sections, setSections, insertSectionAt]
   )
 
   return {
