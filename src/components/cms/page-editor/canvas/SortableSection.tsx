@@ -7,7 +7,7 @@ import {
   DRAGGING_MIN_HEIGHT,
   DRAGGING_OPACITY,
   NORMAL_DRAGGING_OPACITY,
-} from './constants'
+} from '@constants/DnD'
 import type { PageStore } from '@src/types'
 
 type Props = {

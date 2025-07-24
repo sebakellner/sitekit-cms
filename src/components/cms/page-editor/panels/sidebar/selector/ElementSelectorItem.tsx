@@ -1,12 +1,12 @@
 import { Box, Text } from 'grommet'
 
+import { SUPPORTED_IMAGE_EXTENSIONS } from '@constants/image'
+
 export type ElementSelectorItemProps = {
   title: string
   description: string
   preview?: string
 }
-
-const SUPPORTED_IMAGE_EXTENSIONS = ['.png', '.jpg']
 
 const isImageUrl = (url: string): boolean => {
   return (

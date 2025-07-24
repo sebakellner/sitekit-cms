@@ -17,6 +17,7 @@ const ElementSelector = () => {
     if (!categorized[category]) categorized[category] = []
     categorized[category].push({
       title: meta.name,
+      description: meta.description || '',
       preview: meta.preview,
     })
   })

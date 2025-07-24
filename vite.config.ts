@@ -16,6 +16,7 @@ export default defineConfig({
       '@src': '/src',
       '@types': '/src/types',
       '@lib': '/src/lib',
+      '@constants': '/src/constants',
     },
   },
 })

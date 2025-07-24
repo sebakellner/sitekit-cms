@@ -34,7 +34,8 @@
       "@layouts/*": ["src/layouts/*"],
       "@src/*": ["src/*"],
       "@types/*": ["src/types/*"],
-      "@lib/*": ["src/lib/*"]
+      "@lib/*": ["src/lib/*"],
+      "@constants/*": ["src/constants/*"]
     }
   },
   "include": ["src"]
