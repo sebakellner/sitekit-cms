@@ -17,7 +17,7 @@ const isImageUrl = (url: string): boolean => {
 
 const ElementSelectorItem: React.FC<ElementSelectorItemProps> = ({
   title,
-  preview,
+  preview = '',
 }) => {
   const hasImage = preview && isImageUrl(preview)
 
