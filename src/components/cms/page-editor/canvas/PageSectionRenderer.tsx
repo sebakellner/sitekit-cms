@@ -1,8 +1,8 @@
 import React from 'react'
 import { Inspectable } from '../bem/Inspectable'
-import { sectionList } from '@lib/sectionMap'
 import SortableSection from './SortableSection'
 import Divider from '@components/cms/page-editor/bem/Divider'
+import { useComponentMeta } from '@hooks/useComponentMeta'
 
 type PageSectionRendererProps = {
   id: string
@@ -19,12 +19,11 @@ const PageSectionRenderer: React.FC<PageSectionRendererProps> = ({
   idx,
   showDivider,
 }) => {
-  const meta = sectionList.find(
-    (item) => item.id === name || item.name === name
-  )
-  const Component = meta?.component
+  const { loading, meta } = useComponentMeta(name)
 
-  if (!Component) return null
+  if (loading || !meta) return null
+
+  const Component = meta.component
 
   return (
     <SortableSection id={id} key={id}>

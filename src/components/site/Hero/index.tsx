@@ -18,7 +18,7 @@ const Hero: React.FC<HeroProps> = ({
   description = 'Create and customize your website easily with our intuitive tools.',
   buttonLabel = 'Get Started',
   onButtonClick,
-  background = { color: 'white' },
+  background = 'white',
   headingColor = 'black',
   textColor = 'dark-2',
   buttonColor,

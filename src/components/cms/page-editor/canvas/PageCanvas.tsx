@@ -12,6 +12,7 @@ interface PageCanvasProps {
 
 const PageCanvas = ({ overSectionId, activeId }: PageCanvasProps) => {
   const sections = usePageStore((state) => state.sections)
+
   const sectionIds = sections.map((s) => s.id)
   const isDraggingFromSelector =
     activeId && String(activeId).startsWith(SELECTOR_PREFIX)
