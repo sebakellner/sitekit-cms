@@ -1,4 +1,5 @@
 import { useDraggable } from '@dnd-kit/core'
+import { Box } from 'grommet'
 
 interface DraggableSelectorItemProps {
   id: string
@@ -9,18 +10,23 @@ const DraggableSelectorItem = ({
   id,
   children,
 }: DraggableSelectorItemProps) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+  const { attributes, listeners, setNodeRef } = useDraggable({
     id: id,
+    data: {
+      renderDragOverlay: () => (
+        <Box
+          pad="xsmall"
+          round="small"
+          background={{ color: 'dark-1', opacity: 0.5 }}
+        >
+          {children}
+        </Box>
+      ),
+    },
   })
 
-  const style = transform
-    ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      }
-    : undefined
-
   return (
-    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <div ref={setNodeRef} {...listeners} {...attributes}>
       {children}
     </div>
   )
