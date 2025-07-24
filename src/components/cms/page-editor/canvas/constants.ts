@@ -1,4 +1,4 @@
-export const DRAGGING_Z_INDEX = 9999
+export const DRAGGING_Z_INDEX = 11
 export const NORMAL_Z_INDEX = 1
 export const DRAGGING_MIN_HEIGHT = 40
 export const DRAGGING_BG = '#f0f0f0'
