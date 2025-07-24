@@ -68,11 +68,11 @@ const Header = () => {
 
       <Box direction="row" height="100%">
         <PanelBox
-          borderSide="horizontal"
+          borderSide={false}
           pad={{ horizontal: 'medium', vertical: 'small' }}
           direction="row"
           width="auto"
-          gap="none"
+          gap="small"
           height="100%"
           flex={false}
         >
@@ -87,16 +87,6 @@ const Header = () => {
               }
             }}
           />
-        </PanelBox>
-        <PanelBox
-          borderSide="right"
-          pad={{ horizontal: 'medium', vertical: 'small' }}
-          direction="row"
-          width="auto"
-          gap="none"
-          height="100%"
-          flex={false}
-        >
           <DropDown
             icon={<StickyNote size={16} />}
             options={pageOptions}
@@ -105,16 +95,6 @@ const Header = () => {
             onSelect={setSelectedPage}
             defaultValue="home"
           />
-        </PanelBox>
-        <PanelBox
-          borderSide="right"
-          pad={{ horizontal: 'medium', vertical: 'small' }}
-          direction="row"
-          width="auto"
-          gap="none"
-          height="100%"
-          flex={false}
-        >
           <DropDown
             icon={
               deviceOptions.find((opt) => opt.value === selectedDevice)?.icon
