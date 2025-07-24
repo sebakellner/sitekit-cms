@@ -26,8 +26,21 @@ export function useComponentMeta(name: string) {
       loader()
         .then((mod) => {
           const loadedMeta = (mod as { default: unknown }).default
-          const isComponentMeta = (obj: unknown): obj is ComponentMeta =>
-            !!obj && typeof obj === 'object' && 'name' in obj && 'props' in obj
+
+          const isComponentMeta = (obj: unknown): obj is ComponentMeta => {
+            if (!obj || typeof obj !== 'object') return false
+            const o = obj as Record<string, unknown>
+            return (
+              'name' in o &&
+              typeof o.name === 'string' &&
+              'props' in o &&
+              typeof o.props === 'object' &&
+              o.props !== null &&
+              'component' in o &&
+              (typeof o.component === 'function' ||
+                typeof o.component === 'string')
+            )
+          }
 
           if (isComponentMeta(loadedMeta)) {
             metaCache.set(name, loadedMeta)
