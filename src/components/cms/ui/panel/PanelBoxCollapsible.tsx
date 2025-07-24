@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import PanelBox, { type PanelBoxProps } from './PanelBox'
 
 import { Box, Button, Heading } from 'grommet'
-import { Down } from 'grommet-icons'
+import { ChevronDown } from 'lucide-react'
 
 type PanelCollapsibleProps = {
   title: ReactNode
@@ -40,7 +40,8 @@ const PanelCollapsible = ({
         </Heading>
         <Button
           icon={
-            <Down
+            <ChevronDown
+              size={16}
               style={{
                 transform: collapsed ? 'rotate(-90deg)' : 'none',
                 transition: 'transform 0.2s',
