@@ -42,7 +42,7 @@ const meta: ComponentMeta = {
     },
     buttonColor: {
       type: ['color', 'string'],
-      default: undefined,
+      default: 'brand',
       editor: 'colorPicker',
     },
     buttonSize: {
