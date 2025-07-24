@@ -4,7 +4,7 @@ import { SUPPORTED_IMAGE_EXTENSIONS } from '@constants/image'
 
 export type ElementSelectorItemProps = {
   title: string
-  description: string
+  description?: string
   preview?: string
 }
 
@@ -18,6 +18,7 @@ const isImageUrl = (url: string): boolean => {
 const ElementSelectorItem: React.FC<ElementSelectorItemProps> = ({
   title,
   preview = '',
+  description = '',
 }) => {
   const hasImage = preview && isImageUrl(preview)
 
@@ -40,8 +41,11 @@ const ElementSelectorItem: React.FC<ElementSelectorItemProps> = ({
         round="small"
       />
       <Box gap="xsmall" pad="xsmall">
-        <Text size="small" color="light-4">
+        <Text size="small" color="light-4" weight="bold">
           {title}
+        </Text>
+        <Text size="small" color="light-4" truncate>
+          {description}
         </Text>
       </Box>
     </Box>
