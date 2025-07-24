@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import type { Active } from '@dnd-kit/core'
+import type { Active, DragStartEvent, DragOverEvent } from '@dnd-kit/core'
 import { usePageStore } from '@stores/usePageStore'
 import { arrayMove } from '@dnd-kit/sortable'
 import { insertSectionAtUtil } from '@utils/insertSectionAt'
@@ -15,27 +15,20 @@ export function usePageDnD() {
   const setSections = usePageStore((state) => state.setSections)
   const addSection = usePageStore((state) => state.addSection)
 
-  // Drag state
   const [overSectionId, setOverSectionId] = useState<string | null>(null)
   const [activeId, setActiveId] = useState<string | null>(null)
   const [active, setActive] = useState<Active | null>(null)
   const [isDragging, setIsDragging] = useState(false)
 
-  const handleDragStart = useCallback(
-    (event: import('@dnd-kit/core').DragStartEvent) => {
-      setActiveId(event.active?.id ? String(event.active.id) : null)
-      setActive(event.active)
-      setIsDragging(true)
-    },
-    []
-  )
+  const handleDragStart = useCallback((event: DragStartEvent) => {
+    setActiveId(event.active?.id ? String(event.active.id) : null)
+    setActive(event.active)
+    setIsDragging(true)
+  }, [])
 
-  const handleDragOver = useCallback(
-    (event: import('@dnd-kit/core').DragOverEvent) => {
-      setOverSectionId(event.over ? String(event.over.id) : null)
-    },
-    []
-  )
+  const handleDragOver = useCallback((event: DragOverEvent) => {
+    setOverSectionId(event.over ? String(event.over.id) : null)
+  }, [])
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 2 } })
