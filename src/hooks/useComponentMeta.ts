@@ -13,21 +13,36 @@ export function useComponentMeta(name: string) {
     setLoading(true)
 
     if (metaCache.has(name)) {
-      const cached = metaCache.get(name)!
-      setMeta(cached)
-      setLoading(false)
-      return
+      const cached = metaCache.get(name)
+      if (cached) {
+        setMeta(cached)
+        setLoading(false)
+        return
+      }
     }
 
     const loader = componentsRegistry[name as keyof typeof componentsRegistry]
     if (loader) {
       loader()
         .then((mod) => {
-          const loadedMeta = (mod as { default: ComponentMeta }).default
-          metaCache.set(name, loadedMeta)
-          if (isMounted) {
-            setMeta(loadedMeta)
-            setLoading(false)
+          const loadedMeta = (mod as { default: unknown }).default
+          const isComponentMeta = (obj: unknown): obj is ComponentMeta =>
+            !!obj && typeof obj === 'object' && 'name' in obj && 'props' in obj
+
+          if (isComponentMeta(loadedMeta)) {
+            metaCache.set(name, loadedMeta)
+            if (isMounted) {
+              setMeta(loadedMeta)
+              setLoading(false)
+            }
+          } else {
+            if (isMounted) {
+              setMeta(null)
+              setLoading(false)
+            }
+            console.warn(
+              `Component meta for "${name}" is invalid or missing required fields.`
+            )
           }
         })
         .catch(() => {

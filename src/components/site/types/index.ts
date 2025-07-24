@@ -27,7 +27,7 @@ export type ComponentMeta = {
   props: {
     [key: string]: {
       type: ComponentPropType
-      default: string | boolean | number | undefined | void | Array<unknown>
+      default: string | boolean | number | undefined | null | Array<unknown>
       options?: string[]
       editor: ComponentPropEditor
     }
