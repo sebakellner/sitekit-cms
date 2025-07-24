@@ -2,6 +2,7 @@ import { componentsRegistry } from '@src/lib/componentRegistry'
 import { v4 as uuidv4 } from 'uuid'
 import type { Section } from '@src/types'
 import type { ComponentMeta } from '@components/site/types'
+import { extractDefaultProps } from '@src/utils/extractDefaultProps'
 
 export async function insertSectionAtUtil(
   sections: Section[],
@@ -19,15 +20,7 @@ export async function insertSectionAtUtil(
 
   const meta = metaModule.default as ComponentMeta
 
-  let defaultProps: Record<string, unknown> = {}
-  if (meta?.props) {
-    defaultProps = Object.fromEntries(
-      Object.entries(meta.props).map(([key, val]) => [
-        key,
-        (val as { default: unknown }).default,
-      ])
-    )
-  }
+  const defaultProps = extractDefaultProps(meta?.props)
 
   const newSection: Section = {
     id: uuidv4(),
