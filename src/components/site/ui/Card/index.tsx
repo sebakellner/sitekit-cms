@@ -52,11 +52,10 @@ const Card: React.FC<CardProps> = ({
           <Button
             href={buttonHref}
             label={buttonLabel}
-            icon={<LinkNext />}
+            icon={<LinkNext size="small" color="white" />}
             reverse
             color="brand"
             size="medium"
-            primary
           />
         </Box>
       </CardFooter>

@@ -10,6 +10,7 @@ interface InspectableProps {
   name?: string
   children: ReactNode
   overlayLabelPosition?: 'above' | 'below'
+  showInspectorOverlay?: boolean
 }
 
 export const Inspectable: React.FC<InspectableProps> = ({
@@ -17,6 +18,7 @@ export const Inspectable: React.FC<InspectableProps> = ({
   name,
   children,
   overlayLabelPosition = 'above',
+  showInspectorOverlay = true,
 }) => {
   const selectedId = usePageStore((s) => s.selectedId)
   const selectSection = usePageStore((s) => s.selectSection)
@@ -27,7 +29,7 @@ export const Inspectable: React.FC<InspectableProps> = ({
 
   const isSelected = selectedId === id
 
-  const showOverlay = hovered || isSelected
+  const showOverlay = showInspectorOverlay && (hovered || isSelected)
 
   const handleMouseEnter = () => setHovered(true)
   const handleMouseLeave = () => setHovered(false)
