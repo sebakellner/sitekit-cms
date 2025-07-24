@@ -42,7 +42,7 @@ export function usePageDnD() {
   )
 
   const handleDragEnd = useCallback(
-    (event: DragEndEvent) => {
+    async (event: DragEndEvent) => {
       const { active, over } = event
       if (!over) return
 
@@ -58,7 +58,7 @@ export function usePageDnD() {
           ? activeIdStr.replace(SELECTOR_PREFIX, '')
           : activeIdStr
         const overIndex = sections.findIndex((s) => s.id === overIdStr)
-        insertSectionAt(
+        await insertSectionAt(
           sectionId,
           overIndex !== -1 ? overIndex : sections.length
         )

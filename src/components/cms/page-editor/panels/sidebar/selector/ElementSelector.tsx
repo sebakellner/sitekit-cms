@@ -6,14 +6,16 @@ import ElementSelectorItem from './ElementSelectorItem'
 import type { ElementSelectorItemProps } from './ElementSelectorItem'
 import ElementSelectorSearchInput from './ElementSelectorSearchInput'
 import PanelBoxCollapsible from '@components/cms/ui/panel/PanelBoxCollapsible'
-import { sectionList } from '@lib/sectionMap'
 import DraggableSelectorItem from './DraggableSelectorItem'
 import { SELECTOR_PREFIX } from '@constants/DnD'
 
-const ElementSelector = () => {
-  const categorized: Record<string, ElementSelectorItemProps[]> = {}
+import { useAllComponentMetas } from '@hooks/useAllComponentMetas'
 
-  sectionList.forEach((meta) => {
+const ElementSelector = () => {
+  const { metas, loading } = useAllComponentMetas()
+
+  const categorized: Record<string, ElementSelectorItemProps[]> = {}
+  metas.forEach((meta) => {
     const category = meta.category || 'Other'
     if (!categorized[category]) categorized[category] = []
     categorized[category].push({
@@ -22,6 +24,8 @@ const ElementSelector = () => {
       preview: meta.preview,
     })
   })
+
+  if (loading) return <PanelWrapper>Loading...</PanelWrapper>
 
   return (
     <PanelWrapper borderSide="right">

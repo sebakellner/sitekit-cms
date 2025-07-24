@@ -1,6 +1,9 @@
 import { create } from 'zustand'
 import { v4 as uuidv4 } from 'uuid'
 import type { PageStore } from '@src/types'
+import type { ComponentMeta } from '@components/site/types'
+import { componentsRegistry } from '@src/lib/componentRegistry'
+import { extractDefaultProps } from '@src/utils/extractDefaultProps'
 
 export const usePageStore = create<PageStore>((set) => ({
   sections: [
@@ -122,8 +125,27 @@ export const usePageStore = create<PageStore>((set) => ({
         s.id === id ? { ...s, props: { ...s.props, ...newProps } } : s
       ),
     })),
-  addSection: (name, props = {}) =>
+  addSection: async (name) => {
+    const loader = componentsRegistry[name as keyof typeof componentsRegistry]
+    if (!loader) return
+    const metaModule = await loader()
+    const hasDefaultExport = (obj: unknown): obj is { default: unknown } =>
+      !!obj && typeof obj === 'object' && 'default' in obj
+    const isComponentMeta = (obj: unknown): obj is ComponentMeta =>
+      !!obj && typeof obj === 'object' && 'name' in obj && 'props' in obj
+    let meta: ComponentMeta | null = null
+    if (hasDefaultExport(metaModule) && isComponentMeta(metaModule.default)) {
+      meta = metaModule.default
+    }
     set((state) => ({
-      sections: [...state.sections, { id: uuidv4(), name, props }],
-    })),
+      sections: [
+        ...state.sections,
+        {
+          id: uuidv4(),
+          name,
+          props: extractDefaultProps(meta?.props),
+        },
+      ],
+    }))
+  },
 }))
