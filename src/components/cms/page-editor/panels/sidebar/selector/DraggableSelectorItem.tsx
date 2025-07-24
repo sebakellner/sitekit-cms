@@ -11,7 +11,7 @@ const DraggableSelectorItem = ({
   children,
 }: DraggableSelectorItemProps) => {
   const { attributes, listeners, setNodeRef } = useDraggable({
-    id: id,
+    id,
     data: {
       renderDragOverlay: () => (
         <Box
