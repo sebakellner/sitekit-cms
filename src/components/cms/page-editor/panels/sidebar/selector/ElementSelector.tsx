@@ -8,6 +8,7 @@ import ElementSelectorSearchInput from './ElementSelectorSearchInput'
 import PanelBoxCollapsible from '@components/cms/ui/panel/PanelBoxCollapsible'
 import { sectionList } from '@lib/sectionMap'
 import DraggableSelectorItem from './DraggableSelectorItem'
+import { SELECTOR_PREFIX } from '@constants/DnD'
 
 const ElementSelector = () => {
   const categorized: Record<string, ElementSelectorItemProps[]> = {}
@@ -47,8 +48,8 @@ const ElementSelector = () => {
             >
               {items.map((item) => (
                 <DraggableSelectorItem
-                  key={`selector-${item.title}`}
-                  id={`selector-${item.title}`}
+                  key={`${SELECTOR_PREFIX}${item.title}`}
+                  id={`${SELECTOR_PREFIX}${item.title}`}
                 >
                   <ElementSelectorItem {...item} />
                 </DraggableSelectorItem>

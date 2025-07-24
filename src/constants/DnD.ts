@@ -1,3 +1,4 @@
+export const SELECTOR_PREFIX = 'selector-'
 export const DRAG_OVERLAY_OPACITY = 0.5
 export const DRAGGING_Z_INDEX = 999
 export const NORMAL_Z_INDEX = 1

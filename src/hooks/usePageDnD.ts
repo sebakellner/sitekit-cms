@@ -9,6 +9,7 @@ import {
   useSensors,
   type DragEndEvent,
 } from '@dnd-kit/core'
+import { SELECTOR_PREFIX } from '@constants/DnD'
 
 export function usePageDnD() {
   const sections = usePageStore((state) => state.sections)
@@ -49,12 +50,12 @@ export function usePageDnD() {
       const overIdStr = String(over.id)
 
       const isNewSection =
-        activeIdStr.startsWith('selector-') ||
+        activeIdStr.startsWith(SELECTOR_PREFIX) ||
         !sections.some((s) => s.id === activeIdStr)
 
       if (isNewSection) {
-        const sectionId = activeIdStr.startsWith('selector-')
-          ? activeIdStr.replace('selector-', '')
+        const sectionId = activeIdStr.startsWith(SELECTOR_PREFIX)
+          ? activeIdStr.replace(SELECTOR_PREFIX, '')
           : activeIdStr
         const overIndex = sections.findIndex((s) => s.id === overIdStr)
         insertSectionAt(

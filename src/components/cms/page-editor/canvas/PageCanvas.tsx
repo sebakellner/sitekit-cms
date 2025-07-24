@@ -1,4 +1,5 @@
 import { Box } from 'grommet'
+import { SELECTOR_PREFIX } from '@constants/DnD'
 import { usePageStore } from '@stores/usePageStore'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import PageSectionRenderer from './PageSectionRenderer'
@@ -13,7 +14,7 @@ const PageCanvas = ({ overSectionId, activeId }: PageCanvasProps) => {
   const sections = usePageStore((state) => state.sections)
   const sectionIds = sections.map((s) => s.id)
   const isDraggingFromSelector =
-    activeId && String(activeId).startsWith('selector-')
+    activeId && String(activeId).startsWith(SELECTOR_PREFIX)
 
   return (
     <Box
