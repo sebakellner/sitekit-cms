@@ -5,13 +5,14 @@ function isDefaultProp(val: unknown): val is { default: unknown } {
 }
 
 export function extractDefaultProps(
-  props: ComponentMeta['props'] | undefined
+  props: ComponentMeta['props'] | undefined,
+  fallback: unknown = undefined
 ): Record<string, unknown> {
   if (!props) return {}
   return Object.fromEntries(
     Object.entries(props).map(([key, val]) => [
       key,
-      isDefaultProp(val) ? val.default : undefined,
+      isDefaultProp(val) ? val.default : fallback,
     ])
   )
 }
