@@ -9,9 +9,18 @@ export function useAllComponentMetas() {
   useEffect(() => {
     let isMounted = true
     const loaders = Object.values(componentsRegistry).map((loader) => loader())
-    Promise.all(loaders).then((mods) => {
+    Promise.allSettled(loaders).then((results) => {
       if (isMounted) {
-        setMetas(mods.map((mod) => (mod as { default: ComponentMeta }).default))
+        const metas = results
+          .filter(
+            (r): r is PromiseFulfilledResult<{ default: ComponentMeta }> =>
+              r.status === 'fulfilled' &&
+              typeof r.value === 'object' &&
+              r.value !== null &&
+              'default' in r.value
+          )
+          .map((r) => r.value.default)
+        setMetas(metas)
         setLoading(false)
       }
     })

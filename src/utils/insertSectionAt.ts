@@ -20,7 +20,7 @@ export async function insertSectionAtUtil(
   const meta = metaModule.default as ComponentMeta
 
   let defaultProps: Record<string, unknown> = {}
-  if (meta && meta.props) {
+  if (meta?.props) {
     defaultProps = Object.fromEntries(
       Object.entries(meta.props).map(([key, val]) => [
         key,

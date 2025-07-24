@@ -136,7 +136,7 @@ export const usePageStore = create<PageStore>((set) => ({
           id: uuidv4(),
           name,
           props: Object.fromEntries(
-            Object.entries(meta.props).map(([key, val]) => [
+            Object.entries(meta?.props ?? {}).map(([key, val]) => [
               key,
               (val as { default: unknown }).default,
             ])
