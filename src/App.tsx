@@ -1,5 +1,5 @@
 import { DefaultLayout, EditorLayout } from '@components/cms/layouts'
-import './App.css'
+import './styles/global.css'
 
 function App() {
   return (
