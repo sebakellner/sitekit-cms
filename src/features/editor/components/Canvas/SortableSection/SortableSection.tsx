@@ -8,7 +8,7 @@ import {
   DRAGGING_OPACITY,
   NORMAL_DRAGGING_OPACITY,
 } from '@src/features/editor/constants/DnD'
-import type { PageStore } from '@src/types'
+import type { PageStore } from '@features/editor/types'
 import type { SortableSectionProps } from './SortableSection.types'
 
 const selectSectionSelector = (state: PageStore) => state.selectSection

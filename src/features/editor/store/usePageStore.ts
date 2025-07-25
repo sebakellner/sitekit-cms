@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { v4 as uuidv4 } from 'uuid'
-import type { PageStore } from '@src/types'
+import type { PageStore } from '@features/editor/types'
 import type { ComponentMeta } from '@components/site/types'
 import { componentsRegistry } from '@src/lib/componentRegistry'
 import { extractDefaultProps } from '@src/features/editor/utils/extractDefaultProps'
