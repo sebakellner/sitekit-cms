@@ -2,7 +2,7 @@ import { componentsRegistry } from '@src/lib/componentRegistry'
 import { v4 as uuidv4 } from 'uuid'
 import type { Section } from '@src/types'
 import type { ComponentMeta } from '@components/site/types'
-import { extractDefaultProps } from '@src/utils/extractDefaultProps'
+import { extractDefaultProps } from '@src/features/editor/utils/extractDefaultProps'
 
 export async function insertSectionAtUtil(
   sections: Section[],

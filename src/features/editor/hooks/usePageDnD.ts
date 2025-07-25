@@ -1,15 +1,15 @@
 import { useState, useCallback } from 'react'
 import type { Active, DragStartEvent, DragOverEvent } from '@dnd-kit/core'
-import { usePageStore } from '@stores/usePageStore'
+import { usePageStore } from '@src/features/editor/store/usePageStore'
 import { arrayMove } from '@dnd-kit/sortable'
-import { insertSectionAtUtil } from '@utils/insertSectionAt'
+import { insertSectionAtUtil } from '@src/features/editor/utils/insertSectionAt'
 import {
   PointerSensor,
   useSensor,
   useSensors,
   type DragEndEvent,
 } from '@dnd-kit/core'
-import { SELECTOR_PREFIX } from '@constants/DnD'
+import { SELECTOR_PREFIX } from '@src/features/editor/constants/DnD'
 
 export function usePageDnD() {
   const sections = usePageStore((state) => state.sections)

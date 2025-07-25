@@ -1,5 +1,5 @@
 import { DndContext, DragOverlay, closestCorners } from '@dnd-kit/core'
-import { usePageDnD } from '@hooks/usePageDnD'
+import { usePageDnD } from '@src/features/editor/hooks/usePageDnD'
 import { Grid, Box } from 'grommet'
 
 import {
