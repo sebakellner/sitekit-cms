@@ -2,17 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Box } from 'grommet'
 import DropDownButton from './DropDownButton'
 import DropDownList from './DropDownList'
-import type { DropDownOption } from './DropDownOption'
-
-interface DropDownProps {
-  options: DropDownOption[]
-  selected: string
-  onSelect: (value: string) => void
-  label?: string
-  defaultValue?: string
-  icon?: React.ReactNode
-  showCheckmark?: boolean
-}
+import type { DropDownProps } from './DropDown.types'
 
 const DropDown: React.FC<DropDownProps> = ({
   options,

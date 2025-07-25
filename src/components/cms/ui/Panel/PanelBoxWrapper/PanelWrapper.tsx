@@ -1,9 +1,5 @@
 import { Box } from 'grommet'
-
-type PanelWrapperProps = React.ComponentProps<typeof Box> & {
-  children?: React.ReactNode
-  borderSide?: 'top' | 'bottom' | 'left' | 'right'
-}
+import type { PanelWrapperProps } from './PanelWrapper.types'
 
 const PanelWrapper = ({
   children,

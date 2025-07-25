@@ -1,15 +1,7 @@
 import React from 'react'
 import { Box, Text } from 'grommet'
 import { Checkmark } from 'grommet-icons'
-import type { DropDownOption } from './DropDownOption'
-
-interface DropDownListProps {
-  options: DropDownOption[]
-  selected: string
-  onSelect: (value: string) => void
-  showCheckmark: boolean
-  setOpen: (open: boolean) => void
-}
+import type { DropDownListProps } from './DropDown.types'
 
 const DropDownList: React.FC<DropDownListProps> = ({
   options,

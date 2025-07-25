@@ -1,6 +1,5 @@
-import DefaultLayout from '@layouts/DefaultLayout'
-import EditorLayout from '@layouts/EditorLayout'
-import './App.css'
+import { DefaultLayout, EditorLayout } from '@components/cms/layouts'
+import './styles/global.css'
 
 function App() {
   return (

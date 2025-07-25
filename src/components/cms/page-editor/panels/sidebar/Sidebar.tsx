@@ -1,6 +1,4 @@
-import PanelBox from '@components/cms/ui/panel/PanelBox'
-import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
-import TipContent from '@components/cms/ui/TipContent'
+import { PanelBox, PanelWrapper, TipContent } from '@components/cms/ui'
 import { Box, Button, Nav, Tip } from 'grommet'
 import {
   LayoutTemplate,

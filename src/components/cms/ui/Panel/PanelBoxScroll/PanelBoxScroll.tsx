@@ -1,10 +1,5 @@
 import { Box } from 'grommet'
-
-type PanelBoxScrollProps = React.ComponentProps<typeof Box> & {
-  children: React.ReactNode
-  pad?: string
-  gap?: string
-}
+import type { PanelBoxScrollProps } from './PanelBoxScroll.types'
 
 const PanelBoxScroll = ({
   children,

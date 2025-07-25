@@ -1,16 +1,17 @@
 import { Box, FormField, Heading, Text, TextInput } from 'grommet'
-import PanelBox from '@components/cms/ui/panel/PanelBox'
-import PanelBoxCollapsable from '@components/cms/ui/panel/PanelBoxCollapsible'
-import {
-  PanelTabs,
-  PanelTabList,
-  PanelTabContent,
-  PanelTabTrigger,
-} from '@components/cms/ui/panel/PanelTabs/index'
-import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
-import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
+
 import { Eclipse, Layers, Pencil, Settings } from 'lucide-react'
 import { usePageStore } from '@stores/usePageStore'
+import {
+  PanelBox,
+  PanelBoxCollapsible,
+  PanelBoxScroll,
+  PanelTabContent,
+  PanelTabList,
+  PanelTabs,
+  PanelTabTrigger,
+  PanelWrapper,
+} from '@components/cms/ui'
 
 const PanelPageEditor = () => {
   const selectedId = usePageStore((s) => s.selectedId)
@@ -66,7 +67,7 @@ const PanelPageEditor = () => {
         </PanelTabList>
         <PanelTabContent value="content">
           <PanelBoxScroll pad="none" gap="none">
-            <PanelBoxCollapsable title="General Settings">
+            <PanelBoxCollapsible title="General Settings">
               {Object.entries(section.props).map(([key, value]) => (
                 <FormField label={key} key={key}>
                   {typeof value === 'string' && (
@@ -121,7 +122,7 @@ const PanelPageEditor = () => {
                   )}
                 </FormField>
               ))}
-            </PanelBoxCollapsable>
+            </PanelBoxCollapsible>
           </PanelBoxScroll>
         </PanelTabContent>
 

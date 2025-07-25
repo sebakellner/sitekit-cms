@@ -1,23 +1,16 @@
 import { useState } from 'react'
-import type { ReactNode } from 'react'
-
-import PanelBox, { type PanelBoxProps } from './PanelBox'
-
 import { Box, Button, Heading } from 'grommet'
 import { ChevronDown } from 'lucide-react'
 
-type PanelCollapsibleProps = {
-  title: ReactNode
-  children: ReactNode
-  collapsedGap?: string
-} & PanelBoxProps
+import { PanelBox } from '../PanelBox'
+import type { PanelBoxCollapsibleProps } from './PanelBoxCollapsible.types'
 
 const PanelCollapsible = ({
   title,
   children,
   collapsedGap = 'none',
   ...restProps
-}: PanelCollapsibleProps) => {
+}: PanelBoxCollapsibleProps) => {
   const [collapsed, setCollapsed] = useState(false)
 
   return (

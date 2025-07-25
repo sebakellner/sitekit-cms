@@ -12,7 +12,7 @@ export default defineConfig({
       '@hooks': '/src/hooks',
       '@utils': '/src/utils',
       '@contexts': '/src/contexts',
-      '@layouts': '/src/layouts',
+      '@layouts': '/src/components/cms/layouts',
       '@src': '/src',
       '@types': '/src/types',
       '@lib': '/src/lib',

@@ -1,20 +1,7 @@
-// Minimal types to match Grommet's border prop
 type BoxSideType = 'top' | 'bottom' | 'left' | 'right'
 type BorderProp = { side: BoxSideType; color: string }
 import { Box } from 'grommet'
-
-export type PanelBoxProps = {
-  children: React.ReactNode
-  borderSide?:
-    | 'top'
-    | 'bottom'
-    | 'left'
-    | 'right'
-    | 'vertical'
-    | 'horizontal'
-    | false
-  pad?: string | { horizontal?: string; vertical?: string }
-} & React.ComponentProps<typeof Box>
+import type { PanelBoxProps } from './PanelBox.types'
 
 const PanelBox = ({
   children,
