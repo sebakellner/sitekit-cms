@@ -1,6 +1,6 @@
 import React from 'react'
 import { Inspectable } from '../../Overlay/Inspectable'
-import SortableSection from '../SorteableSection/SortableSection'
+import SortableSection from '../SortableSection/SortableSection'
 import Divider from '../../Overlay/Divider'
 import { useComponentMeta } from '@hooks/useComponentMeta'
 import type { PageSectionRendererProps } from './PageSectionRenderer.types'
