@@ -1,17 +1,7 @@
 import React from 'react'
 import { Box, Text } from 'grommet'
 import { Down, Close } from 'grommet-icons'
-
-interface DropDownButtonProps {
-  icon?: React.ReactNode
-  label?: string
-  selectedLabel: string
-  selected: string
-  defaultValue: string
-  open: boolean
-  onToggle: () => void
-  onClear: () => void
-}
+import type { DropDownButtonProps } from './DropDown.types'
 
 const DropDownButton: React.FC<DropDownButtonProps> = ({
   icon,
