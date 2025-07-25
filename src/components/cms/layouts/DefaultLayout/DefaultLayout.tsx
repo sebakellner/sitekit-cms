@@ -1,9 +1,6 @@
 import { Grid, Box } from 'grommet'
 import Header from '@components/cms/page-editor/panels/header/Header'
-
-interface DefaultLayoutProps {
-  children?: React.ReactNode
-}
+import type { DefaultLayoutProps } from './DefaultLayout.types'
 
 function DefaultLayout({ children }: DefaultLayoutProps) {
   return (
