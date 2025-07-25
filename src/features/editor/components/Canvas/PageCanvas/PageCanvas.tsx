@@ -1,10 +1,12 @@
-import { Box } from 'grommet'
-import { SELECTOR_PREFIX } from '@src/features/editor/constants/DnD'
-import { usePageStore } from '@stores/usePageStore'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
-import PageSectionRenderer from '../PageSectionRenderer/PageSectionRenderer'
-import DroppableCanvas from '../DoppableCanvas/DroppableCanvas'
-import type { PageCanvasProps } from './PageCanvas.types'
+import {
+  DroppableCanvas,
+  PageSectionRenderer,
+  type PageCanvasProps,
+} from '@features/editor'
+import { SELECTOR_PREFIX } from '@features/editor/constants/DnD'
+import { usePageStore } from '@features/editor/store/usePageStore'
+import { Box } from 'grommet'
 
 const PageCanvas = ({ overSectionId, activeId }: PageCanvasProps) => {
   const sections = usePageStore((state) => state.sections)

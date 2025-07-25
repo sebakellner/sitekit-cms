@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react'
 import { useSortable } from '@dnd-kit/sortable'
-import { usePageStore } from '@stores/usePageStore'
+import { usePageStore } from '@features/editor/store/usePageStore'
 import {
   DRAGGING_Z_INDEX,
   NORMAL_Z_INDEX,

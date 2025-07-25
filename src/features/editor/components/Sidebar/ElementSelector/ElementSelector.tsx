@@ -1,6 +1,6 @@
 import { Box, Heading, Text } from 'grommet'
-import { useAllComponentMetas } from '@hooks/useAllComponentMetas'
-import { SELECTOR_PREFIX } from '@src/features/editor/constants/DnD'
+import { useAllComponentMetas } from '@features/editor/hooks/useAllComponentMetas'
+import { SELECTOR_PREFIX } from '@features/editor/constants/DnD'
 
 import {
   PanelBox,
