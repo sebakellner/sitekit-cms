@@ -1,15 +1,19 @@
 import { Box, Heading, Text } from 'grommet'
-import PanelBox from '@components/cms/ui/panel/PanelBox'
-import PanelBoxScroll from '@components/cms/ui/panel/PanelBoxScroll'
-import PanelWrapper from '@components/cms/ui/panel/PanelWrapper'
-import ElementSelectorItem from './ElementSelectorItem'
-import type { ElementSelectorItemProps } from './ElementSelectorItem'
-import ElementSelectorSearchInput from './ElementSelectorSearchInput'
-import PanelBoxCollapsible from '@components/cms/ui/panel/PanelBoxCollapsible'
-import DraggableSelectorItem from './DraggableSelectorItem'
+import { useAllComponentMetas } from '@hooks/useAllComponentMetas'
 import { SELECTOR_PREFIX } from '@constants/DnD'
 
-import { useAllComponentMetas } from '@hooks/useAllComponentMetas'
+import type { ElementSelectorItemProps } from './ElementSelectorItem'
+import ElementSelectorSearchInput from './ElementSelectorSearchInput'
+import DraggableSelectorItem from './DraggableSelectorItem'
+
+import {
+  PanelBox,
+  PanelBoxCollapsible,
+  PanelBoxScroll,
+  PanelWrapper,
+} from '@components/cms/ui'
+
+import ElementSelectorItem from './ElementSelectorItem'
 
 const ElementSelector = () => {
   const { metas, loading } = useAllComponentMetas()
