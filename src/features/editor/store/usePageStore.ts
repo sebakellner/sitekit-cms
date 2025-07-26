@@ -26,7 +26,7 @@ export const usePageStore = create<PageStore>((set) => ({
     if (!loader) return
     const metaModule = await loader()
     const meta = getComponentMeta(metaModule)
-    const props = extractDefaultProps(meta.props)
+    const props = extractDefaultProps(meta.data?.props)
     const newSection = {
       id: uuidv4(),
       name,

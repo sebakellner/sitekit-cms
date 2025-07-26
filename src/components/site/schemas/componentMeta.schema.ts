@@ -28,6 +28,7 @@ export const ComponentMetaSchema = z.object({
   description: z.string().optional(),
   category: z.string().optional(),
   preview: z.string().optional(),
+  component: z.any(),
   props: z.record(
     z.string(),
     z.object({

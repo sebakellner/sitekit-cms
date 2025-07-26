@@ -12,9 +12,15 @@ export function getComponentMeta(module: unknown) {
   ) {
     const def = (module as ModuleWithDefault).default
     const result = ComponentMetaSchema.safeParse(def)
-    if (result.success) {
-      return result.data
+    return {
+      success: result.success,
+      data: result.success ? result.data : null,
+      error: result.success ? null : result.error,
     }
   }
-  return { name: '', props: {} }
+  return {
+    success: false,
+    data: null,
+    error: new Error('Invalid module format'),
+  }
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { componentsRegistry } from '@registry/componentRegistry'
 import type { ComponentMeta } from '@components/site/types'
+import { getComponentMeta } from '../utils/getComponentMeta'
 
 const metaCache = new Map<string, ComponentMeta>()
 
@@ -25,27 +26,11 @@ export function useComponentMeta(name: string) {
     if (loader) {
       loader()
         .then((mod) => {
-          const loadedMeta = (mod as { default: unknown }).default
-
-          const isComponentMeta = (obj: unknown): obj is ComponentMeta => {
-            if (!obj || typeof obj !== 'object') return false
-            const o = obj as Record<string, unknown>
-            return (
-              'name' in o &&
-              typeof o.name === 'string' &&
-              'props' in o &&
-              typeof o.props === 'object' &&
-              o.props !== null &&
-              'component' in o &&
-              (typeof o.component === 'function' ||
-                typeof o.component === 'string')
-            )
-          }
-
-          if (isComponentMeta(loadedMeta)) {
-            metaCache.set(name, loadedMeta)
+          const result = getComponentMeta(mod)
+          if (result.success && result.data) {
+            metaCache.set(name, result.data)
             if (isMounted) {
-              setMeta(loadedMeta)
+              setMeta(result.data)
               setLoading(false)
             }
           } else {
@@ -54,7 +39,7 @@ export function useComponentMeta(name: string) {
               setLoading(false)
             }
             console.warn(
-              `Component meta for "${name}" is invalid or missing required fields.`
+              `Component meta for "${name}" is invalid: ${result.error?.message ?? 'Unknown error'}`
             )
           }
         })
