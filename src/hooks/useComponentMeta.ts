@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { componentsRegistry } from '@src/lib/componentRegistry'
+import { componentsRegistry } from '@registry/componentRegistry'
 import type { ComponentMeta } from '@components/site/types'
 
 const metaCache = new Map<string, ComponentMeta>()

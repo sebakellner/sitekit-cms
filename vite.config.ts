@@ -17,6 +17,7 @@ export default defineConfig({
       '@src': '/src',
       '@types': '/src/types',
       '@lib': '/src/lib',
+      '@registry': '/src/registry',
       '@constants': '/src/constants',
     },
   },

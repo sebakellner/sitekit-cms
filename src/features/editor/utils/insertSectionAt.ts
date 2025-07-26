@@ -1,4 +1,4 @@
-import { componentsRegistry } from '@src/lib/componentRegistry'
+import { componentsRegistry } from '@registry/componentRegistry'
 import { v4 as uuidv4 } from 'uuid'
 import type { Section } from '@features/editor/types'
 import type { ComponentMeta } from '@components/site/types'
