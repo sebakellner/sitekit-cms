@@ -1,19 +1,8 @@
 import React from 'react'
 import { Box, Heading, Text, Button } from 'grommet'
+import type { HeroProps } from './Hero.schema'
 
-export interface HeroProps {
-  title?: string
-  description?: string
-  buttonLabel?: string
-  onButtonClick?: () => void
-  background?: string | { color: string }
-  headingColor?: string
-  textColor?: string
-  buttonColor?: string
-  buttonSize?: 'small' | 'medium' | 'large'
-}
-
-const Hero: React.FC<HeroProps> = ({
+const Hero: React.FC<HeroProps & { onButtonClick?: () => void }> = ({
   title = 'Welcome to Site Kit Builder',
   description = 'Create and customize your website easily with our intuitive tools.',
   buttonLabel = 'Get Started',
