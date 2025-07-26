@@ -32,10 +32,13 @@ export const usePageStore = create<PageStore>((set) => ({
       name,
       props,
     }
-    if (SectionSchema.safeParse(newSection).success) {
-      set((state) => ({
-        sections: [...state.sections, newSection],
-      }))
+    const result = SectionSchema.safeParse(newSection)
+    if (!result.success) {
+      console.warn('Section validation failed:', result.error)
+      return
     }
+    set((state) => ({
+      sections: [...state.sections, newSection],
+    }))
   },
 }))
