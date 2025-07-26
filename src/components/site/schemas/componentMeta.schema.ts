@@ -28,12 +28,21 @@ export const ComponentMetaSchema = z.object({
   description: z.string().optional(),
   category: z.string().optional(),
   preview: z.string().optional(),
-  component: z.any(),
+  component: z
+    .custom<React.FC<Record<string, unknown>>>()
+    .refine((value) => typeof value === 'function'),
   props: z.record(
     z.string(),
     z.object({
       type: ComponentPropTypeSchema,
-      default: z.any(),
+      default: z.union([
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.unknown()),
+        z.null(),
+        z.undefined(),
+      ]),
       options: z.array(z.string()).optional(),
       editor: ComponentPropEditorSchema,
     })
