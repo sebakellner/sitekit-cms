@@ -21,6 +21,8 @@ export function getComponentMeta(module: unknown) {
   return {
     success: false,
     data: null,
-    error: new Error('Invalid module format'),
+    error: new Error(
+      'Invalid module format: Module must have a default export with valid component metadata'
+    ),
   }
 }
