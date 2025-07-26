@@ -11,16 +11,7 @@ import {
   Text,
 } from 'grommet'
 import { LinkNext } from 'grommet-icons'
-
-interface CardProps {
-  title: string
-  description: string
-  imageSrc?: string
-  imageAlt?: string
-  label?: string
-  buttonLabel?: string
-  buttonHref?: string
-}
+import type { CardProps } from './Card.schema'
 
 const Card: React.FC<CardProps> = ({
   title,
