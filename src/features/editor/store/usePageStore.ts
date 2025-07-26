@@ -1,44 +1,55 @@
 import { create } from 'zustand'
-import { v4 as uuidv4 } from 'uuid'
+import { persist } from 'zustand/middleware'
 import type { PageStore } from '@features/editor/types'
-import { componentsRegistry } from '@registry/componentRegistry'
-import { extractDefaultProps } from '@src/features/editor/utils/extractDefaultProps'
 import { SectionSchema } from '../schemas/section.schema'
-import { getComponentMeta } from '../utils/getComponentMeta'
 import mockSections from '../mocks/mockSections'
+import { createSectionFromRegistry } from '../services/createSectionFromRegistry'
 
-export const usePageStore = create<PageStore>((set) => ({
-  sections: mockSections,
-  selectedId: null,
-  setSections: (sections) => set({ sections }),
-  selectSection: (id) => set({ selectedId: id }),
-  updateSectionProps: (id, newProps) =>
-    set((state) => ({
-      sections: state.sections.map((s) => {
-        if (s.id !== id) return s
-        const updated = { ...s, props: { ...s.props, ...newProps } }
-        return SectionSchema.safeParse(updated).success ? updated : s
-      }),
-    })),
+export const usePageStore = create(
+  persist<PageStore>(
+    (set) => ({
+      sections: mockSections,
+      selectedId: null,
 
-  addSection: async (name) => {
-    const loader = componentsRegistry[name as keyof typeof componentsRegistry]
-    if (!loader) return
-    const metaModule = await loader()
-    const meta = getComponentMeta(metaModule)
-    const props = extractDefaultProps(meta.data?.props)
-    const newSection = {
-      id: uuidv4(),
-      name,
-      props,
+      setSections: (sections) => set({ sections }),
+
+      selectSection: (id) => set({ selectedId: id }),
+
+      updateSectionProps: (id, newProps) => {
+        set((state) => {
+          const updatedSections = state.sections.map((section) => {
+            if (section.id !== id) return section
+
+            const updatedProps = { ...section.props, ...newProps }
+            const updatedSection = { ...section, props: updatedProps }
+
+            const validationResult = SectionSchema.safeParse(updatedSection)
+            if (!validationResult.success) {
+              console.warn(
+                'Failed to update section props:',
+                validationResult.error
+              )
+              return section
+            }
+
+            return updatedSection
+          })
+
+          return { sections: updatedSections }
+        })
+      },
+
+      addSection: async (name) => {
+        const newSection = await createSectionFromRegistry(name)
+        if (!newSection) return
+
+        set((state) => ({
+          sections: [...state.sections, newSection],
+        }))
+      },
+    }),
+    {
+      name: 'page-store',
     }
-    const result = SectionSchema.safeParse(newSection)
-    if (!result.success) {
-      console.warn('Section validation failed:', result.error)
-      return
-    }
-    set((state) => ({
-      sections: [...state.sections, newSection],
-    }))
-  },
-}))
+  )
+)
