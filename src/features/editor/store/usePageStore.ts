@@ -1,9 +1,10 @@
 import { create } from 'zustand'
 import { v4 as uuidv4 } from 'uuid'
 import type { PageStore } from '@features/editor/types'
-import type { ComponentMeta } from '@components/site/types'
 import { componentsRegistry } from '@registry/componentRegistry'
 import { extractDefaultProps } from '@src/features/editor/utils/extractDefaultProps'
+import { SectionSchema } from '../schemas/section.schema'
+import { getComponentMeta } from '../utils/getComponentMeta'
 
 export const usePageStore = create<PageStore>((set) => ({
   sections: [
@@ -121,31 +122,28 @@ export const usePageStore = create<PageStore>((set) => ({
   selectSection: (id) => set({ selectedId: id }),
   updateSectionProps: (id, newProps) =>
     set((state) => ({
-      sections: state.sections.map((s) =>
-        s.id === id ? { ...s, props: { ...s.props, ...newProps } } : s
-      ),
+      sections: state.sections.map((s) => {
+        if (s.id !== id) return s
+        const updated = { ...s, props: { ...s.props, ...newProps } }
+        return SectionSchema.safeParse(updated).success ? updated : s
+      }),
     })),
+
   addSection: async (name) => {
     const loader = componentsRegistry[name as keyof typeof componentsRegistry]
     if (!loader) return
     const metaModule = await loader()
-    const hasDefaultExport = (obj: unknown): obj is { default: unknown } =>
-      !!obj && typeof obj === 'object' && 'default' in obj
-    const isComponentMeta = (obj: unknown): obj is ComponentMeta =>
-      !!obj && typeof obj === 'object' && 'name' in obj && 'props' in obj
-    let meta: ComponentMeta | null = null
-    if (hasDefaultExport(metaModule) && isComponentMeta(metaModule.default)) {
-      meta = metaModule.default
+    const meta = getComponentMeta(metaModule)
+    const props = extractDefaultProps(meta.props)
+    const newSection = {
+      id: uuidv4(),
+      name,
+      props,
     }
-    set((state) => ({
-      sections: [
-        ...state.sections,
-        {
-          id: uuidv4(),
-          name,
-          props: extractDefaultProps(meta?.props),
-        },
-      ],
-    }))
+    if (SectionSchema.safeParse(newSection).success) {
+      set((state) => ({
+        sections: [...state.sections, newSection],
+      }))
+    }
   },
 }))

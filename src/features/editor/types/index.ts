@@ -1,4 +1,4 @@
-export type Section = {
+type Section = {
   id: string
   name: string
   props: Record<string, unknown>
