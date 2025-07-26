@@ -1,12 +1,11 @@
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
-import {
-  DroppableCanvas,
-  PageSectionRenderer,
-  type PageCanvasProps,
-} from '@features/editor'
+import { Box } from 'grommet'
+
 import { SELECTOR_PREFIX } from '@features/editor/constants/DnD'
 import { usePageStore } from '@features/editor/store/usePageStore'
-import { Box } from 'grommet'
+import type { PageCanvasProps } from './PageCanvas.types'
+import { DroppableCanvas } from '../DroppableCanvas'
+import { PageSectionRenderer } from '../PageSectionRenderer'
 
 const PageCanvas = ({ overSectionId, activeId }: PageCanvasProps) => {
   const sections = usePageStore((state) => state.sections)
