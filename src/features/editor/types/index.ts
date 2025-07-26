@@ -1,8 +1,4 @@
-type Section = {
-  id: string
-  name: string
-  props: Record<string, unknown>
-}
+import type { Section } from '../schemas/section.schema'
 
 export type PageStore = {
   sections: Section[]

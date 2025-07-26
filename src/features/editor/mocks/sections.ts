@@ -1,4 +1,6 @@
-const sectionsMock = [
+import type { Section } from '../schemas/section.schema'
+
+const sectionsMock: Section[] = [
   {
     id: 'canvas-nav',
     name: 'Nav',
