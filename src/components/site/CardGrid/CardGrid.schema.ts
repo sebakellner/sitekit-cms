@@ -2,7 +2,6 @@ import { z } from 'zod'
 import { CardSchema } from '../ui/Card'
 
 export const CardGridSchema = z.object({
-  id: z.uuid().optional(),
   title: z.string().min(2).max(100),
   background: z.string().default('light-2'),
   items: z.array(CardSchema).default([]),
