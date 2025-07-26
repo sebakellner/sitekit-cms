@@ -28,7 +28,7 @@ export function useComponentMeta(name: string) {
         .then((mod) => {
           const result = getComponentMeta(mod)
           if (result.success && result.data) {
-            metaCache.set(name, result.data)
+            metaCache.set(name, result.data as ComponentMeta)
             if (isMounted) {
               setMeta(result.data)
               setLoading(false)
@@ -43,11 +43,12 @@ export function useComponentMeta(name: string) {
             )
           }
         })
-        .catch(() => {
+        .catch((err) => {
           if (isMounted) {
             setMeta(null)
             setLoading(false)
           }
+          console.error(`Error loading meta for component "${name}":`, err)
         })
     } else {
       setMeta(null)
