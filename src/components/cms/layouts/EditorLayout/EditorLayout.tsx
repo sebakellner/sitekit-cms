@@ -1,11 +1,13 @@
 import { DndContext, DragOverlay, closestCorners } from '@dnd-kit/core'
-import { usePageDnD } from '@hooks/usePageDnD'
+import { usePageDnD } from '@src/features/editor/hooks/usePageDnD'
 import { Grid, Box } from 'grommet'
 
-import PanelPageEditor from '@components/cms/page-editor/panels/editor/PanelPageEditor'
-import ElementSelector from '@components/cms/page-editor/panels/sidebar/selector/ElementSelector'
-import Sidebar from '@components/cms/page-editor/panels/sidebar/Sidebar'
-import PageCanvas from '@components/cms/page-editor/canvas/PageCanvas'
+import {
+  ElementSelector,
+  PageCanvas,
+  PanelPageEditor,
+  Sidebar,
+} from '@src/features/editor'
 
 function EditorLayout() {
   const {

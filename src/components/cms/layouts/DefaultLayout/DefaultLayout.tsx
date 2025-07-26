@@ -1,5 +1,5 @@
 import { Grid, Box } from 'grommet'
-import Header from '@components/cms/page-editor/panels/header/Header'
+import Header from '@src/features/editor/components/Header/Header'
 import type { DefaultLayoutProps } from './DefaultLayout.types'
 
 function DefaultLayout({ children }: DefaultLayoutProps) {
