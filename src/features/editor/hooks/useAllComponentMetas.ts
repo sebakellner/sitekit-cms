@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { componentsRegistry } from '@registry/componentRegistry'
 import type { ComponentMeta } from '@components/site/types'
+import { getComponentMeta } from '../utils/getComponentMeta'
 
 export function useAllComponentMetas() {
   const [metas, setMetas] = useState<ComponentMeta[]>([])
@@ -11,16 +12,12 @@ export function useAllComponentMetas() {
     const loaders = Object.values(componentsRegistry).map((loader) => loader())
     Promise.allSettled(loaders).then((results) => {
       if (isMounted) {
-        const metas = results
-          .filter(
-            (r): r is PromiseFulfilledResult<{ default: ComponentMeta }> =>
-              r.status === 'fulfilled' &&
-              typeof r.value === 'object' &&
-              r.value !== null &&
-              'default' in r.value
-          )
-          .map((r) => r.value.default)
-        setMetas(metas)
+        const validMetas = results
+          .filter((r) => r.status === 'fulfilled')
+          .map((r) => (r as PromiseFulfilledResult<unknown>).value)
+          .map(getComponentMeta)
+          .filter((meta): meta is ComponentMeta => meta.name !== '')
+        setMetas(validMetas)
         setLoading(false)
       }
     })
