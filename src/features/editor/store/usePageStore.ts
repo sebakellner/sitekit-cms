@@ -5,10 +5,10 @@ import { componentsRegistry } from '@registry/componentRegistry'
 import { extractDefaultProps } from '@src/features/editor/utils/extractDefaultProps'
 import { SectionSchema } from '../schemas/section.schema'
 import { getComponentMeta } from '../utils/getComponentMeta'
-import sectionsMock from '../mocks/sections'
+import mockSections from '../mocks/mockSections'
 
 export const usePageStore = create<PageStore>((set) => ({
-  sections: sectionsMock,
+  sections: mockSections,
   selectedId: null,
   setSections: (sections) => set({ sections }),
   selectSection: (id) => set({ selectedId: id }),
