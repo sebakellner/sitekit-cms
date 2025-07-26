@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react'
 import { useSortable } from '@dnd-kit/sortable'
-import { usePageStore } from '@features/editor/store/usePageStore'
+import { usePageStore } from '@src/features/editor/store/usePageStore'
 import {
   DRAGGING_Z_INDEX,
   NORMAL_Z_INDEX,
@@ -8,7 +8,7 @@ import {
   DRAGGING_OPACITY,
   NORMAL_DRAGGING_OPACITY,
 } from '@src/features/editor/constants/DnD'
-import type { PageStore } from '@features/editor/types'
+import type { PageStore } from '@src/features/editor/types'
 import type { SortableSectionProps } from './SortableSection.types'
 
 const selectSectionSelector = (state: PageStore) => state.selectSection

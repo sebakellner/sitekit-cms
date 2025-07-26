@@ -1,7 +1,7 @@
 import { Box, FormField, Heading, Text, TextInput } from 'grommet'
 
 import { Eclipse, Layers, Pencil, Settings } from 'lucide-react'
-import { usePageStore } from '@features/editor/store/usePageStore'
+import { usePageStore } from '@src/features/editor/store/usePageStore'
 import {
   PanelBox,
   PanelBoxCollapsible,

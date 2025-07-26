@@ -1,8 +1,8 @@
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Box } from 'grommet'
 
-import { SELECTOR_PREFIX } from '@features/editor/constants/DnD'
-import { usePageStore } from '@features/editor/store/usePageStore'
+import { SELECTOR_PREFIX } from '@src/features/editor/constants/DnD'
+import { usePageStore } from '@src/features/editor/store/usePageStore'
 import type { PageCanvasProps } from './PageCanvas.types'
 import { DroppableCanvas } from '../DroppableCanvas'
 import { PageSectionRenderer } from '../PageSectionRenderer'

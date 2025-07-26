@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 import { Box } from 'grommet'
-import { getComponentLabel } from '@features/editor/utils/getComponentLabel'
-import { usePageStore } from '@features/editor/store/usePageStore'
+import { getComponentLabel } from '@src/features/editor/utils/getComponentLabel'
+import { usePageStore } from '@src/features/editor/store/usePageStore'
 import type { InspectableProps } from './Inspectable.types'
 import { InspectorOverlay } from '../InspectorOverlay'
 
