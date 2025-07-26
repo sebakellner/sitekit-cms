@@ -1,37 +1,12 @@
 import React from 'react'
 import { Box, Heading } from 'grommet'
-import Card from '../ui/Card'
-
-export interface CardGridItem {
-  title: string
-  description: string
-}
-
-export interface CardGridProps {
-  title?: string
-  background?: string
-  cards?: CardGridItem[]
-}
-
-const defaultCards: CardGridItem[] = [
-  {
-    title: 'Card title 1',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    title: 'Card title 2',
-    description: 'Sed do eiusmod tempor incididunt ut labore et dolore.',
-  },
-  {
-    title: 'Card title 3',
-    description: 'Ut enim ad minim veniam, quis nostrud exercitation.',
-  },
-]
+import type { CardGridProps } from './CardGrid.schema'
+import { Card } from '../ui/Card'
 
 const CardGrid: React.FC<CardGridProps> = ({
   title = 'Featured Cards',
   background = 'light-2',
-  cards = defaultCards,
+  items = [],
 }) => {
   return (
     <Box
@@ -55,8 +30,8 @@ const CardGrid: React.FC<CardGridProps> = ({
         align="center"
         justify="center"
       >
-        {cards.map((card, idx) => (
-          <Card key={idx} title={card.title} description={card.description} />
+        {items.map((item, idx) => (
+          <Card key={idx} title={item.title} description={item.description} />
         ))}
       </Box>
     </Box>

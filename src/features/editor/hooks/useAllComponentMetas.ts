@@ -1,33 +1,63 @@
 import { useEffect, useState } from 'react'
-import { componentsRegistry } from '@src/lib/componentRegistry'
+import { componentsRegistry } from '@registry/componentRegistry'
 import type { ComponentMeta } from '@components/site/types'
+import { getComponentMeta } from '../utils/getComponentMeta'
+
+const metaCache = new Map<string, ComponentMeta>()
 
 export function useAllComponentMetas() {
   const [metas, setMetas] = useState<ComponentMeta[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     let isMounted = true
-    const loaders = Object.values(componentsRegistry).map((loader) => loader())
-    Promise.allSettled(loaders).then((results) => {
-      if (isMounted) {
-        const metas = results
-          .filter(
-            (r): r is PromiseFulfilledResult<{ default: ComponentMeta }> =>
-              r.status === 'fulfilled' &&
-              typeof r.value === 'object' &&
-              r.value !== null &&
-              'default' in r.value
-          )
-          .map((r) => r.value.default)
-        setMetas(metas)
-        setLoading(false)
+    setLoading(true)
+    setError(null)
+
+    const loaders = Object.entries(componentsRegistry).map(
+      async ([name, loader]) => {
+        if (metaCache.has(name)) {
+          return metaCache.get(name)
+        }
+        try {
+          const module = await loader()
+          const result = getComponentMeta(module)
+          if (result.success && result.data) {
+            metaCache.set(name, result.data as ComponentMeta)
+            return result.data
+          } else {
+            console.warn(`Invalid meta for component "${name}":`, result.error)
+            return null
+          }
+        } catch (err) {
+          console.error(`Error loading meta for component "${name}":`, err)
+          return null
+        }
       }
-    })
+    )
+
+    Promise.all(loaders)
+      .then((results) => {
+        if (isMounted) {
+          const validMetas = results.filter(
+            (meta): meta is ComponentMeta => meta !== null
+          )
+          setMetas(validMetas)
+          setLoading(false)
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setError('Failed to load component metas')
+          setLoading(false)
+        }
+      })
+
     return () => {
       isMounted = false
     }
   }, [])
 
-  return { metas, loading }
+  return { metas, loading, error }
 }

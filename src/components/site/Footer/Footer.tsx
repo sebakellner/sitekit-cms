@@ -1,38 +1,12 @@
 import React from 'react'
 import { Box, Grid, Text, Anchor, Heading } from 'grommet'
 import { Rocket } from 'lucide-react'
-
-export interface FooterLinkColumn {
-  title: string
-  links: string[]
-}
-
-export interface FooterProps {
-  siteName?: string
-  year?: number
-  footerLinks?: FooterLinkColumn[]
-  background?: string
-}
-
-const defaultFooterLinks: FooterLinkColumn[] = [
-  {
-    title: 'Company',
-    links: ['About', 'Careers', 'Contact'],
-  },
-  {
-    title: 'Support',
-    links: ['Help Center', 'FAQ'],
-  },
-  {
-    title: 'Legal',
-    links: ['Privacy Policy', 'Terms'],
-  },
-]
+import type { FooterProps } from './Footer.schema'
 
 const Footer: React.FC<FooterProps> = ({
   siteName = 'Site Kit Builder',
   year = 2025,
-  footerLinks = defaultFooterLinks,
+  footerLinks = [],
   background = '#23242a',
 }) => (
   <Box

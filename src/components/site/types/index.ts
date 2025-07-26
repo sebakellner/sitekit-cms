@@ -18,12 +18,12 @@ export type ComponentPropEditor =
   | 'select'
   | 'jsonEditor'
 
-export type ComponentMeta = {
+export type ComponentMeta<P = Record<string, unknown>> = {
   name: string
   description?: string
   category?: string
   preview?: string
-  component: React.FC<Record<string, unknown>>
+  component: React.FC<P>
   props: {
     [key: string]: {
       type: ComponentPropType

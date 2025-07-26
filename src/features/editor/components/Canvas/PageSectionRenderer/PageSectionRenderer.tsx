@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { useComponentMeta } from '@hooks/useComponentMeta'
 import type { PageSectionRendererProps } from './PageSectionRenderer.types'
 import { SortableSection } from '../SortableSection'
 import { Divider, Inspectable } from '../../Overlay'
+import { useComponentMeta } from '@features/editor/hooks/useComponentMeta'
 
 const PageSectionRenderer: React.FC<PageSectionRendererProps> = ({
   id,

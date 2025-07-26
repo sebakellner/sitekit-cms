@@ -27,6 +27,7 @@
       "@components/*": ["src/components/*"],
       "@features/*": ["src/features/*"],
       "@layouts/*": ["src/components/cms/layouts/*"],
+      "@registry/*": ["src/registry/*"],
       "@src/*": ["src/*"],
       "@constants/*": ["src/constants/*"]
     }

@@ -1,8 +1,9 @@
-import CardGrid from '.'
+import CardGrid from './CardGrid'
 import type { ComponentMeta } from '../types'
 import preview from './cardgrid-preview.png'
+import type { CardGridProps } from './CardGrid.schema'
 
-const meta: ComponentMeta = {
+const meta: ComponentMeta<CardGridProps> = {
   name: 'CardGrid',
   category: 'Section',
   description: 'A grid of cards for features or content.',
@@ -19,7 +20,7 @@ const meta: ComponentMeta = {
       default: 'light-2',
       editor: 'colorPicker',
     },
-    cards: {
+    items: {
       type: 'object',
       default: [
         {

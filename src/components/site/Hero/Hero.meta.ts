@@ -1,8 +1,9 @@
-import Hero from '.'
+import Hero from './Hero'
 import preview from './hero-preview.png'
 import type { ComponentMeta } from '../types'
+import type { HeroProps } from './Hero.schema'
 
-const meta: ComponentMeta = {
+const meta: ComponentMeta<HeroProps> = {
   name: 'Hero',
   category: 'Section',
   description: 'A full-width hero section with background and text.',

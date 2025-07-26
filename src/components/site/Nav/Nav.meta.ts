@@ -1,8 +1,9 @@
-import Nav from '.'
+import Nav from './Nav'
 import type { ComponentMeta } from '@components/site/types'
 import preview from './nav-preview.png'
+import type { NavProps } from './Nav.schema'
 
-const meta: ComponentMeta = {
+const meta: ComponentMeta<NavProps> = {
   name: 'Nav',
   component: Nav,
   category: 'Navigation',

@@ -1,8 +1,9 @@
-import InfoText from '.'
-import type { ComponentMeta } from '@components/site/types'
+import InfoText from './InfoText'
 import preview from './infotext-preview.png'
+import type { ComponentMeta } from '@components/site/types'
+import type { InfoTextProps } from './InfoText.schema'
 
-const meta: ComponentMeta = {
+const meta: ComponentMeta<InfoTextProps> = {
   name: 'InfoText',
   category: 'Section',
   description: 'Informational text section with bullet points.',

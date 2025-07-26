@@ -21,6 +21,7 @@
     "react-dom": "^19.1.0",
     "styled-components": "^6.1.19",
     "uuid": "^11.1.0",
+    "zod": "^4.0.10",
     "zustand": "^5.0.6"
   },
   "devDependencies": {

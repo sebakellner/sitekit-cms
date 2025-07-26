@@ -1,8 +1,9 @@
-import Footer from '.'
+import Footer from './Footer'
 import preview from './footer-preview.png'
 import type { ComponentMeta } from '@components/site/types'
+import type { FooterProps } from './Footer.schema'
 
-const meta: ComponentMeta = {
+const meta: ComponentMeta<FooterProps> = {
   name: 'Footer',
   component: Footer,
   category: 'Footer',
