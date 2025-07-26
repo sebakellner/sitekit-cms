@@ -43,9 +43,7 @@ const ElementSelector = () => {
         </Text>
       </PanelBox>
 
-      <PanelBox>
-        <ElementSelectorSearch />
-      </PanelBox>
+      <ElementSelectorSearch />
 
       <Box fill>
         <PanelBoxScroll pad="none" gap="none">
