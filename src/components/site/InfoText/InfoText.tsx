@@ -1,47 +1,11 @@
 import React from 'react'
 import { Box, Heading, Text, Image } from 'grommet'
-
-export type FormatItem = {
-  label: string
-  description: string
-}
-
-export type InfoTextProps = {
-  title?: string
-  text?: string
-  formats?: FormatItem[]
-  imageSrc?: string
-  imageAlt?: string
-  background?: string
-}
-
-const defaultFormats: FormatItem[] = [
-  {
-    label: 'Lorem ipsum dolor',
-    description: 'Sit amet, consectetur adipiscing elit.',
-  },
-  {
-    label: 'Sed do eiusmod',
-    description: 'Tempor incididunt ut labore et dolore magna aliqua.',
-  },
-  {
-    label: 'Ut enim ad minim',
-    description: 'Veniam, quis nostrud exercitation ullamco laboris nisi.',
-  },
-  {
-    label: 'Duis aute irure',
-    description: 'Dolor in reprehenderit in voluptate velit esse.',
-  },
-  {
-    label: 'Excepteur sint occaecat',
-    description: 'Cupidatat non proident, sunt in culpa qui officia.',
-  },
-]
+import type { InfoTextProps } from './InfoText.schema'
 
 const InfoText: React.FC<InfoTextProps> = ({
   title = 'Lorem ipsum dolor sit amet',
   text = 'Consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.',
-  formats = defaultFormats,
+  formats = [],
   imageSrc = 'https://picsum.photos/id/42/340/340',
   imageAlt = 'Learning formats preview',
   background = 'white',
