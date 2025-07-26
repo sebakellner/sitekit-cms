@@ -1,28 +1,10 @@
 import React from 'react'
 import { Box, Nav as GrommetNav, Button } from 'grommet'
 import { Rocket } from 'lucide-react'
+import type { NavProps } from './Nav.schema'
 
-export interface NavItem {
-  label: string
-  href: string
-}
-
-export interface NavProps {
-  items?: NavItem[]
-  background?: string
-  buttonLabel?: string
-  Icon?: React.ElementType
-}
-
-const defaultItems: NavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
-]
-
-const Nav: React.FC<NavProps> = ({
-  items = defaultItems,
+const Nav: React.FC<NavProps & { Icon?: React.ElementType }> = ({
+  items = [],
   background = 'white',
   buttonLabel = 'Contact US',
   Icon = Rocket,
