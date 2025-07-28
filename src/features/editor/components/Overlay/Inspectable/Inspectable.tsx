@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 
 import { Box } from 'grommet'
 import { getComponentLabel } from '@src/features/editor/utils/getComponentLabel'
-import { usePageStore } from '@src/features/editor/store/usePageStore'
 import type { InspectableProps } from './Inspectable.types'
 import { InspectorOverlay } from '../InspectorOverlay'
+import { useSectionStore } from '@features/editor/store/section/useSectionStore'
 
 const Inspectable: React.FC<InspectableProps> = ({
   id,
@@ -13,8 +13,8 @@ const Inspectable: React.FC<InspectableProps> = ({
   overlayLabelPosition = 'above',
   showInspectorOverlay = true,
 }) => {
-  const selectedId = usePageStore((s) => s.selectedId)
-  const selectSection = usePageStore((s) => s.selectSection)
+  const selectedId = useSectionStore((s) => s.selectedId)
+  const selectSection = useSectionStore((s) => s.selectSection)
 
   const [hovered, setHovered] = useState(false)
 
