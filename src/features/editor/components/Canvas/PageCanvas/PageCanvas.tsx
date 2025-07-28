@@ -2,13 +2,13 @@ import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Box } from 'grommet'
 
 import { SELECTOR_PREFIX } from '@src/features/editor/constants/DnD'
-import { usePageStore } from '@src/features/editor/store/usePageStore'
+import { useSectionStore } from '@features/editor/store/section/useSectionStore'
 import type { PageCanvasProps } from './PageCanvas.types'
 import { DroppableCanvas } from '../DroppableCanvas'
 import { PageSectionRenderer } from '../PageSectionRenderer'
 
 const PageCanvas = ({ overSectionId, activeId }: PageCanvasProps) => {
-  const sections = usePageStore((state) => state.sections)
+  const sections = useSectionStore((state) => state.sections)
 
   const sectionIds = sections.map((s) => s.id)
   const isDraggingFromSelector =
