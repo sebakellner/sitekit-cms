@@ -40,7 +40,7 @@ export const addSection =
   async (name: string) => {
     const newSection = await createSectionFromRegistry(name)
     if (!newSection) {
-      console.warn(`No se pudo crear la sección '${name}'`)
+      console.warn(`The section '${name}' could not be created`)
       return
     }
     set((state) => ({
