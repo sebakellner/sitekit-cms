@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from 'react'
 import { useSortable } from '@dnd-kit/sortable'
-import { usePageStore } from '@src/features/editor/store/usePageStore'
 import {
   DRAGGING_Z_INDEX,
   NORMAL_Z_INDEX,
@@ -8,10 +7,11 @@ import {
   DRAGGING_OPACITY,
   NORMAL_DRAGGING_OPACITY,
 } from '@src/features/editor/constants/DnD'
-import type { PageStore } from '@src/features/editor/types'
 import type { SortableSectionProps } from './SortableSection.types'
+import { useSectionStore } from '@features/editor/store/section/useSectionStore'
+import type { SectionStore } from '@features/editor/store/section/section.type'
 
-const selectSectionSelector = (state: PageStore) => state.selectSection
+const selectSectionSelector = (state: SectionStore) => state.selectSection
 
 const SortableSection: React.FC<SortableSectionProps> = ({ id, children }) => {
   const {
@@ -28,7 +28,7 @@ const SortableSection: React.FC<SortableSectionProps> = ({ id, children }) => {
     },
   })
 
-  const selectSection = usePageStore(selectSectionSelector)
+  const selectSection = useSectionStore(selectSectionSelector)
 
   useEffect(() => {
     if (isDragging) {
