@@ -6,9 +6,5 @@ export type PageStore = {
   setSections: (sections: Section[]) => void
   updateSectionProps: (id: string, newProps: Record<string, unknown>) => void
   selectSection: (id: string | null) => void
-  addSection: (
-    id: string,
-    name: string,
-    props?: Record<string, unknown>
-  ) => void
+  addSection: (name: string, props?: Record<string, unknown>) => void
 }
