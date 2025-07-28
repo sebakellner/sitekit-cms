@@ -20,7 +20,7 @@ export const useSectionStore = create(
       addSection: addSection(set),
     }),
     {
-      name: 'page-store',
+      name: 'section-store',
     }
   )
 )
