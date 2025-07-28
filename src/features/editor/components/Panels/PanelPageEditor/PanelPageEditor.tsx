@@ -1,7 +1,7 @@
 import { Box, FormField, Heading, Text, TextInput } from 'grommet'
 
 import { Eclipse, Layers, Pencil, Settings } from 'lucide-react'
-import { usePageStore } from '@src/features/editor/store/usePageStore'
+import { useSectionStore } from '@features/editor/store/section/useSectionStore'
 import {
   PanelBox,
   PanelBoxCollapsible,
@@ -14,11 +14,11 @@ import {
 } from '@components/cms/ui'
 
 const PanelPageEditor = () => {
-  const selectedId = usePageStore((s) => s.selectedId)
-  const section = usePageStore((s) =>
+  const selectedId = useSectionStore((s) => s.selectedId)
+  const section = useSectionStore((s) =>
     s.sections.find((sec) => sec.id === selectedId)
   )
-  const updateProps = usePageStore((s) => s.updateSectionProps)
+  const updateProps = useSectionStore((s) => s.updateSectionProps)
 
   if (!section)
     return (
