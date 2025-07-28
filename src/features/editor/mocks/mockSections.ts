@@ -1,6 +1,6 @@
 import type { Section } from '../schemas/section.schema'
 
-const sectionsMock: Section[] = [
+const mockSections: Section[] = [
   {
     id: 'canvas-nav',
     name: 'Nav',
@@ -110,4 +110,4 @@ const sectionsMock: Section[] = [
   },
 ]
 
-export default sectionsMock
+export default mockSections

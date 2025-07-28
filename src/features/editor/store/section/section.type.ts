@@ -1,6 +1,6 @@
-import type { Section } from '../schemas/section.schema'
+import type { Section } from '@features/editor/schemas/section.schema'
 
-export type PageStore = {
+export type SectionStore = {
   sections: Section[]
   selectedId: string | null
   setSections: (sections: Section[]) => void

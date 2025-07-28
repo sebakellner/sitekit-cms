@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import type { Active, DragStartEvent, DragOverEvent } from '@dnd-kit/core'
-import { usePageStore } from '@src/features/editor/store/usePageStore'
+import { useSectionStore } from '../store/section/useSectionStore'
 import { arrayMove } from '@dnd-kit/sortable'
 import { insertSectionAtUtil } from '@src/features/editor/utils/insertSectionAt'
 import {
@@ -12,8 +12,8 @@ import {
 import { SELECTOR_PREFIX } from '@src/features/editor/constants/DnD'
 
 export function usePageDnD() {
-  const sections = usePageStore((state) => state.sections)
-  const setSections = usePageStore((state) => state.setSections)
+  const sections = useSectionStore((state) => state.sections)
+  const setSections = useSectionStore((state) => state.setSections)
 
   const [overSectionId, setOverSectionId] = useState<string | null>(null)
   const [activeId, setActiveId] = useState<string | null>(null)
