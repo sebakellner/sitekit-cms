@@ -9,7 +9,13 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './vitest.setup.ts',
     coverage: {
-      exclude: ['**/*.types.ts', '**/index.ts', '**/*.meta.ts'],
+      exclude: [
+        '**/*.types.ts',
+        '**/index.ts',
+        '**/*.meta.ts',
+        '**/*.config.ts',
+        '**/*.config.js',
+      ],
       enabled: true,
       reporter: ['html', 'text'],
     },
