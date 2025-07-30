@@ -1,17 +1,18 @@
-import { Grid, Box } from 'grommet'
+import { Grid, Box } from '@chakra-ui/react'
 import Header from '@src/features/editor/components/Header/Header'
 import type { DefaultLayoutProps } from './DefaultLayout.types'
 
 function DefaultLayout({ children }: DefaultLayoutProps) {
   return (
     <Grid
-      fill
-      rows={['auto', 'flex', 'auto']}
-      columns={['1fr']}
-      areas={[
-        { name: 'header', start: [0, 0], end: [0, 0] },
-        { name: 'content', start: [0, 1], end: [0, 1] },
-      ]}
+      templateRows="auto 1fr auto"
+      templateColumns="1fr"
+      templateAreas="
+        'header'
+        'content'
+      "
+      height="100vh"
+      overflow="hidden"
     >
       <Box gridArea="header">
         <Header />

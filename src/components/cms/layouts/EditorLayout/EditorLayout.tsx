@@ -1,6 +1,6 @@
 import { DndContext, DragOverlay, closestCorners } from '@dnd-kit/core'
 import { usePageDnD } from '@src/features/editor/hooks/usePageDnD'
-import { Grid, Box } from 'grommet'
+import { Grid, Box } from '@chakra-ui/react'
 
 import {
   ElementSelector,
@@ -30,20 +30,13 @@ function EditorLayout() {
       onDragOver={handleDragOver}
     >
       <Grid
-        fill
-        rows={['auto', 'flex', 'auto']}
-        columns={[
-          'minmax(52px, 52px)',
-          'minmax(270px, 270px)',
-          '1fr',
-          'minmax(290px, 290px)',
-        ]}
-        areas={[
-          { name: 'left-sidebar', start: [0, 1], end: [0, 1] },
-          { name: 'left-panels', start: [1, 1], end: [1, 1] },
-          { name: 'center-preview', start: [2, 1], end: [2, 1] },
-          { name: 'right-editor', start: [3, 1], end: [3, 1] },
-        ]}
+        templateRows="auto 1fr auto"
+        templateColumns="minmax(52px, 52px) minmax(270px, 270px) 1fr minmax(290px, 290px)"
+        templateAreas="
+          'left-sidebar left-panels center-preview right-editor'
+        "
+        height="100vh"
+        overflow="hidden"
       >
         <Box gridArea="left-sidebar">
           <Sidebar />
@@ -54,8 +47,9 @@ function EditorLayout() {
         <Box
           gridArea="center-preview"
           background="#212121"
-          align="center"
-          justify="center"
+          alignItems="center"
+          justifyContent="center"
+          overflow="hidden"
         >
           <PageCanvas overSectionId={overSectionId} activeId={activeId} />
         </Box>
