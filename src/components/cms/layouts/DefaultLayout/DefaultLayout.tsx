@@ -1,26 +1,30 @@
-import { Grid, Box } from '@chakra-ui/react'
+import { Grid, GridItem } from '@chakra-ui/react'
 import Header from '@src/features/editor/components/Header/Header'
 import type { DefaultLayoutProps } from './DefaultLayout.types'
 
 function DefaultLayout({ children }: DefaultLayoutProps) {
   return (
     <Grid
-      templateRows="auto 1fr auto"
+      templateAreas={`"header" "content"`}
+      templateRows="52px 1fr"
       templateColumns="1fr"
-      templateAreas="
-        'header'
-        'content'
-      "
-      height="100vh"
+      h="100vh"
+      w="100vw"
       overflow="hidden"
+      gap={0}
       data-testid="default-layout"
     >
-      <Box gridArea="header" data-testid="header">
+      <GridItem gridArea="header" data-testid="header">
         <Header />
-      </Box>
-      <Box gridArea="content" data-testid="content">
+      </GridItem>
+      <GridItem
+        gridArea="content"
+        data-testid="content"
+        h="100%"
+        overflow="auto"
+      >
         {children}
-      </Box>
+      </GridItem>
     </Grid>
   )
 }

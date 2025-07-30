@@ -28,7 +28,12 @@ const Sidebar = ({ links = LINKS_DATA }: SidebarProps) => {
   const settingsIndex = links.length
 
   return (
-    <PanelWrapper borderSide="right" justify="between">
+    <PanelWrapper
+      borderSide="right"
+      justify="between"
+      width="52px"
+      fill={false}
+    >
       <PanelBox borderSide={false} pad="none" flex={false}>
         <Nav gap="none">
           {links?.map(({ icon, label }, index) => (
