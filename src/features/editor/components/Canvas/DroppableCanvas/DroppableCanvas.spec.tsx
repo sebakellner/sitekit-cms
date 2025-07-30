@@ -49,13 +49,20 @@ describe('DroppableCanvas', () => {
   })
 
   test('should have a droppable ref', () => {
+    const setNodeRefMock = vi.fn((node: HTMLElement | null) => {
+      if (node) {
+        node.setAttribute('data-dnd-droppable-id', 'page-canvas')
+      }
+    })
+
+    vi.mocked(useDroppable).mockReturnValueOnce(
+      createMockedUseDroppable(setNodeRefMock)
+    )
+
     const { container } = render(setup())
-    const droppableElement = container.firstChild?.firstChild as HTMLElement
+    const droppableElement = container.firstChild as HTMLElement
 
-    if (droppableElement) {
-      droppableElement.setAttribute('data-dnd-droppable-id', 'page-canvas')
-    }
-
+    expect(setNodeRefMock).toHaveBeenCalledWith(droppableElement)
     expect(droppableElement).toHaveAttribute(
       'data-dnd-droppable-id',
       'page-canvas'
