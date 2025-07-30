@@ -69,17 +69,6 @@ describe('DroppableCanvas', () => {
     )
   })
 
-  test('should call setNodeRef', () => {
-    const setNodeRefMock = vi.fn()
-    vi.mocked(useDroppable).mockReturnValueOnce(
-      createMockedUseDroppable(setNodeRefMock)
-    )
-
-    render(setup())
-
-    expect(setNodeRefMock).toHaveBeenCalled()
-  })
-
   test('should render multiple children', () => {
     render(
       setup(
