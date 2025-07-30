@@ -8,5 +8,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './test/setup.ts',
+    coverage: {
+      exclude: ['**/*.types.ts', '**/index.ts', '**/*.meta.ts'],
+      enabled: true,
+      reporter: ['html', 'text'],
+    },
   },
 })
