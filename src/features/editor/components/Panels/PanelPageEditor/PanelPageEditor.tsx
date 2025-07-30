@@ -1,4 +1,5 @@
-import { Box, FormField, Heading, Text, TextInput } from 'grommet'
+import { Box, Heading, Text } from 'grommet'
+import { Input, Field } from '@chakra-ui/react'
 
 import { Eclipse, Layers, Pencil, Settings } from 'lucide-react'
 import { useSectionStore } from '@features/editor/store/section/useSectionStore'
@@ -69,19 +70,24 @@ const PanelPageEditor = () => {
           <PanelBoxScroll pad="none" gap="none">
             <PanelBoxCollapsible title="General Settings">
               {Object.entries(section.props).map(([key, value]) => (
-                <FormField label={key} key={key}>
+                <Field.Root key={key}>
+                  <Field.Label>
+                    {key}
+                    <Field.RequiredIndicator />
+                  </Field.Label>
                   {typeof value === 'string' && (
-                    <TextInput
+                    <Input
                       placeholder="Enter text here"
                       value={value || ''}
                       onChange={(e) =>
                         updateProps(section.id, { [key]: e.target.value })
                       }
-                      plain
+                      variant="subtle"
+                      borderRadius="md"
                     />
                   )}
                   {typeof value === 'number' && (
-                    <TextInput
+                    <Input
                       type="number"
                       value={value || ''}
                       onChange={(e) =>
@@ -89,7 +95,8 @@ const PanelPageEditor = () => {
                           [key]: parseFloat(e.target.value) || 0,
                         })
                       }
-                      plain
+                      variant="subtle"
+                      borderRadius="md"
                     />
                   )}
                   {typeof value === 'boolean' && (
@@ -105,7 +112,7 @@ const PanelPageEditor = () => {
                     </Box>
                   )}
                   {typeof value === 'object' && value !== null && (
-                    <TextInput
+                    <Input
                       placeholder="Enter JSON here"
                       value={JSON.stringify(value, null, 2)}
                       onChange={(e) => {
@@ -117,10 +124,14 @@ const PanelPageEditor = () => {
                           console.error('Failed to parse JSON:', error)
                         }
                       }}
-                      plain
+                      variant="subtle"
+                      borderRadius="md"
                     />
                   )}
-                </FormField>
+                  <Field.ErrorText>
+                    Error: Invalid value for {key}.
+                  </Field.ErrorText>
+                </Field.Root>
               ))}
             </PanelBoxCollapsible>
           </PanelBoxScroll>

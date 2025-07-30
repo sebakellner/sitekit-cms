@@ -1,5 +1,5 @@
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
-import { Box } from 'grommet'
+import { Box } from '@chakra-ui/react'
 
 import { SELECTOR_PREFIX } from '@src/features/editor/constants/DnD'
 import { useSectionStore } from '@features/editor/store/section/useSectionStore'
@@ -16,10 +16,11 @@ const PageCanvas = ({ overSectionId, activeId }: PageCanvasProps) => {
 
   return (
     <Box
-      style={{ display: 'block' }}
-      fill
+      display="block"
+      height="100%"
       background="white"
-      overflow={{ vertical: 'auto', horizontal: 'hidden' }}
+      overflowY="auto"
+      overflowX="hidden"
       data-testid="page-canvas"
     >
       <SortableContext
