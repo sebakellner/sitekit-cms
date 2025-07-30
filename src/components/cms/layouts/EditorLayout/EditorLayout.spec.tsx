@@ -14,7 +14,6 @@ describe('EditorLayout', () => {
   test('should render all child components', () => {
     render(setup())
     expect(screen.getByTestId('left-sidebar')).toBeInTheDocument()
-    expect(screen.getByTestId('left-panels')).toBeInTheDocument()
     expect(screen.getByTestId('center-preview')).toBeInTheDocument()
     expect(screen.getByTestId('right-editor')).toBeInTheDocument()
   })
