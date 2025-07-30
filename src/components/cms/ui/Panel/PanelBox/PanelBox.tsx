@@ -1,40 +1,55 @@
-type BoxSideType = 'top' | 'bottom' | 'left' | 'right'
-type BorderProp = { side: BoxSideType; color: string }
-import { Box } from 'grommet'
+import { Flex } from '@chakra-ui/react'
+import type { FlexProps } from '@chakra-ui/react'
 import type { PanelBoxProps } from './PanelBox.types'
 
+const borderColorMap: Record<string, string> = {
+  'dark-2': 'gray.600',
+}
+
 const PanelBox = ({
-  children,
   borderSide = 'bottom',
-  gap = 'xsmall',
-  pad = '16px',
+  pad = 4,
+  gap = 3,
+  children,
   ...restProps
 }: PanelBoxProps) => {
-  let borderProp: BorderProp | BorderProp[] | undefined = undefined
-  if (borderSide === 'vertical') {
-    borderProp = [
-      { side: 'top', color: 'dark-2' },
-      { side: 'bottom', color: 'dark-2' },
-    ]
-  } else if (borderSide === 'horizontal') {
-    borderProp = [
-      { side: 'left', color: 'dark-2' },
-      { side: 'right', color: 'dark-2' },
-    ]
-  } else if (borderSide) {
-    borderProp = { side: borderSide as BoxSideType, color: 'dark-2' }
+  const color = borderColorMap['dark-2']
+  const borderProps: Partial<FlexProps> = {}
+
+  const setBorder = (side: string) => {
+    borderProps[`${side}Width` as keyof FlexProps] = '1px'
+    borderProps[`${side}Style` as keyof FlexProps] = 'solid'
+    borderProps[`${side}Color` as keyof FlexProps] = color
   }
+
+  if (borderSide === 'vertical') {
+    setBorder('borderTop')
+    setBorder('borderBottom')
+  } else if (borderSide === 'horizontal') {
+    setBorder('borderLeft')
+    setBorder('borderRight')
+  } else if (
+    borderSide === 'top' ||
+    borderSide === 'bottom' ||
+    borderSide === 'left' ||
+    borderSide === 'right'
+  ) {
+    setBorder(
+      `border${borderSide.charAt(0).toUpperCase() + borderSide.slice(1)}`
+    )
+  }
+
   return (
-    <Box
-      pad={pad}
+    <Flex
+      direction="column"
+      w="100%"
+      p={pad}
       gap={gap}
-      flex="grow"
-      border={borderProp}
-      width="100%"
+      {...borderProps}
       {...restProps}
     >
       {children}
-    </Box>
+    </Flex>
   )
 }
 

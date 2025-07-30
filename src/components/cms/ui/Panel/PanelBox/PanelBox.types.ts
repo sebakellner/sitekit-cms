@@ -1,4 +1,4 @@
-import type { Box } from 'grommet'
+import type { FlexProps } from '@chakra-ui/react'
 
 export type PanelBoxProps = {
   children: React.ReactNode
@@ -10,5 +10,6 @@ export type PanelBoxProps = {
     | 'vertical'
     | 'horizontal'
     | false
-  pad?: string | { horizontal?: string; vertical?: string }
-} & React.ComponentProps<typeof Box>
+  pad?: number | string
+  gap?: number | string
+} & FlexProps
