@@ -15,7 +15,7 @@ const PanelBoxScroll = ({
       overflowY="auto"
       overflowX="hidden"
       className="custom-scrollbar"
-      borderSide={false}
+      borderSide="none"
       {...restProps}
     >
       {children}
