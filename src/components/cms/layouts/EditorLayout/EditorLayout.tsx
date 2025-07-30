@@ -37,11 +37,12 @@ function EditorLayout() {
         "
         height="100vh"
         overflow="hidden"
+        data-testid="editor-layout"
       >
-        <Box gridArea="left-sidebar">
+        <Box gridArea="left-sidebar" data-testid="left-sidebar">
           <Sidebar />
         </Box>
-        <Box gridArea="left-panels">
+        <Box gridArea="left-panels" data-testid="left-panels">
           <ElementSelector />
         </Box>
         <Box
@@ -50,15 +51,16 @@ function EditorLayout() {
           alignItems="center"
           justifyContent="center"
           overflow="hidden"
+          data-testid="center-preview"
         >
           <PageCanvas overSectionId={overSectionId} activeId={activeId} />
         </Box>
-        <Box gridArea="right-editor">
+        <Box gridArea="right-editor" data-testid="right-editor">
           <PanelPageEditor />
         </Box>
       </Grid>
 
-      <DragOverlay>
+      <DragOverlay data-testid="drag-overlay">
         {isDragging && active?.data?.current?.renderDragOverlay
           ? active.data.current.renderDragOverlay()
           : null}
