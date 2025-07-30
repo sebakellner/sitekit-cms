@@ -6,7 +6,7 @@ import { EditorLayout } from './index'
 const setup = () => <EditorLayout />
 
 describe('EditorLayout', () => {
-  test('should renders without crashing', () => {
+  test('should render without crashing', () => {
     render(setup())
     expect(screen.getByTestId('editor-layout')).toBeInTheDocument()
   })
