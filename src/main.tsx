@@ -1,14 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Grommet } from 'grommet'
-import { hpe } from 'grommet-theme-hpe'
-
 import App from './App.tsx'
+import { Provider } from '@components/cms/ui/provider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Grommet theme={hpe} full>
+    <Provider>
       <App />
-    </Grommet>
+    </Provider>
   </StrictMode>
 )
