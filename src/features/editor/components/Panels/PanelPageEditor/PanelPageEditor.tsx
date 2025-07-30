@@ -73,7 +73,9 @@ const PanelPageEditor = () => {
                 <Field.Root key={key}>
                   <Field.Label>
                     {key}
-                    <Field.RequiredIndicator />
+                    {value !== undefined && value !== null && value !== '' && (
+                      <Field.RequiredIndicator />
+                    )}
                   </Field.Label>
                   {typeof value === 'string' && (
                     <Input
