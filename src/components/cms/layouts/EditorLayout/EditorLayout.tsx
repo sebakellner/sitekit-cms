@@ -1,6 +1,6 @@
 import { DndContext, DragOverlay, closestCorners } from '@dnd-kit/core'
 import { usePageDnD } from '@src/features/editor/hooks/usePageDnD'
-import { Grid, Box } from '@chakra-ui/react'
+import { Grid, GridItem } from '@chakra-ui/react'
 
 import {
   ElementSelector,
@@ -31,21 +31,26 @@ function EditorLayout() {
     >
       <Grid
         templateRows="auto 1fr auto"
-        templateColumns="minmax(52px, 52px) minmax(270px, 270px) 1fr minmax(290px, 290px)"
+        templateColumns="auto 1fr minmax(290px, 290px)"
         templateAreas="
-          'left-sidebar left-panels center-preview right-editor'
+          'left-sidebar center-preview right-editor'
         "
-        height="100vh"
+        h="100%"
+        w="100%"
         overflow="hidden"
         data-testid="editor-layout"
       >
-        <Box gridArea="left-sidebar" data-testid="left-sidebar">
+        <GridItem
+          gridArea="left-sidebar"
+          data-testid="left-sidebar"
+          h="100%"
+          display="flex"
+          overflow="auto"
+        >
           <Sidebar />
-        </Box>
-        <Box gridArea="left-panels" data-testid="left-panels">
           <ElementSelector />
-        </Box>
-        <Box
+        </GridItem>
+        <GridItem
           gridArea="center-preview"
           background="#212121"
           alignItems="center"
@@ -54,10 +59,10 @@ function EditorLayout() {
           data-testid="center-preview"
         >
           <PageCanvas overSectionId={overSectionId} activeId={activeId} />
-        </Box>
-        <Box gridArea="right-editor" data-testid="right-editor">
+        </GridItem>
+        <GridItem gridArea="right-editor" data-testid="right-editor" h="100%">
           <PanelPageEditor />
-        </Box>
+        </GridItem>
       </Grid>
 
       <DragOverlay>
