@@ -20,6 +20,7 @@ const PageCanvas = ({ overSectionId, activeId }: PageCanvasProps) => {
       fill
       background="white"
       overflow={{ vertical: 'auto', horizontal: 'hidden' }}
+      data-testid="page-canvas"
     >
       <SortableContext
         items={sectionIds}
