@@ -30,10 +30,10 @@ const ElementSelector = () => {
     })
   })
 
-  if (loading) return <PanelWrapper>Loading...</PanelWrapper>
+  if (loading) return <PanelWrapper borderSide="right">Loading...</PanelWrapper>
 
   return (
-    <PanelWrapper borderSide="right" width={'290px'} fill={false}>
+    <PanelWrapper borderSide="right" width={'290px'}>
       <PanelBox>
         <Heading level={5} margin="none">
           UI Section Components
