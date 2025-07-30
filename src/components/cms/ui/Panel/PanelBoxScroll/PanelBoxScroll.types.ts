@@ -1,7 +1,3 @@
-import type { BoxProps } from '@chakra-ui/react'
+import type { PanelBoxProps } from '../PanelBox/PanelBox.types'
 
-export type PanelBoxScrollProps = {
-  children: React.ReactNode
-  pad?: string
-  gap?: string
-} & BoxProps
+export type PanelBoxScrollProps = PanelBoxProps

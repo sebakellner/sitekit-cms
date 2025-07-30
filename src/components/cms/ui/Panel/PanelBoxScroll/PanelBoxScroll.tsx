@@ -1,24 +1,25 @@
-import { Box } from '@chakra-ui/react'
+import { PanelBox } from '../PanelBox'
 import type { PanelBoxScrollProps } from './PanelBoxScroll.types'
 
 const PanelBoxScroll = ({
   children,
-  pad = 'medium',
-  gap = 'medium',
+  p = 0,
+  gap = 4,
   ...restProps
 }: PanelBoxScrollProps) => {
   return (
-    <Box
-      p={pad}
+    <PanelBox
+      p={p}
       gap={gap}
       w="100%"
       overflowY="auto"
       overflowX="hidden"
       className="custom-scrollbar"
+      borderSide={false}
       {...restProps}
     >
       {children}
-    </Box>
+    </PanelBox>
   )
 }
 
