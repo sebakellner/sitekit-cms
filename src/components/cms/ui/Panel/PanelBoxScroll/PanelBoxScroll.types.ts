@@ -1,7 +1,7 @@
-import type { Box } from 'grommet'
+import type { BoxProps } from '@chakra-ui/react'
 
-export type PanelBoxScrollProps = React.ComponentProps<typeof Box> & {
+export type PanelBoxScrollProps = {
   children: React.ReactNode
   pad?: string
   gap?: string
-}
+} & BoxProps

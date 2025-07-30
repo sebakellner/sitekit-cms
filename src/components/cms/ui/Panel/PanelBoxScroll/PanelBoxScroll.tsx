@@ -1,4 +1,4 @@
-import { Box } from 'grommet'
+import { Box } from '@chakra-ui/react'
 import type { PanelBoxScrollProps } from './PanelBoxScroll.types'
 
 const PanelBoxScroll = ({
@@ -9,10 +9,11 @@ const PanelBoxScroll = ({
 }: PanelBoxScrollProps) => {
   return (
     <Box
-      pad={pad}
+      p={pad}
       gap={gap}
-      width="100%"
-      overflow={{ vertical: 'auto', horizontal: 'hidden' }}
+      w="100%"
+      overflowY="auto"
+      overflowX="hidden"
       className="custom-scrollbar"
       {...restProps}
     >
