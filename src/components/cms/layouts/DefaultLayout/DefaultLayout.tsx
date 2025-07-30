@@ -13,11 +13,14 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
       "
       height="100vh"
       overflow="hidden"
+      data-testid="default-layout"
     >
-      <Box gridArea="header">
+      <Box gridArea="header" data-testid="header">
         <Header />
       </Box>
-      <Box gridArea="content">{children}</Box>
+      <Box gridArea="content" data-testid="content">
+        {children}
+      </Box>
     </Grid>
   )
 }
