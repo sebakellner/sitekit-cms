@@ -128,9 +128,11 @@ const PanelPageEditor = () => {
                       borderRadius="md"
                     />
                   )}
-                  <Field.ErrorText>
-                    Error: Invalid value for {key}.
-                  </Field.ErrorText>
+                  {value === '' && (
+                    <Field.ErrorText>
+                      Error: Invalid value for {key}.
+                    </Field.ErrorText>
+                  )}
                 </Field.Root>
               ))}
             </PanelBoxCollapsible>
