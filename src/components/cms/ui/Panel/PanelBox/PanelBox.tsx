@@ -47,6 +47,7 @@ const PanelBox = ({
       gap={gap}
       {...borderProps}
       {...restProps}
+      data-testid="panel-box"
     >
       {children}
     </Flex>
