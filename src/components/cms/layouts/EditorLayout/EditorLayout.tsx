@@ -60,7 +60,7 @@ function EditorLayout() {
         </Box>
       </Grid>
 
-      <DragOverlay data-testid="drag-overlay">
+      <DragOverlay>
         {isDragging && active?.data?.current?.renderDragOverlay
           ? active.data.current.renderDragOverlay()
           : null}
