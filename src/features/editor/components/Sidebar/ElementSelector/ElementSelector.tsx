@@ -46,7 +46,7 @@ const ElementSelector = () => {
       <ElementSelectorSearch />
 
       <Box fill>
-        <PanelBoxScroll pad="none" gap="none">
+        <PanelBoxScroll p={0} gap="none">
           {Object.entries(categorized).map(([category, items]) => (
             <PanelBoxCollapsible
               key={category}

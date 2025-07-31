@@ -29,7 +29,7 @@ const Sidebar = ({ links = LINKS_DATA }: SidebarProps) => {
 
   return (
     <PanelWrapper borderSide="right" justify="space-between" width="52px">
-      <PanelBox borderSide={false} p={0}>
+      <PanelBox borderSide="none" p={0}>
         <Nav gap="none">
           {links?.map(({ icon, label }, index) => (
             <SidebarLink

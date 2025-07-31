@@ -23,8 +23,8 @@ const PanelPageEditor = () => {
 
   if (!section)
     return (
-      <PanelWrapper borderSide="left">
-        <PanelBox gap="small" align="center" justify="center">
+      <PanelWrapper borderSide="left" h="100%">
+        <PanelBox gap={4} align="center" justify="center">
           <Heading level={3} margin="none">
             Editor
           </Heading>
@@ -34,7 +34,7 @@ const PanelPageEditor = () => {
     )
 
   return (
-    <PanelWrapper borderSide="left">
+    <PanelWrapper borderSide="left" h="100%">
       <PanelBox>
         <Box direction="row" gap="xsmall" align="center">
           <Layers size={16} />
@@ -67,7 +67,7 @@ const PanelPageEditor = () => {
           />
         </PanelTabList>
         <PanelTabContent value="content">
-          <PanelBoxScroll pad="none" gap="none">
+          <PanelBoxScroll p={0} gap={0}>
             <PanelBoxCollapsible title="General Settings">
               {Object.entries(section.props).map(([key, value]) => (
                 <Field.Root key={key}>
@@ -142,14 +142,14 @@ const PanelPageEditor = () => {
         </PanelTabContent>
 
         <PanelTabContent value="styles">
-          <PanelBox borderSide={false}>
+          <PanelBox borderSide="none">
             <Text size="small" color="dark-4">
               Configure the properties of your component here.
             </Text>
           </PanelBox>
         </PanelTabContent>
         <PanelTabContent value="settings">
-          <PanelBox borderSide={false}>
+          <PanelBox borderSide="none">
             <Text size="small" color="dark-4">
               Configure the properties of your Settings here.
             </Text>
