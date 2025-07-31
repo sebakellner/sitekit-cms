@@ -31,7 +31,7 @@ const borderMap: Record<
 
 const PanelBox = ({
   borderSide = 'bottom',
-  pad = 4,
+  p = 4,
   gap = 3,
   children,
   ...restProps
@@ -46,7 +46,7 @@ const PanelBox = ({
       direction="column"
       background={'gray.900'}
       w="100%"
-      p={pad}
+      p={p}
       gap={gap}
       {...borderProps}
       {...restProps}
