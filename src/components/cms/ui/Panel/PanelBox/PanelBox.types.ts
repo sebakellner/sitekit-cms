@@ -10,6 +10,6 @@ export type PanelBoxProps = {
     | 'vertical'
     | 'horizontal'
     | 'none'
-  pad?: number | string
+  p?: number | string
   gap?: number | string
 } & FlexProps
