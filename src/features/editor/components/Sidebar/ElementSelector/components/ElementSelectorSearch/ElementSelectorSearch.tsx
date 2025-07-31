@@ -1,15 +1,22 @@
 import { PanelBox } from '@components/cms/ui'
-import { TextInput } from 'grommet'
-import { Search } from 'grommet-icons'
+import { Input, Box } from '@chakra-ui/react'
+import { Search } from 'lucide-react'
 
 const ElementSelectorSearch = () => (
   <PanelBox>
-    <TextInput
-      icon={<Search />}
-      size="small"
-      placeholder="Search"
-      dropHeight="small"
-    />
+    <Box position="relative" w="100%">
+      <Box
+        position="absolute"
+        left={2}
+        top="50%"
+        transform="translateY(-50%)"
+        zIndex={1}
+        pointerEvents="none"
+      >
+        <Search size={16} />
+      </Box>
+      <Input placeholder="Search" size="sm" pl={8} />
+    </Box>
   </PanelBox>
 )
 
