@@ -6,7 +6,7 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
   return (
     <Grid
       templateAreas={`"header" "content"`}
-      templateRows="52px 1fr"
+      templateRows="auto 1fr"
       templateColumns="1fr"
       h="100vh"
       w="100vw"
