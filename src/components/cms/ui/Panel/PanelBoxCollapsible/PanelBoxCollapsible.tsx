@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Box, Button, Heading } from 'grommet'
+import { Box, Button, Heading } from '@chakra-ui/react'
 import { ChevronDown } from 'lucide-react'
 
 import { PanelBox } from '../PanelBox'
@@ -14,42 +14,33 @@ const PanelCollapsible = ({
   const [collapsed, setCollapsed] = useState(false)
 
   return (
-    <PanelBox focusIndicator={false} pad="none" gap="none" {...restProps}>
+    <PanelBox p={0} gap="none" {...restProps}>
       <Box
-        direction="row"
-        justify="between"
-        align="center"
-        pad={{
-          horizontal: '16px',
-          top: '16px',
-          bottom: collapsed ? '16px' : 'small',
-        }}
-        style={{ cursor: 'pointer' }}
-        focusIndicator={false}
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+        px={4}
+        pt={2}
+        pb={collapsed ? 2 : 2}
+        cursor="pointer"
         onClick={() => setCollapsed((c) => !c)}
       >
-        <Heading level={6} size="small" margin="none">
+        <Heading as="h6" size="sm" m={0}>
           {title}
         </Heading>
-        <Button
-          icon={
-            <ChevronDown
-              size={16}
-              style={{
-                transform: collapsed ? 'rotate(-90deg)' : 'none',
-                transition: 'transform 0.2s',
-              }}
-            />
-          }
-          plain
-          focusIndicator={false}
-        />
+        <Button variant="ghost" p={0} minW={0}>
+          <ChevronDown
+            size={16}
+            style={{
+              transform: collapsed ? 'rotate(-90deg)' : 'none',
+              transition: 'transform 0.2s',
+            }}
+          />
+        </Button>
       </Box>
       {!collapsed && (
-        <Box
-          pad={{ top: 'none', horizontal: '16px', bottom: 'medium' }}
-          gap={collapsedGap}
-        >
+        <Box pt={0} px={4} pb={4} gap={collapsedGap}>
           {children}
         </Box>
       )}

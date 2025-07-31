@@ -1,23 +1,25 @@
-import { Box } from 'grommet'
+import { PanelBox } from '../PanelBox'
 import type { PanelBoxScrollProps } from './PanelBoxScroll.types'
 
 const PanelBoxScroll = ({
   children,
-  pad = 'medium',
-  gap = 'medium',
+  p = 0,
+  gap = 4,
   ...restProps
 }: PanelBoxScrollProps) => {
   return (
-    <Box
-      pad={pad}
+    <PanelBox
+      p={p}
       gap={gap}
-      width="100%"
-      overflow={{ vertical: 'auto', horizontal: 'hidden' }}
+      w="100%"
+      overflowY="auto"
+      overflowX="hidden"
       className="custom-scrollbar"
+      borderSide="none"
       {...restProps}
     >
       {children}
-    </Box>
+    </PanelBox>
   )
 }
 

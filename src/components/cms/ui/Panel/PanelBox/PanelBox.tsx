@@ -1,40 +1,33 @@
-type BoxSideType = 'top' | 'bottom' | 'left' | 'right'
-type BorderProp = { side: BoxSideType; color: string }
-import { Box } from 'grommet'
+import { Flex } from '@chakra-ui/react'
+
 import type { PanelBoxProps } from './PanelBox.types'
+import { borderMap } from './PanelBox.constants'
 
 const PanelBox = ({
-  children,
   borderSide = 'bottom',
-  gap = 'xsmall',
-  pad = '16px',
+  p = 4,
+  gap = 3,
+  children,
   ...restProps
 }: PanelBoxProps) => {
-  let borderProp: BorderProp | BorderProp[] | undefined = undefined
-  if (borderSide === 'vertical') {
-    borderProp = [
-      { side: 'top', color: 'dark-2' },
-      { side: 'bottom', color: 'dark-2' },
-    ]
-  } else if (borderSide === 'horizontal') {
-    borderProp = [
-      { side: 'left', color: 'dark-2' },
-      { side: 'right', color: 'dark-2' },
-    ]
-  } else if (borderSide) {
-    borderProp = { side: borderSide as BoxSideType, color: 'dark-2' }
-  }
+  const borderProps =
+    borderSide !== 'none' && borderSide in borderMap
+      ? borderMap[borderSide]
+      : {}
+
   return (
-    <Box
-      pad={pad}
+    <Flex
+      direction="column"
+      background={'gray.900'}
+      w="100%"
+      p={p}
       gap={gap}
-      flex="grow"
-      border={borderProp}
-      width="100%"
+      {...borderProps}
       {...restProps}
+      data-testid="panel-box"
     >
       {children}
-    </Box>
+    </Flex>
   )
 }
 

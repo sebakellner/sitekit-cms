@@ -30,10 +30,10 @@ const ElementSelector = () => {
     })
   })
 
-  if (loading) return <PanelWrapper>Loading...</PanelWrapper>
+  if (loading) return <PanelWrapper borderSide="right">Loading...</PanelWrapper>
 
   return (
-    <PanelWrapper borderSide="right" width={'290px'} fill={false}>
+    <PanelWrapper borderSide="right" width={'290px'}>
       <PanelBox>
         <Heading level={5} margin="none">
           UI Section Components
@@ -46,7 +46,7 @@ const ElementSelector = () => {
       <ElementSelectorSearch />
 
       <Box fill>
-        <PanelBoxScroll pad="none" gap="none">
+        <PanelBoxScroll p={0} gap="none">
           {Object.entries(categorized).map(([category, items]) => (
             <PanelBoxCollapsible
               key={category}

@@ -6,7 +6,7 @@ import {
   type FC,
   type ReactElement,
 } from 'react'
-import { Box } from 'grommet'
+import { Box } from '@chakra-ui/react'
 import type { PanelTabsProps } from './PanelTabs.types'
 import {
   PanelTabList,
@@ -40,7 +40,7 @@ const PanelTabs: FC<PanelTabsProps> = ({ children, defaultValue }) => {
   const [activeValue, setActiveValue] = useState(defaultValue ?? firstValue)
 
   return (
-    <Box fill>
+    <Box w="100%" h="100%">
       {Children.map(children, (child) => {
         if (isValidElement(child)) {
           if (child.type === PanelTabList) {

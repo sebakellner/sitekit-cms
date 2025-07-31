@@ -1,4 +1,4 @@
-import { Box } from 'grommet'
+import { Box } from '@chakra-ui/react'
 import type { FC } from 'react'
 import type { PanelTabContentProps } from './PanelTabContent.types'
 
@@ -8,7 +8,7 @@ const PanelTabContent: FC<PanelTabContentProps> = ({
   activeValue,
 }) => {
   const isActive = value === activeValue
-  return <Box style={{ display: isActive ? 'flex' : 'none' }}>{children}</Box>
+  return <Box display={isActive ? 'flex' : 'none'}>{children}</Box>
 }
 
 export default PanelTabContent

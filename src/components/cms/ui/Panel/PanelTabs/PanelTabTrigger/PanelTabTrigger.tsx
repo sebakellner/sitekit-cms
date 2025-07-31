@@ -1,4 +1,4 @@
-import { Box, Text } from 'grommet'
+import { Box, Text } from '@chakra-ui/react'
 import type { FC } from 'react'
 import './PanelTabTrigger.style.css'
 import type { PanelTabTriggerProps } from './PanelTabTrigger.types'
@@ -12,19 +12,20 @@ const PanelTabTrigger: FC<PanelTabTriggerProps> = ({
 }) => {
   return (
     <Box
-      align="center"
-      justify="center"
-      gap="xsmall"
-      hoverIndicator={true}
-      fill
-      pad={{ horizontal: 'small', vertical: 'small' }}
-      focusIndicator={false}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      gap={1}
+      w="100%"
+      px={2}
+      py={2}
       className={active ? 'panel-tab-trigger--active' : 'panel-tab-trigger'}
       onClick={() => setActiveValue?.(value)}
-      style={{ cursor: 'pointer', position: 'relative' }}
+      cursor="pointer"
+      position="relative"
     >
       {icon}
-      <Text size="small" margin="none">
+      <Text fontSize="sm" m={0}>
         {label}
       </Text>
     </Box>

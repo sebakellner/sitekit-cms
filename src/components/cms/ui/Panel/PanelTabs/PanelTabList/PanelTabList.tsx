@@ -1,5 +1,5 @@
 import { Children, isValidElement, cloneElement, type FC } from 'react'
-import { Box } from 'grommet'
+import { Box } from '@chakra-ui/react'
 
 import type {
   PanelTabListInjectedProps,
@@ -15,8 +15,8 @@ const PanelTabList: FC<PanelTabListProps & PanelTabListInjectedProps> = ({
   setActiveValue,
 }) => {
   return (
-    <PanelBox pad="none" flex={false}>
-      <Box direction="row">
+    <PanelBox p={0}>
+      <Box display="flex" flexDirection="row">
         {Children.map(children, (child) => {
           if (
             isValidElement<PanelTabTriggerProps>(child) &&

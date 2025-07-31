@@ -1,6 +1,3 @@
-import type { Box } from 'grommet'
+import type { PanelBoxProps } from '../PanelBox/PanelBox.types'
 
-export type PanelWrapperProps = React.ComponentProps<typeof Box> & {
-  children?: React.ReactNode
-  borderSide?: 'top' | 'bottom' | 'left' | 'right'
-}
+export type PanelWrapperProps = PanelBoxProps
