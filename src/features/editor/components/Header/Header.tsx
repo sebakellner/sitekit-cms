@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react'
+import { Box, Button } from '@chakra-ui/react'
 
 import { Globe, Monitor, Smartphone, StickyNote, Tablet } from 'lucide-react'
 import {

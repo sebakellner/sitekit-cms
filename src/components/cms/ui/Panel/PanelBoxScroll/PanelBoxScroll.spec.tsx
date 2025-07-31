@@ -1,6 +1,6 @@
 import { describe, test } from 'vitest'
 import { render } from 'test/utils/render'
-import { getByTestId, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { PanelBoxScroll, type PanelBoxScrollProps } from './index'
 
 const setup = ({ children, ...restProps }: PanelBoxScrollProps) => (
@@ -19,9 +19,9 @@ describe('PanelBoxScroll', () => {
   test('should apply padding and gap styles', () => {
     const children = <div>Test Content</div>
 
-    const { container } = render(setup({ children, p: 6, gap: 4 }))
+    render(setup({ children, p: 6, gap: 4 }))
 
-    const box = getByTestId(container, 'panel-box')
+    const box = screen.getByTestId('panel-box')
 
     const styles = getComputedStyle(box)
 
@@ -36,9 +36,9 @@ describe('PanelBoxScroll', () => {
       </div>
     )
 
-    const { container } = render(setup({ children, p: 0, gap: 0 }))
+    render(setup({ children, p: 0, gap: 0 }))
 
-    const box = getByTestId(container, 'panel-box')
+    const box = screen.getByTestId('panel-box')
 
     const styles = getComputedStyle(box)
 
