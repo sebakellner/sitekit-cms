@@ -8,6 +8,18 @@ const meta: ComponentMeta<CardGridProps> = {
   category: 'Section',
   description: 'A grid of cards for features or content.',
   preview,
+  panels: [
+    {
+      id: 'content',
+      title: 'Content',
+      fields: ['title', 'items'],
+    },
+    {
+      id: 'style',
+      title: 'Style',
+      fields: ['background'],
+    },
+  ],
   component: CardGrid,
   props: {
     title: {
@@ -16,7 +28,7 @@ const meta: ComponentMeta<CardGridProps> = {
       editor: 'text',
     },
     background: {
-      type: ['color', 'string'],
+      type: 'string',
       default: 'light-2',
       editor: 'colorPicker',
     },

@@ -9,44 +9,69 @@ const meta: ComponentMeta<HeroProps> = {
   description: 'A full-width hero section with background and text.',
   preview,
   component: Hero,
+  panels: [
+    {
+      id: 'content',
+      title: 'Content',
+      fields: ['title', 'description'],
+    },
+    {
+      id: 'style',
+      title: 'Style',
+      fields: ['headingColor', 'textColor', 'background'],
+    },
+    {
+      id: 'action',
+      title: 'Action',
+      fields: ['buttonLabel', 'buttonColor', 'buttonSize'],
+    },
+  ],
   props: {
     title: {
+      title: 'Title',
       type: 'string',
       default: 'Welcome to Site Kit Builder',
       editor: 'text',
     },
     description: {
+      title: 'Description',
       type: 'string',
       default:
         'Create and customize your website easily with our intuitive tools.',
       editor: 'text',
     },
     buttonLabel: {
+      title: 'Button Label',
       type: 'string',
       default: 'Get Started',
       editor: 'text',
     },
     background: {
-      type: ['color', 'object'],
+      title: 'Background',
+      type: 'string',
       default: 'white',
       editor: 'colorPicker',
     },
     headingColor: {
-      type: ['color', 'string'],
+      title: 'Heading Color',
+      type: 'string',
       default: 'black',
       editor: 'colorPicker',
     },
     textColor: {
-      type: ['color', 'string'],
+      title: 'Text Color',
+      type: 'string',
       default: 'dark-2',
       editor: 'colorPicker',
     },
     buttonColor: {
-      type: ['color', 'string'],
+      title: 'Button Color',
+      type: 'string',
       default: 'brand',
       editor: 'colorPicker',
     },
     buttonSize: {
+      title: 'Button Size',
       type: 'enum',
       default: 'large',
       options: ['small', 'medium', 'large'],

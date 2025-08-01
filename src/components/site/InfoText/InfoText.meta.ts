@@ -9,6 +9,18 @@ const meta: ComponentMeta<InfoTextProps> = {
   description: 'Informational text section with bullet points.',
   preview,
   component: InfoText,
+  panels: [
+    {
+      id: 'content',
+      title: 'Content',
+      fields: ['title', 'text', 'formats'],
+    },
+    {
+      id: 'style',
+      title: 'Style',
+      fields: ['imageSrc', 'imageAlt', 'background'],
+    },
+  ],
   props: {
     title: {
       type: 'string',
@@ -59,7 +71,7 @@ const meta: ComponentMeta<InfoTextProps> = {
       editor: 'text',
     },
     background: {
-      type: 'color',
+      type: 'string',
       default: 'white',
       editor: 'colorPicker',
     },

@@ -9,6 +9,18 @@ const meta: ComponentMeta<FooterProps> = {
   category: 'Footer',
   description: 'Footer section for your site.',
   preview,
+  panels: [
+    {
+      id: 'content',
+      title: 'Content',
+      fields: ['siteName', 'year', 'footerLinks'],
+    },
+    {
+      id: 'style',
+      title: 'Style',
+      fields: ['background'],
+    },
+  ],
   props: {
     siteName: {
       type: 'string',
@@ -30,7 +42,7 @@ const meta: ComponentMeta<FooterProps> = {
       editor: 'jsonEditor',
     },
     background: {
-      type: ['color', 'string'],
+      type: 'string',
       default: '#23242a',
       editor: 'colorPicker',
     },

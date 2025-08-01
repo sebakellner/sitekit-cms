@@ -9,6 +9,18 @@ const meta: ComponentMeta<NavProps> = {
   category: 'Navigation',
   description: 'Navigation bar for your site.',
   preview,
+  panels: [
+    {
+      id: 'items',
+      title: 'Items',
+      fields: ['items'],
+    },
+    {
+      id: 'style',
+      title: 'Style',
+      fields: ['background', 'buttonLabel'],
+    },
+  ],
   props: {
     items: {
       type: 'object',
@@ -21,7 +33,7 @@ const meta: ComponentMeta<NavProps> = {
       editor: 'jsonEditor',
     },
     background: {
-      type: ['color', 'string'],
+      type: 'string',
       default: 'white',
       editor: 'colorPicker',
     },
