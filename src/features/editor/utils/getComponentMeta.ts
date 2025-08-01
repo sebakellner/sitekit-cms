@@ -1,4 +1,4 @@
-import { ComponentMetaSchema } from '@components/site/schemas/componentMeta.schema'
+import { ComponentMetaSchema } from '../schemas/componentMeta.schema'
 
 type ModuleWithDefault = { default: unknown }
 

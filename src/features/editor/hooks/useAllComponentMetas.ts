@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { componentsRegistry } from '@registry/componentRegistry'
-import type { ComponentMeta } from '@components/site/types'
 import { getComponentMeta } from '../utils/getComponentMeta'
+import type { ComponentMeta } from '../types/editor.types'
 
 const metaCache = new Map<string, ComponentMeta>()
 
