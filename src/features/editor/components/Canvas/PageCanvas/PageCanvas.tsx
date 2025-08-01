@@ -6,6 +6,8 @@ import { useSectionStore } from '@features/editor/store/section/useSectionStore'
 import type { PageCanvasProps } from './PageCanvas.types'
 import { DroppableCanvas } from '../DroppableCanvas'
 import { PageSectionRenderer } from '../PageSectionRenderer'
+import { Grommet } from 'grommet'
+import { hpe } from 'grommet-theme-hpe'
 
 const PageCanvas = ({ overSectionId, activeId }: PageCanvasProps) => {
   const sections = useSectionStore((state) => state.sections)
@@ -23,23 +25,25 @@ const PageCanvas = ({ overSectionId, activeId }: PageCanvasProps) => {
       overflowX="hidden"
       data-testid="page-canvas"
     >
-      <SortableContext
-        items={sectionIds}
-        strategy={verticalListSortingStrategy}
-      >
-        <DroppableCanvas>
-          {sections.map(({ id, name, props }, idx) => (
-            <PageSectionRenderer
-              key={id}
-              id={id}
-              name={name}
-              props={props}
-              idx={idx}
-              showDivider={!!(isDraggingFromSelector && overSectionId === id)}
-            />
-          ))}
-        </DroppableCanvas>
-      </SortableContext>
+      <Grommet theme={hpe}>
+        <SortableContext
+          items={sectionIds}
+          strategy={verticalListSortingStrategy}
+        >
+          <DroppableCanvas>
+            {sections.map(({ id, name, props }, idx) => (
+              <PageSectionRenderer
+                key={id}
+                id={id}
+                name={name}
+                props={props}
+                idx={idx}
+                showDivider={!!(isDraggingFromSelector && overSectionId === id)}
+              />
+            ))}
+          </DroppableCanvas>
+        </SortableContext>
+      </Grommet>
     </Box>
   )
 }
