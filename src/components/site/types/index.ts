@@ -16,7 +16,19 @@ export type ComponentPropEditor =
   | 'numberInput'
   | 'imageUploader'
   | 'select'
+  | 'layout'
+  | 'richText'
+  | 'spacing'
+  | 'typography'
+  | 'codeEditor'
+  | 'borders'
   | 'jsonEditor'
+
+export type ComponentPanel = {
+  id: string
+  title: string
+  fields: string[]
+}
 
 export type ComponentMeta<P = Record<string, unknown>> = {
   name: string
@@ -24,8 +36,10 @@ export type ComponentMeta<P = Record<string, unknown>> = {
   category?: string
   preview?: string
   component: React.FC<P>
+  panels?: ComponentPanel[]
   props: {
     [key: string]: {
+      title?: string
       type: ComponentPropType
       default: string | boolean | number | undefined | null | Array<unknown>
       options?: string[]

@@ -21,7 +21,19 @@ export const ComponentPropEditorSchema = z.union([
   z.literal('imageUploader'),
   z.literal('select'),
   z.literal('jsonEditor'),
+  z.literal('layout'),
+  z.literal('richText'),
+  z.literal('spacing'),
+  z.literal('typography'),
+  z.literal('codeEditor'),
+  z.literal('borders'),
 ])
+
+export const ComponentPanelSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  fields: z.array(z.string()),
+})
 
 export const ComponentMetaSchema = z.object({
   name: z.string(),
@@ -31,9 +43,11 @@ export const ComponentMetaSchema = z.object({
   component: z
     .custom<React.FC<Record<string, unknown>>>()
     .refine((value) => typeof value === 'function'),
+  panels: z.array(ComponentPanelSchema).optional(),
   props: z.record(
     z.string(),
     z.object({
+      title: z.string().optional(),
       type: ComponentPropTypeSchema,
       default: z.union([
         z.string(),
@@ -48,4 +62,5 @@ export const ComponentMetaSchema = z.object({
   ),
 })
 
+export type ComponentPanel = z.infer<typeof ComponentPanelSchema>
 export type ComponentMeta = z.infer<typeof ComponentMetaSchema>
