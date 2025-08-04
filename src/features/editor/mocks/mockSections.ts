@@ -23,7 +23,7 @@ const mockSections: Section[] = [
       description: 'This description reads from Store',
       background: 'white',
       headingColor: 'black',
-      textColor: 'dark-2',
+      textColor: '#333',
       buttonLabel: 'Get Started',
       buttonColor: 'brand',
       buttonSize: 'large',
