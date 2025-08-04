@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from 'grommet'
+import { Box, Heading, Text } from '@chakra-ui/react'
 import { Layers } from 'lucide-react'
 import { useSectionStore } from '@features/editor/store/section/useSectionStore'
 import { PanelBox, PanelBoxScroll, PanelWrapper } from '@components/cms/ui'
@@ -20,10 +20,10 @@ const PanelPageEditor = () => {
     return (
       <PanelWrapper borderSide="left" h="100%">
         <PanelBox gap={4} align="center" justify="center">
-          <Heading level={3} margin="none">
+          <Heading size="lg" m={0}>
             Editor
           </Heading>
-          <Text color="dark-4">Select component to start!</Text>
+          <Text color="gray.500">Select component to start!</Text>
         </PanelBox>
       </PanelWrapper>
     )
@@ -32,16 +32,12 @@ const PanelPageEditor = () => {
   return (
     <PanelWrapper borderSide="left" h="100%">
       <PanelBox>
-        <Box direction="row" gap="xsmall" align="center">
+        <Box display="flex" flexDirection="row" gap="1" alignItems="center">
           <Layers size={16} />
-          <Heading level={5} margin="none">
+          <Heading size="md" m={0}>
             {section.name ?? 'Select a component'}
           </Heading>
         </Box>
-
-        <Text size="xsmall" color="dark-4">
-          Edit the properties of the {section.name} component
-        </Text>
       </PanelBox>
 
       <PanelBoxScroll p={0} gap={0}>
