@@ -29,7 +29,7 @@ const meta: ComponentMeta<CardGridProps> = {
     },
     background: {
       type: 'string',
-      default: 'light-2',
+      default: '#f7fafc',
       editor: 'colorPicker',
     },
     items: {

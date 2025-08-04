@@ -3,7 +3,7 @@ import { CardSchema } from '../ui/Card'
 
 export const CardGridSchema = z.object({
   title: z.string().min(2).max(100).optional(),
-  background: z.string().default('light-2'),
+  background: z.string().default('#f7fafc'),
   items: z.array(CardSchema).default([]),
 })
 
