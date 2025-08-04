@@ -29,7 +29,14 @@ export const ComponentMetaSchema = z.object({
         z.array(z.unknown()),
         z.null(),
       ]),
-      options: z.array(z.string()).optional(),
+      options: z
+        .array(
+          z.object({
+            label: z.string(),
+            value: z.string(),
+          })
+        )
+        .optional(),
       editor: ComponentPropEditorSchema,
     })
   ),
