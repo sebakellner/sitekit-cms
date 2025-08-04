@@ -1,6 +1,5 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import mockSections from '@features/editor/mocks/mockSections'
 import {
   setSections,
   selectSection,
@@ -12,7 +11,7 @@ import type { SectionStore } from './section.type'
 export const useSectionStore = create(
   persist<SectionStore>(
     (set) => ({
-      sections: mockSections,
+      sections: [],
       selectedId: null,
       setSections: setSections(set),
       selectSection: selectSection(set),
