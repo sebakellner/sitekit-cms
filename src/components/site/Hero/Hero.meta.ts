@@ -1,9 +1,8 @@
+import type { ComponentMeta } from '@features/editor/types/editor.types'
 import Hero from './Hero'
 import preview from './hero-preview.png'
-import type { ComponentMeta } from '../types'
-import type { HeroProps } from './Hero.schema'
 
-const meta: ComponentMeta<HeroProps> = {
+const meta: ComponentMeta = {
   name: 'Hero',
   category: 'Section',
   description: 'A full-width hero section with background and text.',
@@ -61,20 +60,24 @@ const meta: ComponentMeta<HeroProps> = {
     textColor: {
       title: 'Text Color',
       type: 'string',
-      default: 'dark-2',
+      default: '#444444',
       editor: 'colorPicker',
     },
     buttonColor: {
       title: 'Button Color',
       type: 'string',
-      default: 'brand',
+      default: '#eb5e41',
       editor: 'colorPicker',
     },
     buttonSize: {
       title: 'Button Size',
       type: 'enum',
       default: 'large',
-      options: ['small', 'medium', 'large'],
+      options: [
+        { label: 'Small', value: 'small' },
+        { label: 'Medium', value: 'medium' },
+        { label: 'Large', value: 'large' },
+      ],
       editor: 'select',
     },
   },
