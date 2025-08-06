@@ -60,7 +60,13 @@ function EditorLayout() {
         >
           <PageCanvas overSectionId={overSectionId} activeId={activeId} />
         </GridItem>
-        <GridItem gridArea="right-editor" data-testid="right-editor" h="100%">
+        <GridItem
+          gridArea="right-editor"
+          data-testid="right-editor"
+          h="100%"
+          display="flex"
+          overflow="auto"
+        >
           <PanelPageEditor />
         </GridItem>
       </Grid>
