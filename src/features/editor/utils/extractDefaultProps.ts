@@ -11,7 +11,10 @@ export function extractDefaultProps(
 ): Record<string, unknown> {
   if (!props) return {}
   const result = ComponentMetaSchema.shape.props.safeParse(props)
-  if (!result.success) return {}
+  if (!result.success) {
+    console.error('Invalid props schema:', result.error)
+    return {}
+  }
   const validProps = result.data
   return Object.fromEntries(
     Object.entries(validProps).map(([key, val]) => [
