@@ -10,7 +10,7 @@ type EditorProps = {
   title: string
   value: any
   onChange: (val: any) => void
-  options?: any
+  options: { label: string; value: string }[]
 }
 
 type EditorMap = {
