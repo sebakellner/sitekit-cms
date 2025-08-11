@@ -40,7 +40,7 @@ const meta: ComponentMeta = {
       editor: 'text',
     },
     buttonLabel: {
-      title: 'Button Label',
+      title: 'Label',
       type: 'string',
       default: 'Get Started',
       editor: 'text',
@@ -52,25 +52,25 @@ const meta: ComponentMeta = {
       editor: 'colorPicker',
     },
     headingColor: {
-      title: 'Heading Color',
+      title: 'Heading',
       type: 'string',
       default: 'black',
       editor: 'colorPicker',
     },
     textColor: {
-      title: 'Text Color',
+      title: 'Copy',
       type: 'string',
       default: '#444444',
       editor: 'colorPicker',
     },
     buttonColor: {
-      title: 'Button Color',
+      title: 'Button',
       type: 'string',
       default: '#01A982',
       editor: 'colorPicker',
     },
     buttonSize: {
-      title: 'Button Size',
+      title: 'Size',
       type: 'enum',
       default: 'large',
       options: [
