@@ -1,8 +1,8 @@
 import TextEditor from './TextEditor'
 import ColorPickerEditor from './ColorPickerEditor'
 import SelectEditor from './SelectEditor'
-import JsonEditor from './JsonEditor'
 import RichTextEditor from './RichTextEditor'
+import ListEditor from './ListEditor'
 import type { ComponentPropEditor } from '@features/editor/types/editor.types'
 import type { JSX } from 'react'
 
@@ -29,15 +29,11 @@ const stringEditor =
 const editorMap: EditorMap = {
   text: stringEditor(TextEditor),
   colorPicker: stringEditor(ColorPickerEditor, '#ffffff'),
-  select: stringEditor(SelectEditor),
+  select: (props) => <SelectEditor {...props} />,
   richText: stringEditor(RichTextEditor),
-  jsonEditor: (props) => (
-    <JsonEditor
-      {...props}
-      value={Array.isArray(props.value) ? props.value : []}
-    />
-  ),
+  listEditor: (props) => <ListEditor {...props} />,
   toggle: undefined,
+  jsonEditor: undefined,
   numberInput: undefined,
   imageUploader: undefined,
   layout: undefined,
