@@ -14,4 +14,5 @@ export const ComponentPropEditorSchema = z.union([
   z.literal('typography'),
   z.literal('codeEditor'),
   z.literal('borders'),
+  z.literal('listEditor'),
 ])
