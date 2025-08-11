@@ -16,35 +16,28 @@ const ColorPickerEditor = ({
   value: string
   onChange: (val: string) => void
 }) => {
-  const safeValue =
-    typeof value === 'string' && value.match(/^#([0-9a-fA-F]{3}){1,2}$/)
-      ? value
-      : '#ffffff'
-
   return (
-    <Box>
+    <Box mb={3}>
       <Field.Root>
         <Field.Label>{title}</Field.Label>
         <ColorPicker.Root
-          value={parseColor(safeValue)}
-          onValueChange={(e) => onChange(e.toString())}
+          value={value ? parseColor(value) : undefined}
+          format="rgba"
+          onValueChange={(e) => onChange(e.valueAsString)}
+          w="100%"
         >
           <ColorPicker.HiddenInput />
-          <ColorPicker.Label>Color</ColorPicker.Label>
           <ColorPicker.Control>
-            <ColorPicker.Trigger px="2">
-              <ColorPicker.ValueSwatch boxSize="6" />
-              <ColorPicker.ValueText minW="160px" />
-            </ColorPicker.Trigger>
+            <ColorPicker.Input />
+            <ColorPicker.Trigger />
           </ColorPicker.Control>
           <Portal>
             <ColorPicker.Positioner>
               <ColorPicker.Content>
                 <ColorPicker.Area />
                 <HStack>
-                  <ColorPicker.EyeDropper size="sm" variant="outline" />
+                  <ColorPicker.EyeDropper size="xs" variant="outline" />
                   <ColorPicker.Sliders />
-                  <ColorPicker.ValueSwatch />
                 </HStack>
               </ColorPicker.Content>
             </ColorPicker.Positioner>
