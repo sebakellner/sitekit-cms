@@ -48,7 +48,7 @@ const meta: ComponentMeta = {
     background: {
       title: 'Background',
       type: 'string',
-      default: 'white',
+      default: '#ffffff',
       editor: 'colorPicker',
     },
     headingColor: {
@@ -66,7 +66,7 @@ const meta: ComponentMeta = {
     buttonColor: {
       title: 'Button Color',
       type: 'string',
-      default: '#eb5e41',
+      default: '#01A982',
       editor: 'colorPicker',
     },
     buttonSize: {

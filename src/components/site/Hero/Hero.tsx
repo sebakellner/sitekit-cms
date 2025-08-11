@@ -7,9 +7,9 @@ const Hero: React.FC<HeroProps & { onButtonClick?: () => void }> = ({
   description = 'Create and customize your website easily with our intuitive tools.',
   buttonLabel = 'Get Started',
   onButtonClick,
-  background = 'white',
-  headingColor = 'black',
-  textColor = 'dark-2',
+  background = '#ffffff',
+  headingColor = '#000000',
+  textColor = '#333333',
   buttonColor,
   buttonSize = 'large',
 }) => (
