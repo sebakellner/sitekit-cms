@@ -31,19 +31,19 @@ const InfoText: React.FC<InfoTextProps> = ({
         {text}
       </Text>
       <Box as="ul" pad={{ left: 'small' }}>
-        {formats.map((f) => (
+        {formats.map((f, idx) => (
           <Box
             as="li"
             direction="row"
             gap="xsmall"
-            key={f.label}
+            key={idx}
             margin={{ bottom: 'xsmall' }}
           >
             <Box as="span" color="accent-1" margin={{ top: '4px' }}>
               &#8226;
             </Box>
             <Text>
-              <Text weight="bold">{f.label}:</Text> {f.description}
+              <Text weight="bold">{f.label}</Text> {f.description}
             </Text>
           </Box>
         ))}
