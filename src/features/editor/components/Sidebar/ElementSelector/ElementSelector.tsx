@@ -36,11 +36,8 @@ const ElementSelector = () => {
     <PanelWrapper borderSide="right" width={'290px'}>
       <PanelBox>
         <Heading level={5} margin="none">
-          UI Section Components
+          Layouts
         </Heading>
-        <Text size="xsmall" color="dark-4">
-          Select a component to add to your layout
-        </Text>
       </PanelBox>
 
       <ElementSelectorSearch />
