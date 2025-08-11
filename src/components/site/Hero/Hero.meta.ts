@@ -64,7 +64,7 @@ const meta: ComponentMeta = {
       editor: 'colorPicker',
     },
     buttonColor: {
-      title: 'Button',
+      title: 'Background',
       type: 'string',
       default: '#01A982',
       editor: 'colorPicker',
