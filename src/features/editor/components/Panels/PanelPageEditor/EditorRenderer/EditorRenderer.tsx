@@ -1,5 +1,5 @@
 import type { ComponentPropConfig } from '@features/editor/types/editor.types'
-import { editorMap } from '../Editors/editorMap'
+import editorMap from '../Editors/editorMap'
 
 type Props = {
   propConfig: ComponentPropConfig
@@ -9,7 +9,7 @@ type Props = {
 
 const EditorRenderer = ({ propConfig, value, onChange }: Props) => {
   const title = propConfig.title ?? 'Property'
-  const { editor, options } = propConfig
+  const { editor, options, default: defaultValue } = propConfig
 
   const EditorComponent = editorMap[editor]
 
@@ -18,7 +18,7 @@ const EditorRenderer = ({ propConfig, value, onChange }: Props) => {
   return (
     <EditorComponent
       title={title}
-      value={typeof value === 'string' ? value : ''}
+      value={value ?? defaultValue}
       onChange={onChange}
       options={options ?? []}
     />
