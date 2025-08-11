@@ -27,16 +27,22 @@ const Nav: React.FC<NavProps & { Icon?: React.ElementType }> = ({
       <GrommetNav direction="row" gap="medium">
         {items.map((item) => (
           <Button
+            plain
             key={item.href}
             label={item.label}
             href={item.href}
-            style={{ padding: '8px 16px', borderRadius: '4px' }}
+            style={{
+              padding: '8px 16px',
+              borderRadius: '4px',
+              fontWeight: 'bold',
+              fontSize: '16px',
+            }}
           />
         ))}
       </GrommetNav>
     </Box>
     <Box>
-      <Button label={buttonLabel} primary />
+      <Button label={buttonLabel} primary color="#01A982" />
     </Box>
   </Box>
 )
