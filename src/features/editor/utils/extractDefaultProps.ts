@@ -1,5 +1,5 @@
-import { ComponentMetaSchema } from '@components/site/schemas/componentMeta.schema'
 import type { ComponentMeta } from '@components/site/types'
+import { ComponentMetaSchema } from '../schemas/componentMeta.schema'
 
 function isDefaultProp(val: unknown): val is { default: unknown } {
   return typeof val === 'object' && val !== null && 'default' in val
