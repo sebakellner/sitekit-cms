@@ -1,9 +1,8 @@
+import type { ComponentMeta } from '@features/editor/types/editor.types'
 import Nav from './Nav'
-import type { ComponentMeta } from '@components/site/types'
 import preview from './nav-preview.png'
-import type { NavProps } from './Nav.schema'
 
-const meta: ComponentMeta<NavProps> = {
+const meta: ComponentMeta = {
   name: 'Nav',
   component: Nav,
   category: 'Navigation',
@@ -12,7 +11,7 @@ const meta: ComponentMeta<NavProps> = {
   panels: [
     {
       id: 'items',
-      title: 'Items',
+      title: 'Navigation',
       fields: ['items'],
     },
     {
@@ -20,9 +19,15 @@ const meta: ComponentMeta<NavProps> = {
       title: 'Style',
       fields: ['background', 'buttonLabel'],
     },
+    {
+      id: 'action',
+      title: 'Action',
+      fields: ['buttonLabel'],
+    },
   ],
   props: {
     items: {
+      title: 'Navigation Items',
       type: 'object',
       default: [
         { label: 'Home', href: '/' },
@@ -30,14 +35,16 @@ const meta: ComponentMeta<NavProps> = {
         { label: 'Blog', href: '/blog' },
         { label: 'Contact', href: '/contact' },
       ],
-      editor: 'jsonEditor',
+      editor: 'listEditor',
     },
     background: {
+      title: 'Background',
       type: 'string',
       default: 'white',
       editor: 'colorPicker',
     },
     buttonLabel: {
+      title: 'Call to Action',
       type: 'string',
       default: 'Contact US',
       editor: 'text',
