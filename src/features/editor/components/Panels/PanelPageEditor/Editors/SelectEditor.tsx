@@ -13,8 +13,8 @@ const SelectEditor = ({
 }) => {
   return (
     <Box mb={4}>
-      <Field.Root>
-        <Field.Label>{title}</Field.Label>
+      <Field.Root orientation="horizontal">
+        <Field.Label fontSize="xs">{title}</Field.Label>
         <NativeSelect.Root size="sm" width="240px" variant="subtle">
           <NativeSelect.Field
             value={value}
