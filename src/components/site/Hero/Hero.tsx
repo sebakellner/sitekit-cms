@@ -11,7 +11,7 @@ const Hero: React.FC<HeroProps & { onButtonClick?: () => void }> = ({
   headingColor = '#000000',
   textColor = '#333333',
   buttonColor,
-  buttonSize = 'large',
+  buttonSize = 'medium',
 }) => (
   <Box
     as="section"
@@ -22,10 +22,16 @@ const Hero: React.FC<HeroProps & { onButtonClick?: () => void }> = ({
     pad={{ vertical: 'xlarge', horizontal: 'medium' }}
     gap="medium"
   >
-    <Heading level={1} color={headingColor} weight="bold" margin="none">
+    <Heading
+      level={1}
+      size="small"
+      color={headingColor}
+      weight="bold"
+      margin="none"
+    >
       {title}
     </Heading>
-    <Text size="large" color={textColor} textAlign="center">
+    <Text size="medium" color={textColor} textAlign="center">
       {description}
     </Text>
     <Button
