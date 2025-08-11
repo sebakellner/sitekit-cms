@@ -26,7 +26,7 @@ const PanelCollapsible = ({
         cursor="pointer"
         onClick={() => setCollapsed((c) => !c)}
       >
-        <Heading as="h6" size="sm" m={0}>
+        <Heading as="h6" size="md" m={0}>
           {title}
         </Heading>
         <Button variant="ghost" p={0} minW={0}>
