@@ -18,8 +18,8 @@ const PanelPageEditor = () => {
 
   if (!section || !meta) {
     return (
-      <PanelWrapper borderSide="left" h="100%">
-        <PanelBox gap={4} align="center" justify="center">
+      <PanelWrapper borderSide="left">
+        <PanelBox gap={4} align="center" justify="center" h="100%">
           <Heading size="lg" m={0}>
             Editor
           </Heading>
