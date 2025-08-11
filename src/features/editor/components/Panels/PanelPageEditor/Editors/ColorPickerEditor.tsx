@@ -18,8 +18,8 @@ const ColorPickerEditor = ({
 }) => {
   return (
     <Box mb={3}>
-      <Field.Root>
-        <Field.Label>{title}</Field.Label>
+      <Field.Root orientation="horizontal">
+        <Field.Label fontSize="xs">{title}</Field.Label>
         <ColorPicker.Root
           value={value ? parseColor(value) : undefined}
           format="rgba"
