@@ -11,8 +11,8 @@ const TextEditor = ({
 }) => {
   return (
     <Box mb={4}>
-      <Field.Root>
-        <Field.Label>{title}</Field.Label>
+      <Field.Root orientation="horizontal">
+        <Field.Label fontSize="xs">{title}</Field.Label>
         <Input
           value={value}
           onChange={(e) => onChange(e.target.value)}
