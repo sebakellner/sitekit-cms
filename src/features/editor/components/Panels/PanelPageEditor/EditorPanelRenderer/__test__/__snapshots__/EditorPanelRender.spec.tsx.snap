@@ -132,7 +132,6 @@ exports[`EditorPanelRenderer > should render the component with the correct meta
       </div>
       <div
         class="css-cdgtm1"
-        data-test-id="color-picker-editor"
       >
         <div
           class="chakra-field__root css-1anu6qw"
