@@ -1,13 +1,11 @@
-import type { ComponentPropConfig } from '@features/editor/types/editor.types'
 import editorMap from '../Editors/editorMap'
+import type { EditorRendererProps } from './EditorRenderer.types'
 
-type Props = {
-  propConfig: ComponentPropConfig
-  value: unknown
-  onChange: (val: unknown) => void
-}
-
-const EditorRenderer = ({ propConfig, value, onChange }: Props) => {
+const EditorRenderer = ({
+  propConfig,
+  value,
+  onChange,
+}: EditorRendererProps) => {
   const title = propConfig.title ?? 'Property'
   const { editor, options, default: defaultValue } = propConfig
 
