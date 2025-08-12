@@ -1,10 +1,8 @@
 import { expect, describe, test } from 'vitest'
 import EditorPanelRenderer from '../EditorPanelRenderer'
 import type { EditorPanelRendererProps } from '../EditorPanelRenderer.types'
-import { mockComponentMetadata, mockValues } from './EditorPanelRender.mock'
 import { render } from 'test/utils/render'
 import { fireEvent, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 
 const setup = ({
   meta = mockComponentMetadata,
