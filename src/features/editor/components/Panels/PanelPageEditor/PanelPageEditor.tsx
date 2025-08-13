@@ -5,6 +5,7 @@ import { PanelBox, PanelBoxScroll, PanelWrapper } from '@components/cms/ui'
 import EditorPanelRenderer from './EditorPanelRenderer/EditorPanelRenderer'
 import { useComponentMeta } from '@features/editor/hooks/useComponentMeta'
 import type { Section } from '@features/editor/schemas/section.schema'
+import { useGroupedPropsPanels } from '@features/editor/hooks/useGroupedPropsPanels'
 
 const PanelPageEditor = () => {
   const selectedId = useSectionStore((s) => s.selectedId)
@@ -13,6 +14,11 @@ const PanelPageEditor = () => {
   )
 
   const { meta } = useComponentMeta(section?.name ?? '')
+
+  const groupedPanels = useGroupedPropsPanels(
+    meta ?? undefined,
+    section as Section
+  )
 
   const updateProps = useSectionStore((s) => s.updateSectionProps)
 
@@ -42,8 +48,7 @@ const PanelPageEditor = () => {
 
       <PanelBoxScroll p={0} gap={0}>
         <EditorPanelRenderer
-          meta={meta}
-          values={section.props}
+          groupedPanels={groupedPanels}
           onChange={(key, value) => updateProps(section.id, { [key]: value })}
         />
       </PanelBoxScroll>

@@ -1,7 +1,7 @@
 import type { ComponentPropConfig } from '@features/editor/types/editor.types'
 
 export type EditorRendererProps = {
-  propConfig: ComponentPropConfig
+  config: ComponentPropConfig
   value: unknown
   onChange: (val: unknown) => void
 }

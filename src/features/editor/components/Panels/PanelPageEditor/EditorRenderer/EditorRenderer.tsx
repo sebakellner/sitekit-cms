@@ -1,13 +1,9 @@
 import editorMap from '../Editors/editorMap'
 import type { EditorRendererProps } from './EditorRenderer.types'
 
-const EditorRenderer = ({
-  propConfig,
-  value,
-  onChange,
-}: EditorRendererProps) => {
-  const title = propConfig.title ?? 'Property'
-  const { editor, options, default: defaultValue } = propConfig
+const EditorRenderer = ({ config, value, onChange }: EditorRendererProps) => {
+  const title = config.title ?? 'Property'
+  const { editor, options, default: defaultValue } = config
 
   const EditorComponent = editorMap[editor]
 

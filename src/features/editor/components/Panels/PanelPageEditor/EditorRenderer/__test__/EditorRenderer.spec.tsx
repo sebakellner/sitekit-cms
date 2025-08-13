@@ -6,7 +6,7 @@ import { screen } from '@testing-library/react'
 
 const setup = (overrides: Partial<EditorRendererProps> = {}) => {
   const defaultProps: EditorRendererProps = {
-    propConfig: mockComponentMetadata.props.prop1,
+    config: mockComponentMetadata.props.prop1,
     value: mockValues.prop1,
     onChange: () => {},
   }
@@ -25,10 +25,10 @@ describe('EditorPanelRenderer', () => {
     expect(screen.getByText('Property 1')).toBeInTheDocument()
   })
 
-  test('should render default title if propConfig.title is not defined', () => {
+  test('should render default title if config.title is not defined', () => {
     render(
       setup({
-        propConfig: {
+        config: {
           ...mockComponentMetadata.props.prop1,
           title: undefined,
         },
@@ -37,10 +37,10 @@ describe('EditorPanelRenderer', () => {
     expect(screen.getByText('Property')).toBeInTheDocument()
   })
 
-  test('should not render editor if propConfig.editor is not defined', () => {
+  test('should not render editor if config.editor is not defined', () => {
     render(
       setup({
-        propConfig: {
+        config: {
           ...mockComponentMetadata.props.prop1,
           editor: undefined as any,
         },
@@ -49,10 +49,10 @@ describe('EditorPanelRenderer', () => {
     expect(screen.queryByText('Property 1')).not.toBeInTheDocument()
   })
 
-  test('should not render editor if propConfig.editor is not in editorMap', () => {
+  test('should not render editor if config.editor is not in editorMap', () => {
     render(
       setup({
-        propConfig: {
+        config: {
           ...mockComponentMetadata.props.prop1,
           editor: 'unknown-editor' as any,
         },
@@ -65,7 +65,7 @@ describe('EditorPanelRenderer', () => {
     render(
       setup({
         value: undefined,
-        propConfig: {
+        config: {
           title: 'Property 1',
           type: 'enum',
           editor: 'select',
@@ -86,7 +86,7 @@ describe('EditorPanelRenderer', () => {
     render(
       setup({
         value: 'opt1',
-        propConfig: {
+        config: {
           title: 'Property 1',
           type: 'enum',
           editor: 'select',
@@ -107,7 +107,7 @@ describe('EditorPanelRenderer', () => {
     render(
       setup({
         value: undefined,
-        propConfig: {
+        config: {
           title: 'Property 1',
           type: 'enum',
           editor: 'select',
@@ -128,7 +128,7 @@ describe('EditorPanelRenderer', () => {
     render(
       setup({
         value: undefined,
-        propConfig: {
+        config: {
           title: 'Property 1',
           type: 'string',
           editor: 'text',
@@ -144,7 +144,7 @@ describe('EditorPanelRenderer', () => {
     render(
       setup({
         value: undefined,
-        propConfig: {
+        config: {
           title: 'Property 1',
           type: 'string',
           editor: 'text',
