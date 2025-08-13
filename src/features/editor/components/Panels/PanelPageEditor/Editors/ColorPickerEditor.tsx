@@ -7,15 +7,9 @@ import {
   Portal,
 } from '@chakra-ui/react'
 
-const ColorPickerEditor = ({
-  title,
-  value,
-  onChange,
-}: {
-  title: string
-  value: string
-  onChange: (val: string) => void
-}) => {
+import type { PanelEditorBase } from '@features/editor/types/panelEditors.types'
+
+const ColorPickerEditor = ({ title, value, onChange }: PanelEditorBase) => {
   return (
     <Box mb={3}>
       <Field.Root orientation="horizontal">
