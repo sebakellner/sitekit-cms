@@ -1,16 +1,17 @@
 import { Box, Field, NativeSelect } from '@chakra-ui/react'
 
+import type { PanelEditorBase } from '@features/editor/types/panelEditors.types'
+
+export interface SelectEditorProps extends PanelEditorBase {
+  options: { label: string; value: string }[]
+}
+
 const SelectEditor = ({
   title,
   value,
   onChange,
   options,
-}: {
-  title: string
-  value: string
-  onChange: (value: string) => void
-  options: { label: string; value: string }[]
-}) => {
+}: SelectEditorProps) => {
   return (
     <Box mb={4}>
       <Field.Root orientation="horizontal">

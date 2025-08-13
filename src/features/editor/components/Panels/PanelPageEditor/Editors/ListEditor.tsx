@@ -1,15 +1,7 @@
-import {
-  Box,
-  Button,
-  Field,
-  Input,
-  InputGroup,
-  Separator,
-  VStack,
-} from '@chakra-ui/react'
-import { Eye, Plus } from 'lucide-react'
+import { Box, Button, Field, Input, Separator, VStack } from '@chakra-ui/react'
+import { Plus } from 'lucide-react'
 
-interface ListEditorProps {
+export interface ListEditorProps {
   value: Array<Record<string, string | number | boolean | null | undefined>>
   onChange: (newValue: unknown) => void
 }
@@ -43,8 +35,8 @@ const ListEditor = ({ value, onChange }: ListEditorProps) => {
     <VStack align="stretch" gap={1}>
       {value.map((item, idx) => (
         <Box key={idx} mb={2}>
-          {Object.entries(item).map(([key, val]) => (
-            <Field.Root key={key} mb={3} orientation="horizontal">
+          {Object.entries(item).map(([key, val], idx) => (
+            <Field.Root key={idx} mb={3} orientation="horizontal">
               <Field.Label fontSize="xs">
                 {key.charAt(0).toUpperCase() + key.slice(1)}
               </Field.Label>

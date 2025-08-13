@@ -1,14 +1,8 @@
 import { Box, Field, Input } from '@chakra-ui/react'
 
-const TextEditor = ({
-  title,
-  value,
-  onChange,
-}: {
-  title: string
-  value: string
-  onChange: (val: string) => void
-}) => {
+import type { PanelEditorBase } from '@features/editor/types/panelEditors.types'
+
+const TextEditor = ({ title, value, onChange }: PanelEditorBase) => {
   return (
     <Box mb={4}>
       <Field.Root orientation="horizontal">
