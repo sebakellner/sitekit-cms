@@ -1,34 +1,25 @@
+import { memo } from 'react'
 import { PanelBoxCollapsible } from '@components/cms/ui'
 import EditorRenderer from '../EditorRenderer/EditorRenderer'
 import type { EditorPanelRendererProps } from './EditorPanelRenderer.types'
 
 const EditorPanelRenderer = ({
-  meta,
-  values,
   onChange,
+  groupedPanels,
 }: EditorPanelRendererProps) => {
-  if (!meta.panels) return null
+  if (!groupedPanels) return <div>No properties available</div>
 
   return (
     <>
-      {meta.panels.map(({ id, title, fields }) => (
-        <PanelBoxCollapsible key={id} title={title}>
-          {fields.map((fieldKey) => {
-            const propConfig = meta.props[fieldKey]
-
-            if (!propConfig) return null
-
-            const configWithTitle = {
-              ...propConfig,
-              title: propConfig.title ?? fieldKey,
-            }
-
+      {groupedPanels.map(({ name, props }) => (
+        <PanelBoxCollapsible key={name} title={name}>
+          {props.map(({ key, value, config }, idx) => {
             return (
               <EditorRenderer
-                key={fieldKey}
-                propConfig={configWithTitle}
-                value={values[fieldKey]}
-                onChange={(val) => onChange(fieldKey, val)}
+                key={idx}
+                config={config}
+                value={value}
+                onChange={(newValue) => onChange(key, newValue)}
               />
             )
           })}
@@ -38,4 +29,4 @@ const EditorPanelRenderer = ({
   )
 }
 
-export default EditorPanelRenderer
+export default memo(EditorPanelRenderer)

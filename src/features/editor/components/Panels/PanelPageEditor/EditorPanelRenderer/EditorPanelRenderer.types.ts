@@ -1,7 +1,6 @@
-import type { ComponentMeta } from '@features/editor/types/editor.types'
+import type { GroupedPanel } from '@features/editor/hooks/useGroupedPropsPanels'
 
 export type EditorPanelRendererProps = {
-  meta: ComponentMeta
-  values: Record<string, unknown>
+  groupedPanels: GroupedPanel[]
   onChange: (key: string, value: unknown) => void
 }
