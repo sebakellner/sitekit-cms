@@ -1,7 +1,11 @@
+import type { GroupedPanel } from '@features/editor/hooks/useGroupedPropsPanels'
+import type { Section } from '@features/editor/schemas/section.schema'
 import type { ComponentMeta } from '@features/editor/types/editor.types'
 
 declare global {
   var mockComponentMetadata: ComponentMeta
+  var mockGroupedPanels: GroupedPanel[]
+  var mockSection: Section
   var mockValues: {
     prop1: string
     prop2: string
@@ -53,5 +57,26 @@ globalThis.mockValues = {
   prop2: 'new value',
   prop3: 'rgba(255, 0, 0, 1)',
 }
+
+globalThis.mockSection = {
+  id: 'section1',
+  name: 'TestComponent',
+  props: {
+    ...mockValues,
+  },
+}
+
+globalThis.mockGroupedPanels = [
+  {
+    name: 'Panel 1',
+    props: [
+      {
+        key: 'prop1',
+        value: 'value1',
+        config: mockComponentMetadata.props.prop1,
+      },
+    ],
+  },
+]
 
 export {}
