@@ -1,4 +1,3 @@
-import { memo } from 'react'
 import { PanelBoxCollapsible } from '@components/cms/ui'
 import EditorRenderer from '../EditorRenderer/EditorRenderer'
 import type { EditorPanelRendererProps } from './EditorPanelRenderer.types'
@@ -29,4 +28,4 @@ const EditorPanelRenderer = ({
   )
 }
 
-export default memo(EditorPanelRenderer)
+export default EditorPanelRenderer
