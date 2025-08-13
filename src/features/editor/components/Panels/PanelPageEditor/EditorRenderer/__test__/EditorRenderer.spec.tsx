@@ -155,4 +155,16 @@ describe('EditorPanelRenderer', () => {
     const input = screen.getByRole('textbox', { name: 'Property 1' })
     expect(input).toHaveValue('Default Text')
   })
+
+  test('should render default title if config.title is not defined', () => {
+    render(
+      setup({
+        config: {
+          ...mockComponentMetadata.props.prop1,
+          title: undefined,
+        },
+      })
+    )
+    expect(screen.getByText('Property')).toBeInTheDocument()
+  })
 })
