@@ -21,9 +21,9 @@ const SelectEditor = ({
             value={value}
             onChange={(e) => onChange((e.target as HTMLSelectElement).value)}
           >
-            {options.map((option, key) => (
-              <option key={key} value={option.value}>
-                {option.label}
+            {options.map(({ value, label }, key) => (
+              <option key={key} value={value}>
+                {label}
               </option>
             ))}
           </NativeSelect.Field>
