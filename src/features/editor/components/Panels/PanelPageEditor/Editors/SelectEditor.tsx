@@ -2,7 +2,7 @@ import { Box, Field, NativeSelect } from '@chakra-ui/react'
 
 import type { PanelEditorBase } from '@features/editor/types/panelEditors.types'
 
-export interface SelectEditorProps extends PanelEditorBase {
+export interface SelectEditorProps extends PanelEditorBase<string> {
   options: { label: string; value: string }[]
 }
 

@@ -1,10 +1,11 @@
 import { Box, Button, Field, Input, Separator, VStack } from '@chakra-ui/react'
+import type { PanelEditorBase } from '@features/editor/types/panelEditors.types'
 import { Plus } from 'lucide-react'
 
-export interface ListEditorProps {
-  value: Array<Record<string, string | number | boolean | null | undefined>>
-  onChange: (newValue: unknown) => void
-}
+export type ListItem = Record<
+  string,
+  string | number | boolean | null | undefined
+>
 
 const getDefaultItem = (template: Record<string, any>) => {
   const lorem: Record<string, string> = {
@@ -16,7 +17,7 @@ const getDefaultItem = (template: Record<string, any>) => {
   )
 }
 
-const ListEditor = ({ value, onChange }: ListEditorProps) => {
+const ListEditor = ({ value, onChange }: PanelEditorBase<ListItem[]>) => {
   if (!Array.isArray(value)) return null
 
   const handleChange = (idx: number, key: string, newVal: string) => {

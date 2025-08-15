@@ -9,7 +9,11 @@ import {
 
 import type { PanelEditorBase } from '@features/editor/types/panelEditors.types'
 
-const ColorPickerEditor = ({ title, value, onChange }: PanelEditorBase) => {
+const ColorPickerEditor = ({
+  title,
+  value,
+  onChange,
+}: PanelEditorBase<string>) => {
   return (
     <Box mb={3}>
       <Field.Root orientation="horizontal">
