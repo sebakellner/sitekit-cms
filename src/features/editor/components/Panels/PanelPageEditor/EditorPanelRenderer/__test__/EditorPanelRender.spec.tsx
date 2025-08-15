@@ -14,7 +14,7 @@ const setup = (overrides: Partial<EditorPanelRendererProps> = {}) => {
 }
 
 describe('EditorPanelRenderer', () => {
-  test('should render the component with the correct metadata', () => {
+  test('should match with snapshot', () => {
     const { container } = render(setup())
     expect(container).toMatchSnapshot()
   })
