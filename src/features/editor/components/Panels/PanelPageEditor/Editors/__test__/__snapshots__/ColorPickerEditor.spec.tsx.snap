@@ -1,0 +1,97 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ColorPicker > should match with snapshot 1`] = `
+<div>
+  <script
+    nonce=""
+  >
+    ((e,i,s,u,m,a,l,h)=&gt;{let d=document.documentElement,w=["light","dark"];function p(n){(Array.isArray(e)?e:[e]).forEach(y=&gt;{let k=y==="class",S=k&&a?m.map(f=&gt;a[f]||f):m;k?(d.classList.remove(...S),d.classList.add(a&&a[n]?a[n]:n)):d.setAttribute(y,n)}),R(n)}function R(n){h&&w.includes(n)&&(d.style.colorScheme=n)}function c(){return window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(u)p(u);else try{let n=localStorage.getItem(i)||s,y=l&&n==="system"?c():n;p(y)}catch(n){}})("class","theme","system",null,["light","dark"],null,true,true)
+  </script>
+  <div
+    class="css-cdgtm1"
+  >
+    <div
+      class="chakra-field__root css-1anu6qw"
+      data-part="root"
+      data-scope="field"
+      id="field::«r0»"
+      orientation="horizontal"
+      role="group"
+    >
+      <label
+        class="chakra-field__label css-84rnco"
+        data-part="label"
+        data-scope="field"
+        for="«r0»"
+        id="field::«r0»::label"
+      >
+        Color Picker
+      </label>
+      <div
+        class="colorPicker__root css-zxnr2f"
+        data-part="root"
+        data-scope="color-picker"
+        dir="ltr"
+        id="color-picker:«r1»"
+        style="--value: rgba(255, 255, 255, 1);"
+      >
+        <input
+          id="color-picker:«r1»:hidden-input"
+          style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
+          tabindex="-1"
+          type="text"
+          value="rgba(255, 255, 255, 1)"
+        />
+        <div
+          class="colorPicker__control css-1q6y153"
+          data-part="control"
+          data-scope="color-picker"
+          data-state="closed"
+          dir="ltr"
+          id="color-picker:«r1»:control"
+        >
+          <input
+            aria-label="hex"
+            autocomplete="off"
+            class="colorPicker__channelInput css-1aemz6e"
+            data-channel="hex"
+            data-part="channel-input"
+            data-scope="color-picker"
+            dir="ltr"
+            max="16777215"
+            min="0"
+            spellcheck="false"
+            step="1"
+            style="appearance: none;"
+            type="text"
+            value="#FFFFFF"
+          />
+          <button
+            aria-controls="color-picker:«r1»:content"
+            aria-label="select color. current color is rgba(255, 255, 255, 1)"
+            aria-labelledby="field::«r0»::label"
+            class="colorPicker__trigger css-10mv649"
+            data-part="trigger"
+            data-scope="color-picker"
+            data-state="closed"
+            dir="ltr"
+            id="color-picker:«r1»:trigger"
+            style="position: relative;"
+            type="button"
+          >
+            <div
+              class="colorPicker__swatch css-lkq982"
+              data-part="swatch"
+              data-scope="color-picker"
+              data-state="checked"
+              data-value="#FFFFFF"
+              dir="ltr"
+              style="--color: rgba(255, 255, 255, 1); position: relative; background: rgb(255, 255, 255);"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
