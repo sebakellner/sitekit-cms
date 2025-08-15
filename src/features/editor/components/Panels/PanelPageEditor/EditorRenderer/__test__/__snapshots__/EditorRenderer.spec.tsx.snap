@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`EditorPanelRenderer > should render the component with the correct metadata 1`] = `
+exports[`EditorRenderer > should match snapshot for SelectEditor 1`] = `
 <div>
   <script
     nonce=""
@@ -14,7 +14,7 @@ exports[`EditorPanelRenderer > should render the component with the correct meta
       class="chakra-field__root css-1anu6qw"
       data-part="root"
       data-scope="field"
-      id="field::«r0»"
+      id="field::«r9»"
       orientation="horizontal"
       role="group"
     >
@@ -22,10 +22,10 @@ exports[`EditorPanelRenderer > should render the component with the correct meta
         class="chakra-field__label css-84rnco"
         data-part="label"
         data-scope="field"
-        for="«r0»"
-        id="field::«r0»::label"
+        for="«r9»"
+        id="field::«r9»::label"
       >
-        Property 1
+        Select
       </label>
       <div
         class="chakra-native-select__root css-8sp2e0"
@@ -34,17 +34,12 @@ exports[`EditorPanelRenderer > should render the component with the correct meta
           class="chakra-native-select__field css-jwpnxr"
           data-part="select"
           data-scope="field"
-          id="«r0»"
+          id="«r9»"
         >
           <option
-            value="option1"
+            value="opt1"
           >
             Option 1
-          </option>
-          <option
-            value="option2"
-          >
-            Option 2
           </option>
         </select>
         <div
@@ -60,6 +55,45 @@ exports[`EditorPanelRenderer > should render the component with the correct meta
           </svg>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`EditorRenderer > should match snapshot for TextEditor 1`] = `
+<div>
+  <script
+    nonce=""
+  >
+    ((e,i,s,u,m,a,l,h)=&gt;{let d=document.documentElement,w=["light","dark"];function p(n){(Array.isArray(e)?e:[e]).forEach(y=&gt;{let k=y==="class",S=k&&a?m.map(f=&gt;a[f]||f):m;k?(d.classList.remove(...S),d.classList.add(a&&a[n]?a[n]:n)):d.setAttribute(y,n)}),R(n)}function R(n){h&&w.includes(n)&&(d.style.colorScheme=n)}function c(){return window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(u)p(u);else try{let n=localStorage.getItem(i)||s,y=l&&n==="system"?c():n;p(y)}catch(n){}})("class","theme","system",null,["light","dark"],null,true,true)
+  </script>
+  <div
+    class="css-n33ttv"
+  >
+    <div
+      class="chakra-field__root css-1anu6qw"
+      data-part="root"
+      data-scope="field"
+      id="field::«r8»"
+      orientation="horizontal"
+      role="group"
+    >
+      <label
+        class="chakra-field__label css-84rnco"
+        data-part="label"
+        data-scope="field"
+        for="«r8»"
+        id="field::«r8»::label"
+      >
+        Text
+      </label>
+      <input
+        class="chakra-input css-1hens3x"
+        data-part="input"
+        data-scope="field"
+        id="«r8»"
+        value="Default"
+      />
     </div>
   </div>
 </div>

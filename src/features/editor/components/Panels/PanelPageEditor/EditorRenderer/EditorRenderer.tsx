@@ -1,22 +1,54 @@
-import editorMap from '../Editors/editorMap'
+import TextEditor from '../Editors/TextEditor'
+import SelectEditor from '../Editors/SelectEditor'
+import ColorPickerEditor from '../Editors/ColorPickerEditor'
+import ListEditor from '../Editors/ListEditor'
 import type { EditorRendererProps } from './EditorRenderer.types'
 
 const EditorRenderer = ({ config, value, onChange }: EditorRendererProps) => {
-  const title = config.title ?? 'Property'
   const { editor, options, default: defaultValue } = config
+  const title = config.title ?? 'Property'
+  const safeValue = value ?? defaultValue
 
-  const EditorComponent = editorMap[editor]
+  const asString = (val: unknown) => (typeof val === 'string' ? val : '')
+  const asArray = (val: unknown) => (Array.isArray(val) ? val : [])
 
-  if (!EditorComponent) return null
-
-  return (
-    <EditorComponent
-      title={title}
-      value={value ?? defaultValue}
-      onChange={onChange}
-      options={options ?? []}
-    />
-  )
+  switch (editor) {
+    case 'text':
+      return (
+        <TextEditor
+          title={title}
+          value={asString(safeValue)}
+          onChange={onChange}
+        />
+      )
+    case 'select':
+      return (
+        <SelectEditor
+          title={title}
+          value={asString(safeValue)}
+          onChange={onChange}
+          options={options ?? []}
+        />
+      )
+    case 'colorPicker':
+      return (
+        <ColorPickerEditor
+          title={title}
+          value={asString(safeValue)}
+          onChange={onChange}
+        />
+      )
+    case 'listEditor':
+      return (
+        <ListEditor
+          title={title}
+          value={asArray(safeValue)}
+          onChange={onChange}
+        />
+      )
+    default:
+      return null
+  }
 }
 
 export default EditorRenderer

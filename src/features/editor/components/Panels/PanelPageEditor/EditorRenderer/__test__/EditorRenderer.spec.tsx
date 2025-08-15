@@ -6,65 +6,35 @@ import { screen } from '@testing-library/react'
 
 const setup = (overrides: Partial<EditorRendererProps> = {}) => {
   const defaultProps: EditorRendererProps = {
-    config: mockComponentMetadata.props.prop1,
-    value: mockValues.prop1,
+    config: {
+      title: 'Property 1',
+      type: 'string',
+      editor: 'text',
+      default: 'Default Value',
+    },
+    value: undefined,
     onChange: () => {},
   }
   const props = { ...defaultProps, ...overrides }
   return <EditorRenderer {...props} />
 }
 
-describe('EditorPanelRenderer', () => {
-  test('should render the component with the correct metadata', () => {
-    const { container } = render(setup())
-    expect(container).toMatchSnapshot()
-  })
-
-  test('should render the component with the correct props', () => {
+describe('EditorRenderer', () => {
+  test('renders TextEditor with default value', () => {
     render(setup())
-    expect(screen.getByText('Property 1')).toBeInTheDocument()
+    const input = screen.getByRole('textbox', { name: 'Property 1' })
+    expect(input).toHaveValue('Default Value')
   })
 
-  test('should render default title if config.title is not defined', () => {
-    render(
-      setup({
-        config: {
-          ...mockComponentMetadata.props.prop1,
-          title: undefined,
-        },
-      })
-    )
-    expect(screen.getByText('Property')).toBeInTheDocument()
+  test('renders TextEditor with provided value', () => {
+    render(setup({ value: 'Custom Value' }))
+    const input = screen.getByRole('textbox', { name: 'Property 1' })
+    expect(input).toHaveValue('Custom Value')
   })
 
-  test('should not render editor if config.editor is not defined', () => {
+  test('renders SelectEditor with options and default', () => {
     render(
       setup({
-        config: {
-          ...mockComponentMetadata.props.prop1,
-          editor: undefined as any,
-        },
-      })
-    )
-    expect(screen.queryByText('Property 1')).not.toBeInTheDocument()
-  })
-
-  test('should not render editor if config.editor is not in editorMap', () => {
-    render(
-      setup({
-        config: {
-          ...mockComponentMetadata.props.prop1,
-          editor: 'unknown-editor' as any,
-        },
-      })
-    )
-    expect(screen.queryByText('Property 1')).not.toBeInTheDocument()
-  })
-
-  test('should render defaultValue if value is undefined', () => {
-    render(
-      setup({
-        value: undefined,
         config: {
           title: 'Property 1',
           type: 'enum',
@@ -82,7 +52,7 @@ describe('EditorPanelRenderer', () => {
     expect(select).toHaveDisplayValue('Option 2')
   })
 
-  test('should render value if value is provided', () => {
+  test('renders SelectEditor with provided value', () => {
     render(
       setup({
         value: 'opt1',
@@ -103,31 +73,95 @@ describe('EditorPanelRenderer', () => {
     expect(select).toHaveDisplayValue('Option 1')
   })
 
-  test('should render options when editor is select and not have value and default', () => {
+  test('renders ColorPickerEditor with default value', () => {
     render(
       setup({
-        value: undefined,
         config: {
-          title: 'Property 1',
-          type: 'enum',
-          editor: 'select',
-          default: undefined as any,
-          options: [
-            { label: 'Option 1', value: 'opt1' },
-            { label: 'Option 2', value: 'opt2' },
-          ],
+          title: 'Color',
+          type: 'string',
+          editor: 'colorPicker',
+          default: '#fff',
         },
       })
     )
-    const select = screen.getByRole('combobox', { name: 'Property 1' })
-    expect(select).toHaveValue('opt1')
-    expect(select).toHaveDisplayValue('Option 1')
+    expect(screen.getByLabelText('Color')).toBeInTheDocument()
   })
 
-  test('should render default value when editor is not select', () => {
+  test('renders ListEditor with array value', () => {
     render(
       setup({
-        value: undefined,
+        config: {
+          title: 'List',
+          type: 'enum',
+          editor: 'listEditor',
+          default: [{ label: 'Item 1' }],
+        },
+        value: [{ label: 'Item 2' }],
+      })
+    )
+    expect(screen.getByDisplayValue('Item 2')).toBeInTheDocument()
+  })
+
+  test('renders nothing for unknown editor', () => {
+    render(
+      setup({
+        config: {
+          title: 'Unknown',
+          type: 'string',
+          editor: 'unknown-editor' as any,
+          default: 'Default',
+        },
+      })
+    )
+    expect(screen.queryByText('Unknown')).not.toBeInTheDocument()
+  })
+
+  test('renders default title if config.title is not defined', () => {
+    render(
+      setup({
+        config: {
+          title: undefined,
+          type: 'string',
+          editor: 'text',
+          default: 'Default Value',
+        },
+      })
+    )
+    expect(screen.getByText('Property')).toBeInTheDocument()
+  })
+
+  test('should match snapshot for TextEditor', () => {
+    const { container } = render(
+      setup({
+        config: {
+          title: 'Text',
+          type: 'string',
+          editor: 'text',
+          default: 'Default',
+        },
+      })
+    )
+    expect(container).toMatchSnapshot()
+  })
+
+  test('should match snapshot for SelectEditor', () => {
+    const { container } = render(
+      setup({
+        config: {
+          title: 'Select',
+          type: 'enum',
+          editor: 'select',
+          default: 'opt1',
+          options: [{ label: 'Option 1', value: 'opt1' }],
+        },
+      })
+    )
+    expect(container).toMatchSnapshot()
+  })
+
+  test('should render the component with the correct props', () => {
+    render(
+      setup({
         config: {
           title: 'Property 1',
           type: 'string',
@@ -136,35 +170,68 @@ describe('EditorPanelRenderer', () => {
         },
       })
     )
-    const input = screen.getByRole('textbox', { name: 'Property 1' })
-    expect(input).toHaveValue('Default Value')
+    expect(screen.getByText('Property 1')).toBeInTheDocument()
   })
 
-  test('should use resolveValue from editorMap entry if available', () => {
+  test('should render empty string if value its not a stringu in TextEditor', () => {
     render(
       setup({
-        value: undefined,
+        value: 123,
         config: {
-          title: 'Property 1',
+          title: 'Property',
           type: 'string',
           editor: 'text',
-          default: 'Default Text',
-        } as any,
-      })
-    )
-    const input = screen.getByRole('textbox', { name: 'Property 1' })
-    expect(input).toHaveValue('Default Text')
-  })
-
-  test('should render default title if config.title is not defined', () => {
-    render(
-      setup({
-        config: {
-          ...mockComponentMetadata.props.prop1,
-          title: undefined,
+          default: 'Default value',
         },
       })
     )
-    expect(screen.getByText('Property')).toBeInTheDocument()
+    const input = screen.getByRole('textbox', { name: 'Property' })
+    expect(input).toHaveValue('')
+  })
+
+  test('should render empty array if value is not an array in ListEditor', () => {
+    render(
+      setup({
+        value: 'not-an-array',
+        config: {
+          title: 'List',
+          type: 'enum',
+          editor: 'listEditor',
+          default: [{ label: 'Item 1' }],
+        },
+      })
+    )
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
+
+  test('should render empty options if options are not provided in SelectEditor', () => {
+    render(
+      setup({
+        config: {
+          title: 'Select',
+          type: 'enum',
+          editor: 'select',
+          default: undefined,
+          options: undefined,
+        },
+      })
+    )
+    const select = screen.getByRole('combobox', { name: 'Select' })
+    expect(select).toBeInTheDocument()
+    expect(select.querySelectorAll('option').length).toBe(0)
+  })
+
+  test('should not render editor if config.editor is not defined', () => {
+    render(
+      setup({
+        config: {
+          title: 'Property 1',
+          type: 'string',
+          editor: undefined as any,
+          default: 'Default Value',
+        },
+      })
+    )
+    expect(screen.queryByText('Property 1')).not.toBeInTheDocument()
   })
 })
