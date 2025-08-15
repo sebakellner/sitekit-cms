@@ -28,6 +28,7 @@ export const ComponentMetaSchema = z.object({
         z.boolean(),
         z.array(z.unknown()),
         z.null(),
+        z.undefined(),
       ]),
       options: z
         .array(

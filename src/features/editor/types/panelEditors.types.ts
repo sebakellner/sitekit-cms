@@ -1,7 +1,5 @@
-import type { ComponentPropPrimitives } from './editor.types'
-
-export interface PanelEditorBase {
+export interface PanelEditorBase<T> {
   title: string
-  value: ComponentPropPrimitives
-  onChange: (val: unknown) => void
+  value: T
+  onChange: (val: T) => void
 }
