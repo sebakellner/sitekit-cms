@@ -33,7 +33,7 @@ describe('TextEditor', () => {
 
     const input = screen.getByLabelText('Title')
     await userEvent.clear(input)
-    expect(input).toHaveValue('') // Ahora sí debe estar vacío
+    expect(input).toHaveValue('')
     await userEvent.type(input, 'New Title')
     await userEvent.tab()
 
