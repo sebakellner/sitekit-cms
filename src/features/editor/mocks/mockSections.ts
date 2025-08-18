@@ -21,9 +21,9 @@ const mockSections: Section[] = [
     props: {
       title: 'Welcome to Site Kit Builder',
       description: 'This description reads from Store',
-      background: { color: 'white' },
+      background: 'white',
       headingColor: 'black',
-      textColor: 'dark-2',
+      textColor: '#333',
       buttonLabel: 'Get Started',
       buttonColor: 'brand',
       buttonSize: 'large',

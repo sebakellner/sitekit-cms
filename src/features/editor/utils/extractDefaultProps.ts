@@ -1,5 +1,5 @@
-import { ComponentMetaSchema } from '@components/site/schemas/componentMeta.schema'
 import type { ComponentMeta } from '@components/site/types'
+import { ComponentMetaSchema } from '../schemas/componentMeta.schema'
 
 function isDefaultProp(val: unknown): val is { default: unknown } {
   return typeof val === 'object' && val !== null && 'default' in val
@@ -11,7 +11,10 @@ export function extractDefaultProps(
 ): Record<string, unknown> {
   if (!props) return {}
   const result = ComponentMetaSchema.shape.props.safeParse(props)
-  if (!result.success) return {}
+  if (!result.success) {
+    console.error('Invalid props schema:', result.error)
+    return {}
+  }
   const validProps = result.data
   return Object.fromEntries(
     Object.entries(validProps).map(([key, val]) => [

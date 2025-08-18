@@ -1,14 +1,25 @@
+import type { ComponentMeta } from '@features/editor/types/editor.types'
 import Footer from './Footer'
 import preview from './footer-preview.png'
-import type { ComponentMeta } from '@components/site/types'
-import type { FooterProps } from './Footer.schema'
 
-const meta: ComponentMeta<FooterProps> = {
+const meta: ComponentMeta = {
   name: 'Footer',
   component: Footer,
   category: 'Footer',
   description: 'Footer section for your site.',
   preview,
+  panels: [
+    {
+      id: 'content',
+      title: 'Content',
+      fields: ['siteName', 'year', 'footerLinks'],
+    },
+    {
+      id: 'style',
+      title: 'Style',
+      fields: ['background'],
+    },
+  ],
   props: {
     siteName: {
       type: 'string',
@@ -18,7 +29,7 @@ const meta: ComponentMeta<FooterProps> = {
     year: {
       type: 'number',
       default: 2025,
-      editor: 'numberInput',
+      editor: 'text',
     },
     footerLinks: {
       type: 'object',
@@ -27,10 +38,10 @@ const meta: ComponentMeta<FooterProps> = {
         { title: 'Support', links: ['Help Center', 'FAQ'] },
         { title: 'Legal', links: ['Privacy Policy', 'Terms'] },
       ],
-      editor: 'jsonEditor',
+      editor: 'listEditor',
     },
     background: {
-      type: ['color', 'string'],
+      type: 'string',
       default: '#23242a',
       editor: 'colorPicker',
     },

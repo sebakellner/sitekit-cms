@@ -23,27 +23,31 @@ const InfoText: React.FC<InfoTextProps> = ({
       <Heading
         level={2}
         weight="bold"
+        size="small"
         margin={{ bottom: 'small', top: 'none' }}
       >
         {title}
       </Heading>
-      <Text size="large" margin={{ bottom: 'medium' }}>
+      <Text size="medium" margin={{ bottom: 'medium' }}>
         {text}
       </Text>
       <Box as="ul" pad={{ left: 'small' }}>
-        {formats.map((f) => (
+        {formats.map((f, idx) => (
           <Box
             as="li"
             direction="row"
             gap="xsmall"
-            key={f.label}
+            key={idx}
             margin={{ bottom: 'xsmall' }}
           >
             <Box as="span" color="accent-1" margin={{ top: '4px' }}>
               &#8226;
             </Box>
             <Text>
-              <Text weight="bold">{f.label}:</Text> {f.description}
+              <Text weight="bold" size="small">
+                {f.label}
+              </Text>
+              <Text size="small"> {f.description}</Text>
             </Text>
           </Box>
         ))}

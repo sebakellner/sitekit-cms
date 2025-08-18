@@ -18,7 +18,7 @@ const PanelBox = ({
   return (
     <Flex
       direction="column"
-      background={'gray.900'}
+      background={'bg.panel'}
       w="100%"
       p={p}
       gap={gap}

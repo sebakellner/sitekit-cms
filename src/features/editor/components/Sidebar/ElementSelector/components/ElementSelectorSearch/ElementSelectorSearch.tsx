@@ -15,7 +15,7 @@ const ElementSelectorSearch = () => (
       >
         <Search size={16} />
       </Box>
-      <Input placeholder="Search" size="sm" pl={8} />
+      <Input placeholder="Search" pl={8} variant="subtle" />
     </Box>
   </PanelBox>
 )
