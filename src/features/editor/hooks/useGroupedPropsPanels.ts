@@ -22,6 +22,7 @@ export function useGroupedPropsPanels(
 ): GroupedPanel[] {
   return useMemo(() => {
     if (!meta) return []
+    if (!props) return []
 
     return (
       meta.panels?.map((panel) => ({
