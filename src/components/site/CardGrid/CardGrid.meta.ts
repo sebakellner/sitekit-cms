@@ -1,9 +1,8 @@
+import type { ComponentMeta } from '@features/editor/types/editor.types'
 import CardGrid from './CardGrid'
-import type { ComponentMeta } from '../types'
 import preview from './cardgrid-preview.png'
-import type { CardGridProps } from './CardGrid.schema'
 
-const meta: ComponentMeta<CardGridProps> = {
+const meta: ComponentMeta = {
   name: 'CardGrid',
   category: 'Section',
   description: 'A grid of cards for features or content.',
@@ -49,7 +48,7 @@ const meta: ComponentMeta<CardGridProps> = {
           description: 'Ut enim ad minim veniam, quis nostrud exercitation.',
         },
       ],
-      editor: 'jsonEditor',
+      editor: 'listEditor',
     },
   },
 }
