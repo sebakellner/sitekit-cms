@@ -47,3 +47,11 @@ export const addSection =
       sections: [...state.sections, newSection],
     }))
   }
+
+export const deleteSection =
+  (set: (fn: (state: SectionStore) => Partial<SectionStore>) => void) =>
+  (id: string) => {
+    set((state) => ({
+      sections: state.sections.filter((section) => section.id !== id),
+    }))
+  }

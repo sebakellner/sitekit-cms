@@ -5,6 +5,7 @@ import {
   selectSection,
   updateSectionProps,
   addSection,
+  deleteSection,
 } from './section.actions'
 import type { SectionStore } from './section.type'
 
@@ -17,6 +18,7 @@ export const useSectionStore = create(
       selectSection: selectSection(set),
       updateSectionProps: updateSectionProps(set),
       addSection: addSection(set),
+      deleteSection: deleteSection(set),
     }),
     {
       name: 'section-store',

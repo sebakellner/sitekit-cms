@@ -7,4 +7,5 @@ export type SectionStore = {
   updateSectionProps: (id: string, newProps: Record<string, unknown>) => void
   selectSection: (id: string | null) => void
   addSection: (name: string, props?: Record<string, unknown>) => void
+  deleteSection: (id: string) => void
 }
