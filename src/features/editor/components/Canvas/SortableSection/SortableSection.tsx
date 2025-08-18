@@ -1,8 +1,6 @@
 import React, { useEffect, useMemo } from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import {
-  DRAGGING_Z_INDEX,
-  NORMAL_Z_INDEX,
   DRAGGING_MIN_HEIGHT,
   DRAGGING_OPACITY,
   NORMAL_DRAGGING_OPACITY,
