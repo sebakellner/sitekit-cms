@@ -12,6 +12,7 @@ const InspectorOverlay: React.FC<InspectorOverlayProps> = ({
   isSelected = false,
   onSelect,
   children,
+  sectionId,
   overlayLabelPosition = 'above',
 }) => {
   return (
@@ -24,6 +25,7 @@ const InspectorOverlay: React.FC<InspectorOverlayProps> = ({
           label={label}
           isSelected={isSelected}
           position={overlayLabelPosition}
+          sectionId={sectionId}
         />
       )}
       <Box style={{ position: 'relative', zIndex: BEM_CHILD_ZINDEX }}>

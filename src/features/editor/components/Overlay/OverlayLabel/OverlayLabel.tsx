@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Text } from 'grommet'
-import { Layers } from 'lucide-react'
+import { Layers, X } from 'lucide-react'
 import {
   BEM_LABEL_TOP_ABOVE,
   BEM_LABEL_TOP_BELOW,
@@ -11,15 +11,25 @@ import {
   BEM_BORDER_COLOR,
 } from '@src/features/editor/constants/inspector'
 import type { OverlayLabelProps } from './OverlayLabel.types'
+import { useSectionStore } from '@features/editor/store/section/useSectionStore'
 
 const OverlayLabel: React.FC<OverlayLabelProps> = ({
   label,
   isSelected,
   position = 'above',
+  sectionId,
 }) => {
   const labelBg = isSelected ? BEM_BORDER_COLOR : 'transparent'
   const labelColor = isSelected ? 'white' : BEM_BORDER_COLOR
   const labelIconColor = isSelected ? 'white' : BEM_BORDER_COLOR
+
+  const deleteSection = useSectionStore((state) => state.deleteSection)
+
+  const handleDelete = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation()
+    deleteSection(id)
+  }
+
   return (
     <Box
       direction="row"
@@ -36,7 +46,6 @@ const OverlayLabel: React.FC<OverlayLabelProps> = ({
         left: 0,
         top: position === 'above' ? BEM_LABEL_TOP_ABOVE : BEM_LABEL_TOP_BELOW,
         zIndex: BEM_LABEL_ZINDEX,
-        pointerEvents: 'none',
       }}
       round={{
         corner: position === 'above' ? 'top' : 'bottom',
@@ -49,6 +58,12 @@ const OverlayLabel: React.FC<OverlayLabelProps> = ({
       <Text size="xsmall" color={labelColor}>
         {label}
       </Text>
+      <X
+        size={12}
+        color={labelIconColor}
+        style={{ cursor: 'pointer' }}
+        onClick={(e) => handleDelete(e, sectionId)}
+      />
     </Box>
   )
 }

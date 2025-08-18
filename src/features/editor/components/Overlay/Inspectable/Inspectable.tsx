@@ -38,6 +38,7 @@ const Inspectable: React.FC<InspectableProps> = ({
       width="100%"
     >
       <InspectorOverlay
+        sectionId={id}
         label={computedLabel}
         showOverlay={showOverlay}
         isSelected={isSelected}
