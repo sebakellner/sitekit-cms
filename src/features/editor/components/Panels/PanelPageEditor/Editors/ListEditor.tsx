@@ -26,7 +26,7 @@ const ListEditor = ({ value, onChange }: PanelEditorBase<ListItem[]>) => {
   }
 
   const handleAdd = () => {
-    const newItem = getDefaultItem(value[0])
+    const newItem = getDefaultItem(value.length > 0 ? value[0] : {})
     onChange([...value, newItem])
   }
 

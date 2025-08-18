@@ -123,4 +123,27 @@ describe('ListEditor', () => {
     const labelInput = screen.getByLabelText('Label')
     expect(labelInput).toHaveValue('')
   })
+
+  test('should add item with same fields as first item when list is not empty', async () => {
+    render(setup({ value: [{ id: '1', label: 'Item 1', extra: 'foo' }] }))
+
+    const AddItemBtn = screen.getByRole('button', { name: /Add Item/i })
+    await userEvent.click(AddItemBtn)
+
+    const labelInputs = screen.getAllByLabelText('Label')
+    expect(labelInputs.length).toBe(2)
+    expect(labelInputs[1]).toHaveValue('')
+
+    const extraInputs = screen.getAllByLabelText('Extra')
+    expect(extraInputs.length).toBe(2)
+    expect(extraInputs[1]).toHaveValue('')
+  })
+  test('should add item with empty fields when list is empty', async () => {
+    render(setup({ value: [] }))
+
+    const AddItemBtn = screen.getByRole('button', { name: /Add Item/i })
+    await userEvent.click(AddItemBtn)
+
+    expect(screen.queryByLabelText('Label')).not.toBeInTheDocument()
+  })
 })
