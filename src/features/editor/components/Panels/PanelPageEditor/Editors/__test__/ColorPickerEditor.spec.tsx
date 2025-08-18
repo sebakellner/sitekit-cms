@@ -4,7 +4,6 @@ import ColorPickerEditor from '../ColorPickerEditor'
 import type { PanelEditorBase } from '@features/editor/types/panelEditors.types'
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { act } from 'react'
 
 const setup = (overrides: Partial<PanelEditorBase<string>> = {}) => {
   const defaultProps: PanelEditorBase<string> = {
