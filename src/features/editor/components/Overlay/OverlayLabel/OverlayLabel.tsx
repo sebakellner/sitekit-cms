@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box, Text } from 'grommet'
 import { Layers, X } from 'lucide-react'
 import {
   BEM_LABEL_TOP_ABOVE,
@@ -12,6 +11,7 @@ import {
 } from '@src/features/editor/constants/inspector'
 import type { OverlayLabelProps } from './OverlayLabel.types'
 import { useSectionStore } from '@features/editor/store/section/useSectionStore'
+import { Box, Text } from '@chakra-ui/react'
 
 const OverlayLabel: React.FC<OverlayLabelProps> = ({
   label,
@@ -32,38 +32,33 @@ const OverlayLabel: React.FC<OverlayLabelProps> = ({
 
   return (
     <Box
-      direction="row"
-      align="center"
-      gap="xsmall"
-      justify="center"
+      display="flex"
+      position="absolute"
+      left={0}
+      top={position === 'above' ? BEM_LABEL_TOP_ABOVE : BEM_LABEL_TOP_BELOW}
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="center"
+      gap={2}
       background={labelBg}
-      pad={{
-        horizontal: BEM_LABEL_PAD_HORIZONTAL,
-        vertical: BEM_LABEL_PAD_VERTICAL,
-      }}
-      style={{
-        position: 'absolute',
-        left: 0,
-        top: position === 'above' ? BEM_LABEL_TOP_ABOVE : BEM_LABEL_TOP_BELOW,
-        zIndex: BEM_LABEL_ZINDEX,
-      }}
-      round={{
-        corner: position === 'above' ? 'top' : 'bottom',
-        size: BEM_LABEL_ROUND_SIZE,
-      }}
-      hoverIndicator={false}
-      focusIndicator={false}
+      px={BEM_LABEL_PAD_HORIZONTAL}
+      py={BEM_LABEL_PAD_VERTICAL}
+      zIndex={BEM_LABEL_ZINDEX}
+      borderTopRadius={position === 'above' ? BEM_LABEL_ROUND_SIZE : 0}
+      borderBottomRadius={position === 'below' ? BEM_LABEL_ROUND_SIZE : 0}
     >
       <Layers size={12} color={labelIconColor} />
-      <Text size="xsmall" color={labelColor}>
+      <Text fontSize={12} color={labelColor}>
         {label}
       </Text>
-      <X
-        size={12}
-        color={labelIconColor}
-        style={{ cursor: 'pointer' }}
-        onClick={(e) => handleDelete(e, sectionId)}
-      />
+      {isSelected && (
+        <X
+          size={12}
+          color={labelIconColor}
+          style={{ cursor: 'pointer' }}
+          onClick={(e) => handleDelete(e, sectionId)}
+        />
+      )}
     </Box>
   )
 }

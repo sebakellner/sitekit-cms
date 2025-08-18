@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
-import { Box } from 'grommet'
+import { Box } from '@chakra-ui/react'
+
 import { getComponentLabel } from '@src/features/editor/utils/getComponentLabel'
 import type { InspectableProps } from './Inspectable.types'
 import { InspectorOverlay } from '../InspectorOverlay'
@@ -35,7 +36,7 @@ const Inspectable: React.FC<InspectableProps> = ({
     <Box
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      width="100%"
+      w="100%"
     >
       <InspectorOverlay
         sectionId={id}
