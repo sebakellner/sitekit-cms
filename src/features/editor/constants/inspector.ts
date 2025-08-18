@@ -1,6 +1,6 @@
 export const BEM_LABEL_ZINDEX = 3
 export const BEM_CHILD_ZINDEX = 1
-export const BEM_BORDER_SIZE_SELECTED = '2px'
+export const BEM_BORDER_SIZE_SELECTED = '1px'
 export const BEM_BORDER_SIZE_DEFAULT = '1px'
 export const BEM_BORDER_ZINDEX = 2
 export const BEM_LABEL_TOP_ABOVE = -28
