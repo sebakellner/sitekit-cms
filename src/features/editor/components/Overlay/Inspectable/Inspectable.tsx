@@ -37,6 +37,7 @@ const Inspectable: React.FC<InspectableProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       w="100%"
+      data-testid="inspectable-box"
     >
       <InspectorOverlay
         sectionId={id}
