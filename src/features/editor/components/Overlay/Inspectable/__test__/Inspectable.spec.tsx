@@ -3,25 +3,21 @@ import { render } from 'test/utils/render'
 import type { InspectableProps } from '../Inspectable.types'
 import Inspectable from '../Inspectable'
 import { fireEvent } from '@testing-library/react'
+import type { InspectorOverlayProps } from '../../InspectorOverlay'
+import { mockSelectSection } from '@mocks/useSectionStoreMock'
+
+vi.mock(
+  '@features/editor/store/section/useSectionStore',
+  () => import('@mocks/useSectionStoreMock')
+)
 
 vi.mock('../../InspectorOverlay', () => {
   return {
-    InspectorOverlay: ({ children, onSelect }: any) => (
+    InspectorOverlay: ({ children, onSelect }: InspectorOverlayProps) => (
       <div data-testid="overlay" onClick={onSelect}>
         {children}
       </div>
     ),
-  }
-})
-
-const mockSelectSection = vi.fn()
-vi.mock('@features/editor/store/section/useSectionStore', () => {
-  return {
-    useSectionStore: (selector: any) =>
-      selector({
-        selectedId: null,
-        selectSection: mockSelectSection,
-      }),
   }
 })
 
