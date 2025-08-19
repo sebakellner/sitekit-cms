@@ -29,7 +29,8 @@
       "@layouts/*": ["src/components/cms/layouts/*"],
       "@registry/*": ["src/registry/*"],
       "@src/*": ["src/*"],
-      "@constants/*": ["src/constants/*"]
+      "@constants/*": ["src/constants/*"],
+      "@mocks/*": ["src/__mocks__/*"]
     }
   },
   "include": ["vite.config.ts"]
