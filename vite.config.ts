@@ -20,6 +20,7 @@ export default defineConfig({
       '@lib': '/src/lib',
       '@registry': '/src/registry',
       '@constants': '/src/constants',
+      '@mocks': '/src/__mocks__',
     },
   },
 })

@@ -4,15 +4,12 @@ import type { OverlayLabelProps } from '../OverlayLabel.types'
 import OverlayLabel from '../OverlayLabel'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { mockDeleteSection } from '@mocks/useSectionStoreMock'
 
-const mockDeleteSection = vi.fn()
-
-vi.mock('@features/editor/store/section/useSectionStore', () => ({
-  useSectionStore: (selector: any) =>
-    selector({
-      deleteSection: mockDeleteSection,
-    }),
-}))
+vi.mock(
+  '@features/editor/store/section/useSectionStore',
+  () => import('@mocks/useSectionStoreMock')
+)
 
 const setup = (overrides: Partial<OverlayLabelProps> = {}) => {
   const defaultProps: OverlayLabelProps = {

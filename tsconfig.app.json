@@ -38,7 +38,8 @@
       "@types/*": ["src/types/*"],
       "@lib/*": ["src/lib/*"],
       "@registry/*": ["src/registry/*"],
-      "@constants/*": ["src/constants/*"]
+      "@constants/*": ["src/constants/*"],
+      "@mocks/*": ["src/__mocks__/*"]
     }
   },
   "include": ["src", "test"]

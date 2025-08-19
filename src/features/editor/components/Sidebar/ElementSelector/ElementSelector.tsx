@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from 'grommet'
+import { Box, Heading } from 'grommet'
 import { useAllComponentMetas } from '@src/features/editor/hooks/useAllComponentMetas'
 import { SELECTOR_PREFIX } from '@src/features/editor/constants/DnD'
 
