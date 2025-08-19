@@ -17,9 +17,7 @@ const InspectorOverlay: React.FC<InspectorOverlayProps> = ({
 }) => {
   return (
     <Box position="relative">
-      {showOverlay && (
-        <OverlayBorder isSelected={isSelected} onSelect={onSelect} />
-      )}
+      {showOverlay && <OverlayBorder onSelect={onSelect} />}
       {showOverlay && (
         <OverlayLabel
           label={label}
