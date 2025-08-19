@@ -1,22 +1,17 @@
 import React from 'react'
-import { Box } from 'grommet'
 import {
   BEM_BORDER_COLOR,
-  BEM_BORDER_SIZE_SELECTED,
   BEM_BORDER_SIZE_DEFAULT,
   BEM_BORDER_ZINDEX,
 } from '@src/features/editor/constants/inspector'
 import type { OverlayBorderProps } from './OverlayBorder.types'
+import { Box } from '@chakra-ui/react'
 
-const OverlayBorder: React.FC<OverlayBorderProps> = ({
-  isSelected,
-  onSelect,
-}) => (
+const OverlayBorder: React.FC<OverlayBorderProps> = ({ onSelect }) => (
   <Box
-    border={{
-      color: BEM_BORDER_COLOR,
-      size: isSelected ? BEM_BORDER_SIZE_SELECTED : BEM_BORDER_SIZE_DEFAULT,
-    }}
+    borderColor={BEM_BORDER_COLOR}
+    borderWidth={BEM_BORDER_SIZE_DEFAULT}
+    data-testid="overlay-border"
     style={{
       position: 'absolute',
       top: 0,
@@ -28,8 +23,6 @@ const OverlayBorder: React.FC<OverlayBorderProps> = ({
       pointerEvents: onSelect ? 'auto' : 'none',
     }}
     onClick={onSelect}
-    hoverIndicator={false}
-    focusIndicator={false}
   />
 )
 

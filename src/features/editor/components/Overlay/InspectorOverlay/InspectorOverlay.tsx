@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from 'grommet'
+import { Box } from '@chakra-ui/react'
 
 import { BEM_CHILD_ZINDEX } from '@src/features/editor/constants/inspector'
 import type { InspectorOverlayProps } from './InspectorOverlay.types'
@@ -12,21 +12,21 @@ const InspectorOverlay: React.FC<InspectorOverlayProps> = ({
   isSelected = false,
   onSelect,
   children,
+  sectionId,
   overlayLabelPosition = 'above',
 }) => {
   return (
-    <Box style={{ position: 'relative' }}>
-      {showOverlay && (
-        <OverlayBorder isSelected={isSelected} onSelect={onSelect} />
-      )}
+    <Box position="relative">
+      {showOverlay && <OverlayBorder onSelect={onSelect} />}
       {showOverlay && (
         <OverlayLabel
           label={label}
           isSelected={isSelected}
           position={overlayLabelPosition}
+          sectionId={sectionId}
         />
       )}
-      <Box style={{ position: 'relative', zIndex: BEM_CHILD_ZINDEX }}>
+      <Box position="relative" zIndex={BEM_CHILD_ZINDEX}>
         {children}
       </Box>
     </Box>
