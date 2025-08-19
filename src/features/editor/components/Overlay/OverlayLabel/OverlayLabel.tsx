@@ -11,7 +11,7 @@ import {
 } from '@src/features/editor/constants/inspector'
 import type { OverlayLabelProps } from './OverlayLabel.types'
 import { useSectionStore } from '@features/editor/store/section/useSectionStore'
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Button, Text } from '@chakra-ui/react'
 
 const OverlayLabel: React.FC<OverlayLabelProps> = ({
   label,
@@ -52,12 +52,16 @@ const OverlayLabel: React.FC<OverlayLabelProps> = ({
         {label}
       </Text>
       {isSelected && (
-        <X
-          size={12}
-          color={labelIconColor}
-          style={{ cursor: 'pointer' }}
+        <Button
+          variant="ghost"
+          size="2xs"
+          p={0}
+          _hover={{ bg: 'transparent' }}
           onClick={(e) => handleDelete(e, sectionId)}
-        />
+          data-testid="el-delete-button"
+        >
+          <X size={12} color={labelIconColor} />
+        </Button>
       )}
     </Box>
   )
