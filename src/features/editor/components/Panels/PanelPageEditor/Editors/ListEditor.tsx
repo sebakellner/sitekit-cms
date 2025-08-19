@@ -7,7 +7,7 @@ export type ListItem = Record<
   string | number | boolean | null | undefined
 >
 
-const getDefaultItem = (template: Record<string, any>) => {
+const getDefaultItem = (template: Record<string, unknown>) => {
   return Object.fromEntries(Object.keys(template).map((key) => [key, '']))
 }
 
