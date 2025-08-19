@@ -3,6 +3,7 @@ import { render } from 'test/utils/render'
 import EditorRenderer from '../EditorRenderer'
 import type { EditorRendererProps } from '../EditorRenderer.types'
 import { screen } from '@testing-library/react'
+import type { ComponentPropEditorType } from '@features/editor/schemas/componentPropEditor.schema'
 
 const setup = (overrides: Partial<EditorRendererProps> = {}) => {
   const defaultProps: EditorRendererProps = {
@@ -108,7 +109,7 @@ describe('EditorRenderer', () => {
         config: {
           title: 'Unknown',
           type: 'string',
-          editor: 'unknown-editor' as any,
+          editor: 'unknown-editor' as unknown as ComponentPropEditorType,
           default: 'Default',
         },
       })
@@ -227,7 +228,7 @@ describe('EditorRenderer', () => {
         config: {
           title: 'Property 1',
           type: 'string',
-          editor: undefined as any,
+          editor: undefined as unknown as ComponentPropEditorType,
           default: 'Default Value',
         },
       })
