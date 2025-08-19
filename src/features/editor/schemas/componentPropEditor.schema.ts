@@ -6,3 +6,5 @@ export const ComponentPropEditorSchema = z.union([
   z.literal('select'),
   z.literal('listEditor'),
 ])
+
+export type ComponentPropEditorType = z.infer<typeof ComponentPropEditorSchema>
