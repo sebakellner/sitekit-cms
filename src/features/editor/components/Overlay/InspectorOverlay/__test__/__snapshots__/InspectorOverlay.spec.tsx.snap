@@ -12,6 +12,7 @@ exports[`InspectorOverlay > should match with snapshot 1`] = `
   >
     <div
       class="css-kwi4bo"
+      data-testid="overlay-border"
       style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 2; cursor: default; pointer-events: auto;"
     />
     <div
