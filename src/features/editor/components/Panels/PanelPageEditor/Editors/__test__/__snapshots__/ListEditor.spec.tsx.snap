@@ -17,7 +17,7 @@ exports[`ListEditor > should match with snapshot 1`] = `
         class="chakra-field__root css-1h6z8ek"
         data-part="root"
         data-scope="field"
-        id="field::«r0»"
+        id="field::_r_0_"
         orientation="horizontal"
         role="group"
       >
@@ -25,16 +25,16 @@ exports[`ListEditor > should match with snapshot 1`] = `
           class="chakra-field__label css-84rnco"
           data-part="label"
           data-scope="field"
-          for="«r0»"
-          id="field::«r0»::label"
+          for="_r_0_"
+          id="field::_r_0_::label"
         >
           Id
         </label>
         <input
-          class="chakra-input css-1yokl5a"
+          class="chakra-input css-1w6savu"
           data-part="input"
           data-scope="field"
-          id="«r0»"
+          id="_r_0_"
           value="1"
         />
       </div>
@@ -42,7 +42,7 @@ exports[`ListEditor > should match with snapshot 1`] = `
         class="chakra-field__root css-1h6z8ek"
         data-part="root"
         data-scope="field"
-        id="field::«r1»"
+        id="field::_r_1_"
         orientation="horizontal"
         role="group"
       >
@@ -50,16 +50,16 @@ exports[`ListEditor > should match with snapshot 1`] = `
           class="chakra-field__label css-84rnco"
           data-part="label"
           data-scope="field"
-          for="«r1»"
-          id="field::«r1»::label"
+          for="_r_1_"
+          id="field::_r_1_::label"
         >
           Label
         </label>
         <input
-          class="chakra-input css-1yokl5a"
+          class="chakra-input css-1w6savu"
           data-part="input"
           data-scope="field"
-          id="«r1»"
+          id="_r_1_"
           value="Item 1"
         />
       </div>
@@ -70,7 +70,7 @@ exports[`ListEditor > should match with snapshot 1`] = `
       />
     </div>
     <button
-      class="chakra-button css-1ocnt5x"
+      class="chakra-button css-gz2cp1"
       type="button"
     >
       <svg

@@ -21,8 +21,8 @@ describe('PanelBox', () => {
     const box = screen.getByTestId('panel-box')
     const styles = getComputedStyle(box)
 
-    expect(styles.padding).toBe('var(--chakra-spacing-6)')
-    expect(styles.gap).toBe('var(--chakra-spacing-4)')
+    expect(styles.padding).toBe('24px')
+    expect(styles.gap).toBe('16px')
   })
 
   test('should apply border styles based on borderSide prop', () => {
@@ -34,9 +34,9 @@ describe('PanelBox', () => {
 
     expect(styles.borderTopWidth).toBe('1px')
     expect(styles.borderTopStyle).toBe('solid')
-    expect(styles.borderBottomWidth).toBe('')
-    expect(styles.borderLeftWidth).toBe('')
-    expect(styles.borderRightWidth).toBe('')
+    expect(styles.borderBottomWidth).toBe('0px')
+    expect(styles.borderLeftWidth).toBe('0px')
+    expect(styles.borderRightWidth).toBe('0px')
   })
 
   test('should apply correct borderProps for valid borderSide', () => {
