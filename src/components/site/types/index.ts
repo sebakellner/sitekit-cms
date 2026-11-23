@@ -23,6 +23,7 @@ export type ComponentPropEditor =
   | 'codeEditor'
   | 'borders'
   | 'jsonEditor'
+  | 'listEditor'
 
 export type ComponentPanel = {
   id: string
@@ -42,7 +43,7 @@ export type ComponentMeta<P = Record<string, unknown>> = {
       title?: string
       type: ComponentPropType
       default: string | boolean | number | undefined | null | Array<unknown>
-      options?: string[]
+      options?: { label: string; value: string }[]
       editor: ComponentPropEditor
     }
   }
