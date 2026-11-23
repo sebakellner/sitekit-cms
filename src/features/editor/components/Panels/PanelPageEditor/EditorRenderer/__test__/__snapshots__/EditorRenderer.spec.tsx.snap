@@ -14,7 +14,7 @@ exports[`EditorRenderer > should match snapshot for SelectEditor 1`] = `
       class="chakra-field__root css-1anu6qw"
       data-part="root"
       data-scope="field"
-      id="field::«r9»"
+      id="field::_r_9_"
       orientation="horizontal"
       role="group"
     >
@@ -22,8 +22,8 @@ exports[`EditorRenderer > should match snapshot for SelectEditor 1`] = `
         class="chakra-field__label css-84rnco"
         data-part="label"
         data-scope="field"
-        for="«r9»"
-        id="field::«r9»::label"
+        for="_r_9_"
+        id="field::_r_9_::label"
       >
         Select
       </label>
@@ -31,10 +31,10 @@ exports[`EditorRenderer > should match snapshot for SelectEditor 1`] = `
         class="chakra-native-select__root css-8sp2e0"
       >
         <select
-          class="chakra-native-select__field css-jwpnxr"
+          class="chakra-native-select__field css-12n0skw"
           data-part="select"
           data-scope="field"
-          id="«r9»"
+          id="_r_9_"
         >
           <option
             value="opt1"
@@ -74,7 +74,7 @@ exports[`EditorRenderer > should match snapshot for TextEditor 1`] = `
       class="chakra-field__root css-1anu6qw"
       data-part="root"
       data-scope="field"
-      id="field::«r8»"
+      id="field::_r_8_"
       orientation="horizontal"
       role="group"
     >
@@ -82,16 +82,16 @@ exports[`EditorRenderer > should match snapshot for TextEditor 1`] = `
         class="chakra-field__label css-84rnco"
         data-part="label"
         data-scope="field"
-        for="«r8»"
-        id="field::«r8»::label"
+        for="_r_8_"
+        id="field::_r_8_::label"
       >
         Text
       </label>
       <input
-        class="chakra-input css-1hens3x"
+        class="chakra-input css-1wghn61"
         data-part="input"
         data-scope="field"
-        id="«r8»"
+        id="_r_8_"
         value="Default"
       />
     </div>

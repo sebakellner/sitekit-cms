@@ -13,9 +13,7 @@ export const ComponentMetaSchema = z.object({
   description: z.string().optional(),
   category: z.string().optional(),
   preview: z.string().optional(),
-  component: z
-    .custom<React.FC<Record<string, unknown>>>()
-    .refine((value) => typeof value === 'function'),
+  component: z.custom<React.ElementType>().refine((value) => typeof value === 'function'),
   panels: z.array(ComponentPanelSchema).optional(),
   props: z.record(
     z.string(),

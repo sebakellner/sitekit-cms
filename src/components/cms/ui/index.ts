@@ -1,3 +1,3 @@
 export * from './DropDown'
 export * from './Panel'
-export * from './Tooltip'
+export * from './Tooltip/index'

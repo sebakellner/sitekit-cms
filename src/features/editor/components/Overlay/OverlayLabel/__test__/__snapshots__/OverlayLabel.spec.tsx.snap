@@ -12,7 +12,7 @@ exports[`OverlayLabel > should match with snapshot 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="lucide lucide-layers"
+      class="lucide lucide-layers lucide-layers-3"
       fill="none"
       height="12"
       stroke="#007df0"

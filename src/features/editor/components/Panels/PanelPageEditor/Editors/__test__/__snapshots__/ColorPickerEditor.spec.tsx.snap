@@ -14,7 +14,7 @@ exports[`ColorPicker > should match with snapshot 1`] = `
       class="chakra-field__root css-1anu6qw"
       data-part="root"
       data-scope="field"
-      id="field::«r0»"
+      id="field::_r_0_"
       orientation="horizontal"
       role="group"
     >
@@ -22,8 +22,8 @@ exports[`ColorPicker > should match with snapshot 1`] = `
         class="chakra-field__label css-84rnco"
         data-part="label"
         data-scope="field"
-        for="«r0»"
-        id="field::«r0»::label"
+        for="_r_0_"
+        id="field::_r_0_::label"
       >
         Color Picker
       </label>
@@ -32,12 +32,12 @@ exports[`ColorPicker > should match with snapshot 1`] = `
         data-part="root"
         data-scope="color-picker"
         dir="ltr"
-        id="color-picker:«r1»"
+        id="color-picker:_r_1_"
         style="--value: rgba(255, 255, 255, 1);"
       >
         <input
-          id="color-picker:«r1»:hidden-input"
-          style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
+          id="color-picker:_r_1_:hidden-input"
+          style="border: 0px; clip: rect(0px 0px 0px 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; overflow-wrap: normal;"
           tabindex="-1"
           type="text"
           value="rgba(255, 255, 255, 1)"
@@ -48,12 +48,12 @@ exports[`ColorPicker > should match with snapshot 1`] = `
           data-scope="color-picker"
           data-state="closed"
           dir="ltr"
-          id="color-picker:«r1»:control"
+          id="color-picker:_r_1_:control"
         >
           <input
             aria-label="hex"
             autocomplete="off"
-            class="colorPicker__channelInput css-1aemz6e"
+            class="colorPicker__channelInput css-17khser"
             data-channel="hex"
             data-part="channel-input"
             data-scope="color-picker"
@@ -67,15 +67,17 @@ exports[`ColorPicker > should match with snapshot 1`] = `
             value="#FFFFFF"
           />
           <button
-            aria-controls="color-picker:«r1»:content"
+            aria-controls="color-picker:_r_1_:content"
+            aria-expanded="false"
+            aria-haspopup="dialog"
             aria-label="select color. current color is rgba(255, 255, 255, 1)"
-            aria-labelledby="field::«r0»::label"
+            aria-labelledby="field::_r_0_::label"
             class="colorPicker__trigger css-10mv649"
             data-part="trigger"
             data-scope="color-picker"
             data-state="closed"
             dir="ltr"
-            id="color-picker:«r1»:trigger"
+            id="color-picker:_r_1_:trigger"
             style="position: relative;"
             type="button"
           >
